@@ -17,6 +17,11 @@
                     {{ __('You are logged in!') }} <br>
                     Gestione dati utente registrato, rimanda all'edit <br>
                     <a href="{{ route('edit', ['user' => Auth::user()]) }}">Modifica i tuoi dati</a>
+                    <form action="{{ route('destroy', ['user' => Auth::user()]) }}" method="post">
+                        @csrf 
+                        @method('DELETE')
+                        <button class="btn btn-danger" type="submit">Elimina account</button>
+                    </form>
                 </div>
             </div>
         </div>
