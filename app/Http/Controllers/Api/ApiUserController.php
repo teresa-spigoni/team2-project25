@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
-use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class ApiUserController extends Controller
 {
     public function index(Request $request)
     {
@@ -20,9 +19,5 @@ class UserController extends Controller
             $filtered = User::all();
         }
         return response()->json($filtered);
-    }
-
-    public function show($id)
-    {
     }
 }
