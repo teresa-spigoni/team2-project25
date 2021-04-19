@@ -10942,4 +10942,134 @@ a.text-dark:focus {
   }
 }
 
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+.custom-button {
+  margin-top: 10px;
+  background: #32bea6;
+  border-color: #32bea6;
+  color: #fff;
+}
+
+.custom-button a {
+  color: #fff;
+}
+
+.custom-button:hover a {
+  color: #fff;
+}
+
+#main-nav {
+  background: #32bea6;
+  color: #fff;
+  box-shadow: none;
+}
+
+#main-nav a {
+  color: #fff;
+}
+
+#main-nav a img {
+  vertical-align: -14px;
+  margin-right: 2px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+#dropp {
+  background: #32bea6;
+}
+
+.custom-h1 {
+  color: #32bea6;
+}
+
+.custom-select {
+  width: 320px;
+  margin-left: 7px;
+}
+
+.custom-select option:hover {
+  background: #32bea6;
+  color: #fff;
+}
+
+.opt:hover {
+  background: #32bea6;
+  color: #fff;
+}
+
+.jum {
+  background: #32bea6;
+  padding-top: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.jum img {
+  height: 350px;
+  margin: 0 200px 0 420px;
+}
+
+.doctor-card {
+  padding: 40px;
+}
+
+.doctor-card img {
+  width: 200px;
+  border-radius: 50%;
+  border: 4px solid #dfdfdf;
+}
+
+.doctor-card .card-title {
+  margin-top: 40px;
+}
+
+.doctor-card #specs {
+  margin-bottom: 30px;
+}
+
+.doctor-card .card-text {
+  margin: 2px 0;
+  font-size: 14px;
+}
+
+.doctor-card .card-text strong {
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.doctor-card button {
+  margin-top: 10px;
+}
+
+.doctor-card button a {
+  color: #fff;
+}
+
+.doctor-card button a:hover {
+  color: #fff;
+}
+
+.doctor-card button:hover {
+  background: #32bea6;
+  border-color: #32bea6;
+}
+
+footer {
+  text-align: center;
+  background: #32bea6;
+  padding: 20px 0;
+}
+
+footer a {
+  color: #fff;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
 

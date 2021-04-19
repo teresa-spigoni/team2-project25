@@ -1,24 +1,19 @@
 @extends('layouts.app')
-
+@section('title', 'Show')
 @section('content')
-
-<h1>Pagina Dottore</h1>
-<div>dettagli medico</div> <br>
-
-<div class="card">
+<h1 class="custom-h1">Pagina Dottore</h1>
+<div class="card doctor-card">
     <div class="card-body">
-        <img src="{{asset($user->profile_image)}}" width="200px">
-        <h5 class="card-title">{{$user->name}} {{$user->lastname}}</h5>
-        <p class="card-text">
-            Specializzazioni: 
+        <img src="{{asset($user->profile_image)}}">
+        <h2 class="card-title">{{$user->name}} {{$user->lastname}}</h2>
+        <div class="card-text" id="specs">
             @foreach ($user->specializations as $spec)
-                {{$spec->spec_name}} 
+            <h5>{{$spec->spec_name}}</h5>
             @endforeach
-
-        </p>
-        <p class="card-text">{{$user->mail}}</p>
-        <p class="card-text">{{$user->address}}</p>
-        <a href="{{ route('index') }}">Torna all'index</a>
+        </div>
+        <p class="card-text"><strong>Email:</strong> {{$user->email}}</p>
+        <p class="card-text"><strong>Indirizzo:</strong> {{$user->address}}</p>
+        <button class="btn custom-button"><a href="{{ route('index') }}">Torna all'index</a></button>
     </div>
 </div>
 
