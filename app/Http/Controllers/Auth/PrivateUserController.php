@@ -30,6 +30,14 @@ class PrivateUserController extends Controller
 
     public function update(Request $request, User $user)
     {
+        if ($request->hasFile('profile_image')) {
+            $img = $request->file('profile_image')->store('public');
+            $user->profile_image = $img;
+        }
+        if ($request->hasFile('curriculum')) {
+            $doc = $request->file('curriculum')->store('public');
+            $user->curriculum = $doc;
+        }
         $user->update($request->all());
 
         return redirect()->route('show', compact('user'));

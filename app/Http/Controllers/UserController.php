@@ -10,19 +10,17 @@ use App\Specialization;
 
 class UserController extends Controller
 {
-    public function index(Request $request)
+
+    public function home()
     {
-        // $specialization = $request->query('specialization');
-        // if (isset($specialization)) {
-        //     $filtered = User::whereHas('specializations', function ($query) use ($specialization) {
-        //         return $query->where('specialization_id', $specialization);
-        //     })->get();
-        // } else {
-        //     $filtered = User::all();
-        // }
-        // return response()->json($filtered);
-        $users = User::all();
-        return view('public.index', compact('users'));
+        $specs = Specialization::all();
+        return view('public.homepage', compact('specs'));
+    }
+    public function toIndex(Request $request)
+    {
+        $selected = $request->input('specialization');
+
+        return view('public.index', compact('selected'));
     }
 
     public function show(User $user)
@@ -30,8 +28,9 @@ class UserController extends Controller
         return view('public.show', compact('user'));
     }
 
-    public function create() {
+    public function create()
+    {
         $specs = Specialization::all();
-        return view ('auth.register', compact('specs'));
+        return view('auth.register', compact('specs'));
     }
 }

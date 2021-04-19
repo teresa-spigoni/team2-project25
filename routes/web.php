@@ -15,14 +15,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('public.homepage');
-})->name('homepage');
-
 Auth::routes();
 
+Route::get('/', 'UserController@home')->name('homepage');
 Route::get('/home', 'HomeController@index')->name('dashboard');
-Route::get('/doctors', 'UserController@index')->name('index');
+Route::get('/doctors', 'UserController@toIndex')->name('toIndex');
 Route::get('/doctors/{user}', 'UserController@show')->name('show');
 Route::get('/create', 'UserController@create')->name('create');
 
