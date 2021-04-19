@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Index')
 @section('content')
-@dd($selected)
+{{-- @dd($selected) --}}
 <div id="index">
     <h1>Index - pagina di ricerca avanzata</h1>
     <div>visualizzare i risultati della select, rimanda alla show del singolo medico</div> <br>

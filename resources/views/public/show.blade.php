@@ -5,12 +5,14 @@
 <div class="card doctor-card">
     <div class="card-body">
         <img src="{{asset($user->profile_image)}}">
-        <h2 class="card-title">{{$user->name}} {{$user->lastname}}</h2>
+        <h2 class="card-title"><i class="fas fa-user-md" style="color: #32bea6"></i> {{$user->name}} {{$user->lastname}}
+        </h2>
         <div class="card-text" id="specs">
             @foreach ($user->specializations as $spec)
-            <h5>{{$spec->spec_name}}</h5>
+            <h5>&diams; {{$spec->spec_name}}</h5>
             @endforeach
         </div>
+        <hr>
         <p class="card-text"><strong>Email:</strong> {{$user->email}}</p>
         <p class="card-text"><strong>Indirizzo:</strong> {{$user->address}}</p>
         <button class="btn custom-button"><a href="{{ route('index') }}">Torna all'index</a></button>

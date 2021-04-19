@@ -10,12 +10,12 @@ use App\Specialization;
 
 class UserController extends Controller
 {
-
     public function home()
     {
         $specs = Specialization::all();
         return view('public.homepage', compact('specs'));
     }
+
     public function toIndex(Request $request)
     {
         $selected = $request->input('specialization');
