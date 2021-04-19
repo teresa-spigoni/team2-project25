@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('You are logged in!') }} Gestione dati utente registrato, rimanda all'edit <br>
+                    <a href="{{ route('edit') }}">Modifica i tuoi dati</a>
                 </div>
             </div>
         </div>

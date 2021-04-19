@@ -16,15 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('public.homepage');
-});
+})->name('homepage');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('dashboard');
+Route::get('/doctors', 'UserController@index')->name('index');
+Route::get('/doctors/{user}', 'UserController@show')->name('show');
 
 Route::prefix('auth')
     ->namespace('Auth')
     ->middleware('auth')
     ->group(function () {
-        Route::resource('dashboard', PrivateUserController::class);
+        Route::get('edit/{id?}', 'PrivateUserController@edit')->name('edit');
     });
