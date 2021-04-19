@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Specialization;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -23,7 +24,8 @@ class PrivateUserController extends Controller
 
     public function edit(User $user)
     {
-        return view('auth.edit', compact('user'));
+        $specs = Specialization::all();
+        return view('auth.edit', compact('user', 'specs'));
     }
 
     public function update(Request $request, User $user)

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('dashboard');
 Route::get('/doctors', 'UserController@index')->name('index');
 Route::get('/doctors/{user}', 'UserController@show')->name('show');
+Route::get('/create', 'UserController@create')->name('create');
 
 Route::prefix('auth')
     ->namespace('Auth')

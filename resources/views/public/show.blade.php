@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <h1>Pagina Dottore</h1>
 <div>dettagli medico</div> <br>
 
@@ -10,9 +14,12 @@
             @foreach ($user->specializations as $spec)
                 {{$spec->spec_name}} 
             @endforeach
+
         </p>
         <p class="card-text">{{$user->mail}}</p>
         <p class="card-text">{{$user->address}}</p>
         <a href="{{ route('index') }}">Torna all'index</a>
     </div>
 </div>
+
+@endsection

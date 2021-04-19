@@ -43,6 +43,18 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="specializations">Specializzazione</label>
+                            <select class="form-control" id="specializations" name="specializations[]" multiple>
+                                  <option value="">nessuno</option>
+                                  @foreach($specs as $spec)
+                                      <option value="{{$spec->id}}"  
+                                      >{{$spec->spec_name}}</option>
+                                  @endforeach
+                            </select>
+                          </div>
+                    
+
                         <div class="form-group row">
                             <label for="address"
                                 class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>

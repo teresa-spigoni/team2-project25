@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <h1>Index - pagina di ricerca avanzata</h1>
 <div>visualizzare i risultati della select, rimanda alla show del singolo medico</div> <br>
 <a href="{{ route('homepage') }}">Torna alla home</a>
@@ -24,3 +28,5 @@
         @endforeach
     </tbody>
   </table>
+
+  @endsection
