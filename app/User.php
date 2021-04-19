@@ -16,9 +16,33 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',  'lastname', 'address', 'email', 'password', 'phone_number', 'curriculum'
     ];
 
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
+    }
+
+    public function messages()
+    {
+        return $this->hasMany('App\Message');
+    }
+
+    public function services()
+    {
+        return $this->hasMany('App\Service');
+    }
+
+    public function specializations()
+    {
+        return $this->belongsToMany('App\Specialization')->withTimestamps();
+    }
+
+    public function sponsorships()
+    {
+        return $this->belongsToMany('App\Sponsorship')->withPivot('expiration_time')->withTimestamps();
+    }
     /**
      * The attributes that should be hidden for arrays.
      *
