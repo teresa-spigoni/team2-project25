@@ -13,9 +13,10 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('You are logged in!') }} Gestione dati utente registrato, rimanda all'edit <br>
-                    <a href="{{ route('edit') }}">Modifica i tuoi dati</a>
+                    {{ Auth::user()->name }} {{ Auth::user()->lastname }}
+                    {{ __('You are logged in!') }} <br>
+                    Gestione dati utente registrato, rimanda all'edit <br>
+                    <a href="{{ route('edit', ['user' => Auth::user()]) }}">Modifica i tuoi dati</a>
                 </div>
             </div>
         </div>

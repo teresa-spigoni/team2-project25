@@ -72,7 +72,7 @@
         @if (Route::has('login'))
             <div class="top-right links">
                 @auth
-                    <a href="{{ url('/dashboard') }}">DashBoard</a>
+                    <a href="{{ url('/home') }}">DashBoard</a>
                 @else
                     <a href="{{ route('login') }}">Login</a>
 
@@ -85,7 +85,7 @@
 
 
         <h1>HOMEPAGE</h1>
-        <div>ricerca medico per specializzazione (select che rimanda a index)</div> <br>
+        <div>ricerca medico per specializzazione (select che rimanda a index)</div>
         <a href="{{ route('index') }}">Index medici</a>
 
         {{-- <div class="content">

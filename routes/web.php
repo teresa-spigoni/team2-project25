@@ -28,5 +28,5 @@ Route::prefix('auth')
     ->namespace('Auth')
     ->middleware('auth')
     ->group(function () {
-        Route::get('edit/{id?}', 'PrivateUserController@edit')->name('edit');
+        Route::get('edit/{user}', 'PrivateUserController@edit')->name('edit');
     });
