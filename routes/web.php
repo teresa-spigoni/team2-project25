@@ -29,4 +29,6 @@ Route::prefix('auth')
     ->middleware('auth')
     ->group(function () {
         Route::get('edit/{user}', 'PrivateUserController@edit')->name('edit');
+        Route::put('update/{user}', 'PrivateUserController@update')->name('update');
+        Route::delete('destroy/{user}', 'PrivateUserController@destroy')->name('destroy');
     });
