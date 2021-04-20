@@ -6,7 +6,7 @@
 $maincolor: #32bea6;
 
 .custom-button{
-    margin-top: 10px;
+    margin: 10px;
     background: $maincolor;
     border-color: $maincolor;
     color: #fff;
@@ -45,6 +45,10 @@ $maincolor: #32bea6;
 
 .custom-h1{
     color: $maincolor;
+}
+
+.custom-img {
+    width: 50%;
 }
 
 .custom-select{

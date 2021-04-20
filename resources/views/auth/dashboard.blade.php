@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Dashboard') }}</div>
-                    <img src="{{ Auth::user()->profile_image }}" class="card-img-top" alt="profile-pic">
+                    <img src="{{ Auth::user()->profile_image }}" class="card-img-top custom-img" alt="profile-pic">
 
                     <div class="card-body">
                         @if (session('status'))

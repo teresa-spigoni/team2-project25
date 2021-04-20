@@ -10947,7 +10947,7 @@ a.text-dark:focus {
 }
 
 .custom-button {
-  margin-top: 10px;
+  margin: 10px;
   background: #32bea6;
   border-color: #32bea6;
   color: #fff;
@@ -10984,6 +10984,10 @@ a.text-dark:focus {
 
 .custom-h1 {
   color: #32bea6;
+}
+
+.custom-img {
+  width: 50%;
 }
 
 .custom-select {
