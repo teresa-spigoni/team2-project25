@@ -16,6 +16,22 @@
         <p class="card-text"><strong>Email:</strong> {{$user->email}}</p>
         <p class="card-text"><strong>Indirizzo:</strong> {{$user->address}}</p>
         <button class="btn custom-button"><a href="{{ route('index') }}">Torna all'indexx</a></button>
+        <hr>
+
+
+        @foreach ($reviews as $review)
+            @if ($review->user_id === $user->id)
+                @for ($i = 0; $i < ($review->rv_vote); $i++)
+                    <i class="fas fa-star"></i>
+                @endfor
+                <h3>{{$review->rv_title}}</h3> <br>
+                <p style="width:250px">{{$review->rv_content}}</p> <br>
+                <h5>{{$review->rv_name}} {{$review->rv_lastname}}</h5>
+                <hr>
+            @endif
+
+        @endforeach
     </div>
 </div>
+
 @endsection
