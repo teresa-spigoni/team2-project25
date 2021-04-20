@@ -19,8 +19,9 @@ class UserController extends Controller
     public function toIndex(Request $request)
     {
         $selected = $request->input('specialization');
+        $specializations = Specialization::all();
 
-        return view('public.index', compact('selected'));
+        return view('public.index', compact('selected', 'specializations'));
     }
 
     public function show(User $user)

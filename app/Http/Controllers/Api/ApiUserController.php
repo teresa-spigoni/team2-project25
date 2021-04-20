@@ -11,16 +11,15 @@ class ApiUserController extends Controller
 {
     public function index(Request $request)
     {
-
         $specialization = $request->query('specialization');
-        if (isset($specialization)) {
+
+        if ($specialization > 0) {
             $filtered = User::whereHas('specializations', function ($query) use ($specialization) {
                 return $query->where('specialization_id', $specialization);
             })->get();
         } else {
             $filtered = User::all();
         }
-        dd($filtered);
         return response()->json($filtered);
     }
 }

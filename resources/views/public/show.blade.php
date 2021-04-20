@@ -15,7 +15,7 @@
         <hr>
         <p class="card-text"><strong>Email:</strong> {{$user->email}}</p>
         <p class="card-text"><strong>Indirizzo:</strong> {{$user->address}}</p>
-        <button class="btn custom-button"><a href="{{ route('index') }}">Torna all'index</a></button>
+        <button class="btn custom-button"><a href="{{url('/doctors')}}">Torna all'elenco dei medici</a></button>
     </div>
 </div>
 
