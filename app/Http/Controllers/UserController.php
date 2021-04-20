@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Message;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use App\Specialization;
+use App\Review;
 
 class UserController extends Controller
 {
@@ -24,9 +26,25 @@ class UserController extends Controller
         return view('public.index', compact('selected', 'specializations'));
     }
 
+    public function newMessage(User $user)
+    {
+        return view('public.newmessage', compact('user'));
+    }
+
+    public function saveMessage(Request $request, User $user)
+    {
+        $newMessage = new Message();
+        $newMessage->fill($request->all());
+        $newMessage->user_id = $user->id;
+        // dd($newMessage);
+        $newMessage->save();
+        return view('public.show', compact('user'));
+    }
+
     public function show(User $user)
     {
-        return view('public.show', compact('user'));
+        $reviews = Review::all();
+        return view('public.show', compact('user', 'reviews'));
     }
 
     public function create()
