@@ -11,10 +11,5 @@ Vue.component('index-component', require('./components/IndexComponent.vue').defa
 
 const app = new Vue({
     el: '#app',
-    methods: {
-        goBack: function() {
-            window.history.back();
-        }
-    }
 });
 
