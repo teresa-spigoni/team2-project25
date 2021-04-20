@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Message;
 use App\Specialization;
 use Illuminate\Http\Request;
 use App\User;
@@ -19,6 +20,12 @@ class PrivateUserController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function showMessage($id)
+    {
+        $userMessages = User::find($id)->messages;
+        return view('auth.message', compact('userMessages'));
     }
 
 
