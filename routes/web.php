@@ -13,6 +13,7 @@ Route::get('/doctors/{user}', 'UserController@show')->name('show');
 Route::get('/create', 'UserController@create')->name('create');
 Route::get('/doctors/newmessage/{user}', 'UserController@newMessage')->name('newMessage');
 Route::post('/doctors/{user}', 'UserController@saveMessage')->name('saveMessage');
+Route::post('/review', 'ReviewController@create')->name('review');
 
 Route::prefix('auth')
     ->namespace('Auth')

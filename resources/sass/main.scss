@@ -76,7 +76,13 @@ $maincolor: #32bea6;
 
 // show
 .doctor-card{
+    position: relative;
     padding: 40px;
+
+    #user_id {
+       display: none;
+    }
+
     img{
         width: 200px;
         border-radius: 50%;
@@ -98,7 +104,9 @@ $maincolor: #32bea6;
         }
     }
     button{
-        margin-top: 10px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
 
         a{
             color: #fff;

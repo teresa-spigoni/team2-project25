@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use App\Specialization;
+use App\Review;
 
 class UserController extends Controller
 {
@@ -41,7 +42,8 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        return view('public.show', compact('user'));
+        $reviews = Review::all();
+        return view('public.show', compact('user', 'reviews'));
     }
 
     public function create()

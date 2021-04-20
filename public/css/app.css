@@ -11013,7 +11013,12 @@ a.text-dark:focus {
 }
 
 .doctor-card {
+  position: relative;
   padding: 40px;
+}
+
+.doctor-card #user_id {
+  display: none;
 }
 
 .doctor-card img {
@@ -11041,7 +11046,9 @@ a.text-dark:focus {
 }
 
 .doctor-card button {
-  margin-top: 10px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 .doctor-card button a {
