@@ -13,6 +13,7 @@
                         {{ session('status') }}
                     </div>
                     @endif
+                    <img src="{{asset(Auth::user()->profile_image)}}">
                     <strong style="font-size: 18px">{{ Auth::user()->name }} {{ Auth::user()->lastname }}</strong> <br>
                     {{ __('You are logged in!') }} <br><br>
                     Gestione dati utente registrato, rimanda all'edit <br>

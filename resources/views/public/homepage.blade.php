@@ -7,7 +7,7 @@
     @method('GET')
     <div class="form-group">
         <label for="specializations" class="col-md-4 col-form-label">{{ __('Scegli la specializzazione') }}</label>
-        <select class="form-control" id="specialization" name="specialization">
+        <select class="form-control" id="specialization" name="specialization" required>
             <option value="">Seleziona una specializzazione</option>
             @foreach ($specs as $spec)
             <option value="{{ $spec->id }}" class="opt">{{ $spec->spec_name }}</option>

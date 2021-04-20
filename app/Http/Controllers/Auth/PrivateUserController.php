@@ -40,7 +40,7 @@ class PrivateUserController extends Controller
         }
         $user->update($request->all());
 
-        return redirect()->route('show', compact('user'));
+        return redirect()->route('dashboard');
     }
 
     public function destroy(User $user)
