@@ -17,10 +17,8 @@
                     <h5>&diams; {{ $spec->spec_name }}</h5>
                 @endforeach
             </div>
-            <hr>
-            <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
-            <p class="card-text"><strong>Indirizzo:</strong> {{ $user->address }}</p>
-            <a href="">curriculum</a>
+            <div>curriculum</div> 
+            <embed src="{{asset($user->curriculum)}}" type="application/pdf" width="600px" height="300px">
         </div>
         <hr>
     </div>

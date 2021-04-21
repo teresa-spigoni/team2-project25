@@ -22,7 +22,7 @@ class PrivateUserController extends Controller
         //
     }
 
-    public function showMessages($id)
+    public function showMessage($id)
     {
         $userMessages = User::find($id)->messages;
         return view('auth.message', compact('userMessages'));
@@ -42,8 +42,10 @@ class PrivateUserController extends Controller
             $user->profile_image = $img;
         }
         if ($request->hasFile('curriculum')) {
-            $doc = $request->file('curriculum')->store('public');
-            $user->curriculum = $doc;
+            $doc = $request->file('curriculum');
+            $originalExtension = $request->file('curriculum')->getClientOriginalExtension();
+            $doc->storeAs('public/', $user->name . "." . $originalExtension); 
+            $user->curriculum = 'public/' . $user->name . "." . $doc->clientExtension();
         }
         $user->update($request->all());
 
