@@ -1,36 +1,41 @@
 // utility classes
-*{
-    font-family: 'Roboto', sans-serif;
+* {
+    font-family: "Roboto", sans-serif;
 }
 
 $maincolor: #32bea6;
+$deletecolor: #d0211c;
 
-.custom-button{
+.custom-button {
     margin: 10px;
     background: $maincolor;
     border-color: $maincolor;
     color: #fff;
 
-    a{
+    a {
         color: #fff;
     }
 
-    &:hover{
-        a{
+    &:hover {
+        a {
             color: #fff;
         }
     }
 }
 
-#main-nav{
+.delete {
+    background: $deletecolor;
+}
+
+#main-nav {
     background: $maincolor;
     color: #fff;
     box-shadow: none;
 
-    a{
+    a {
         color: #fff;
 
-        img{
+        img {
             vertical-align: -14px;
             margin-right: 2px;
             width: 50px;
@@ -39,11 +44,11 @@ $maincolor: #32bea6;
     }
 }
 
-#dropp{
+#dropp {
     background: $maincolor;
 }
 
-.custom-h1{
+.custom-h1 {
     color: $maincolor;
 }
 
@@ -51,95 +56,90 @@ $maincolor: #32bea6;
     width: 50%;
 }
 
-.custom-select{
+.custom-select {
     width: 320px;
     margin-left: 7px;
 
-    option:hover{
+    option:hover {
         background: $maincolor;
         color: #fff;
     }
 }
 
 // jumbotron
-.jum{
+.jum {
     background: $maincolor;
     padding-top: 20px;
     text-align: center;
     color: #fff;
 
-    img{
+    img {
         height: 350px;
         margin: 0 200px 0 420px;
     }
 }
 
 #user_id {
-   display: none;
+    display: none;
 }
 // show
-.doctor-card{
+.doctor-card {
     position: relative;
     padding: 40px;
 
-
-    img{
+    img {
         width: 200px;
         border-radius: 50%;
         border: 4px solid #dfdfdf;
     }
-    .card-title{
+    .card-title {
         margin-top: 40px;
     }
-    #specs{
+    #specs {
         margin-bottom: 30px;
     }
-    .card-text{
+    .card-text {
         margin: 2px 0;
         font-size: 14px;
 
-        strong{
+        strong {
             font-size: 18px;
             margin-right: 5px;
         }
     }
-    button{
-
-        a{
+    button {
+        a {
             color: #fff;
 
-            &:hover{
+            &:hover {
                 color: #fff;
             }
         }
 
-        &:hover{
+        &:hover {
             background: $maincolor;
             border-color: $maincolor;
         }
     }
 }
 
-.b-absolute{
+.b-absolute {
     position: absolute;
     top: 20px;
     right: 20px;
 }
 
 // footer
-footer{
+footer {
     text-align: center;
     background: $maincolor;
     padding: 20px 0;
 
-    a{
+    a {
         color: #fff;
 
-        &:hover{
+        &:hover {
             color: #fff;
         }
-
     }
 }
-
-

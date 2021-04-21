@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Message;
+use App\Service;
 use App\Specialization;
 use Illuminate\Http\Request;
 use App\User;
