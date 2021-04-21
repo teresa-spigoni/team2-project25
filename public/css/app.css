@@ -11012,13 +11012,13 @@ a.text-dark:focus {
   margin: 0 200px 0 420px;
 }
 
+#user_id {
+  display: none;
+}
+
 .doctor-card {
   position: relative;
   padding: 40px;
-}
-
-.doctor-card #user_id {
-  display: none;
 }
 
 .doctor-card img {
