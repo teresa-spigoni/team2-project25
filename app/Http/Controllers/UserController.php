@@ -14,8 +14,9 @@ class UserController extends Controller
 {
     public function home()
     {
+        $users = User::all();
         $specs = Specialization::all();
-        return view('public.homepage', compact('specs'));
+        return view('public.homepage', compact('users','specs'));
     }
 
     public function toIndex(Request $request)
@@ -28,7 +29,8 @@ class UserController extends Controller
 
     public function newMessage(User $user)
     {
-        return view('public.newmessage', compact('user'));
+        dump($user);
+        // return view('public.newmessage', compact('user'));
     }
 
     public function saveMessage(Request $request, User $user)

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Show')
 @section('content')
+
     <h1 class="custom-h1">Pagina Dottore</h1>
     <button class="btn custom-button" @click="historyBack('{{ $spec }}')">
         Torna all'elenco
@@ -20,29 +21,24 @@
                     <h5>&diams; {{ $spec->spec_name }}</h5>
                 @endforeach
             </div>
-            <div>curriculum</div> 
-            <embed src="{{asset($user->curriculum)}}" type="application/pdf" width="600px" height="300px">
             <hr>
             <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
             <p class="card-text"><strong>Indirizzo:</strong> {{ $user->address }}</p>
-            <a class="card-text" href="">Curriculum</a>
+            <div>curriculum</div> 
+            <embed src="{{asset($user->curriculum)}}" type="application/pdf" width="600px" height="300px">
+            <hr>
             <h3>Servizi disponibili del dottore:</h3>
             @foreach ($user->services as $service)
-                <hr>
                 <div class="card-text"><strong>Prestazione: </strong>{{ $service->service_type }}</div>
                 <div class="card-text"><strong>Indirizzo: </strong>{{ $service->service_address }}</div>
                 <div class="card-text"><strong>Prezzo: </strong>{{ $service->service_price }}</div>
+                <hr>
             @endforeach
         </div>
         <hr>
     </div>
-    <hr>
-    <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
-    <p class="card-text"><strong>Indirizzo:</strong> {{ $user->address }}</p>
-    <a href="">curriculum</a>
 
     </div>
-    <hr>
 
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -177,13 +173,13 @@
 
 
     @foreach ($reviews as $review)
+
         @if ($review->user_id === $user->id)
             <div>
                 @for ($i = 0; $i < $review->rv_vote; $i++)
                     <i class="fas fa-star"></i>
                 @endfor
             </div>
-
             <h3>{{ $review->rv_title }}</h3> <br>
             <p style="width:250px">{{ $review->rv_content }}</p> <br>
             <h5>{{ $review->rv_name }} {{ $review->rv_lastname }}</h5>

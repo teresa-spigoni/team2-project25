@@ -36,7 +36,7 @@ class User extends Authenticatable
 
     public function specializations()
     {
-        return $this->belongsToMany('App\Specialization')->withTimestamps();
+        return $this->belongsToMany('App\Specialization')->withPivot(['user_id', 'specialization_id'])->withTimestamps();
     }
 
     public function sponsorships()
