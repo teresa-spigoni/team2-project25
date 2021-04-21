@@ -23,9 +23,6 @@
             <a href="">curriculum</a>
         </div>
         <hr>
-        <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
-        <p class="card-text"><strong>Indirizzo:</strong> {{ $user->address }}</p>
-        <a href="">curriculum</a>
     </div>
     <hr>
     <button type="button" class="btn custom-button b-absolute" data-toggle="modal" data-target="#message">

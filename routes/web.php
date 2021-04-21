@@ -22,5 +22,6 @@ Route::prefix('auth')
         Route::get('edit/{user}', 'PrivateUserController@edit')->name('edit');
         Route::put('update/{user}', 'PrivateUserController@update')->name('update');
         Route::delete('destroy/{user}', 'PrivateUserController@destroy')->name('destroy');
-        Route::get('message/{user}', 'PrivateUserController@showMessage')->name('message');
+        Route::get('messages/{user}', 'PrivateUserController@showMessages')->name('messages');
+        Route::get('sponsorships/{user}', 'SponsorshipController@buySponsorship')->name('buySponsorship');
     });

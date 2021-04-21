@@ -22,7 +22,7 @@ class PrivateUserController extends Controller
         //
     }
 
-    public function showMessage($id)
+    public function showMessages($id)
     {
         $userMessages = User::find($id)->messages;
         return view('auth.message', compact('userMessages'));
