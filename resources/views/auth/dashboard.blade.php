@@ -44,7 +44,10 @@
                         <a href="{{ route('edit', ['user' => Auth::user()]) }}">Modifica i tuoi dati</a>
                     </button>
                     <button class="btn custom-button">
-                        <a href="{{ route('message', ['user' => Auth::user()]) }}">Visualizza i tuoi messaggi</a>
+                        <a href="{{ route('messages', ['user' => Auth::user()]) }}">Visualizza i tuoi messaggi</a>
+                    </button>
+                    <button class="btn custom-button">
+                        <a href="{{ route('buySponsorship', ['user' => Auth::user()]) }}">Acquista sponsorizzazione</a>
                     </button>
                     <form action="{{ route('destroy', ['user' => Auth::user()]) }}" method="post">
                         @csrf

@@ -1970,7 +1970,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0__.default({
   el: '#app',
   methods: {
     historyBack: function historyBack(spec) {
-      console.log(spec);
       window.location.href = '/doctors?specialization=' + spec;
     }
   }
