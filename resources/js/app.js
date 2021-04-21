@@ -13,7 +13,6 @@ const app = new Vue({
     el: '#app',
     methods: {
         historyBack(spec) {
-            console.log(spec);
             window.location.href = '/doctors?specialization=' + spec;
         },
     }
