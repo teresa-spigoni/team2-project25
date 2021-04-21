@@ -8,8 +8,8 @@
 
     <div class="card doctor-card">
         <div class="card-body">
-            <button type="button" class="btn custom-button b-absolute" data-toggle="modal" data-target="#message">
-                <a href="{{ route('newMessage', compact('user')) }}">Manda un messaggio</a>
+            <button class="btn custom-button b-absolute" data-toggle="modal" data-target="#modalMessage">
+                Manda un messaggio
             </button>
             <img src="{{ asset($user->profile_image) }}">
             <h2 class="card-title"><i class="fas fa-user-md" style="color: #32bea6"></i> {{ $user->name }}
@@ -34,10 +34,6 @@
         </div>
         <hr>
     </div>
-    <hr>
-    <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
-    <p class="card-text"><strong>Indirizzo:</strong> {{ $user->address }}</p>
-    <a href="">curriculum</a>
 
     </div>
     <hr>
@@ -189,6 +185,52 @@
         @endif
 
     @endforeach
+    </div>
+    <div class="modal fade" id="modalMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form action="{{ route('saveMessage', ['user' => Auth::user(), 'spec' => $spec]) }}" method="post">
+            @csrf
+            @method('POST')
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Nuovo messaggio</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mx-3">
+                        <div class="md-form mb-5">
+                            <label data-error="wrong" data-success="right" for="msg_name">Nome</label>
+                            <input type="text" class="form-control validate" name="msg_name">
+                        </div>
+
+                        <div class="md-form mb-4">
+                            <label data-error="wrong" data-success="right" for="msg_lastname">Cognome</label>
+                            <input type="text" class="form-control validate" name="msg_lastname">
+                        </div>
+
+                        <div class="md-form mb-4">
+                            <label data-error="wrong" data-success="right" for="msg_email">E-Mail</label>
+                            <input type="text" class="form-control validate" name="msg_email">
+                        </div>
+
+                        <div class="md-form mb-4">
+                            <label data-error="wrong" data-success="right" for="msg_phone_number">Numero di telefono</label>
+                            <input type="text" class="form-control validate" name="msg_phone_number">
+                        </div>
+                        <div class="md-form mb-4">
+                            <label data-error="wrong" data-success="right" for="msg_content">Messaggio</label>
+                            <textarea name="msg_content" id="msg_content" cols="57" rows="3"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="submit" class="btn custom-button">Invia messaggio</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
     </div>
 
 @endsection

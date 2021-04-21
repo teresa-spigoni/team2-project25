@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 use App\Specialization;
 use App\Review;
+use Faker\Provider\ar_JO\Internet;
 
 class UserController extends Controller
 {
@@ -26,19 +27,13 @@ class UserController extends Controller
         return view('public.index', compact('selected', 'specializations'));
     }
 
-    public function newMessage(User $user)
-    {
-        return view('public.newmessage', compact('user'));
-    }
-
     public function saveMessage(Request $request, User $user)
     {
         $newMessage = new Message();
         $newMessage->fill($request->all());
         $newMessage->user_id = $user->id;
-        // dd($newMessage);
         $newMessage->save();
-        return view('public.show', compact('user'));
+        return redirect()->route('homepage');
     }
 
     public function show(User $user, $spec)
