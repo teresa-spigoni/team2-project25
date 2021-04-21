@@ -74,14 +74,14 @@ $maincolor: #32bea6;
     }
 }
 
+#user_id {
+   display: none;
+}
 // show
 .doctor-card{
     position: relative;
     padding: 40px;
 
-    #user_id {
-       display: none;
-    }
 
     img{
         width: 200px;

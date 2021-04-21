@@ -1900,6 +1900,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     selected: Number,
@@ -1912,15 +1913,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   beforeCreate: function beforeCreate() {
-    console.log('before create');
+    console.log("before create");
   },
   mounted: function mounted() {
     var _this = this;
 
     //!!!!SPECID E SELECTED NON SI AGGIORNANO AL MOUNTED
-    console.log('mounted');
-    console.log('specid' + this.specId);
-    console.log('selected' + this.selected);
+    console.log("mounted");
+    console.log("specid" + this.specId);
+    console.log("selected" + this.selected);
     axios.get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId).then(function (response) {
       _this.users = response.data;
     });
@@ -37607,6 +37608,8 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Nome")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Mail")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Indirizzo")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Immagine")])
       ])

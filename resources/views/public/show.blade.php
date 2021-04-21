@@ -2,7 +2,7 @@
 @section('title', 'Show')
 @section('content')
     <h1 class="custom-h1">Pagina Dottore</h1>
-    <button class="btn custom-button" @click="historyBack('{{$spec}}')">
+    <button class="btn custom-button" @click="historyBack('{{ $spec }}')">
         Torna all'elenco
     </button>
 
@@ -23,9 +23,14 @@
         <hr>
     </div>
     <hr>
+    <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
+    <p class="card-text"><strong>Indirizzo:</strong> {{ $user->address }}</p>
+    <a href="">curriculum</a>
     <button type="button" class="btn custom-button b-absolute" data-toggle="modal" data-target="#message">
         <a href="{{ route('newMessage', compact('user')) }}">Manda un messaggio</a>
     </button>
+    </div>
+    <hr>
 
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -41,14 +46,14 @@
                             <label for="rv_name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                             <div class="col-md-6">
-                                <input id="rv_name" type="text"
-                                    class="form-control @error('rv_name') is-invalid @enderror" name="rv_name"
-                                    value="{{ old('rv_name') }}" required autocomplete="rv_name" autofocus>
+                                <input id="rv_name" type="text" class="form-control @error('rv_name') is-invalid @enderror"
+                                    name="rv_name" value="{{ old('rv_name') }}" required autocomplete="rv_name"
+                                    autofocus>
 
                                 @error('rv_name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                 @enderror
                             </div>
                         </div>
@@ -64,9 +69,9 @@
                                     value="{{ old('rv_lastname') }}" required autocomplete="rv_lastname" autofocus>
 
                                 @error('rv_lastname')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                 @enderror
                             </div>
                         </div>
@@ -81,9 +86,9 @@
                                     value="{{ old('rv_vote') }}" required autocomplete="rv_vote" autofocus>
 
                                 @error('rv_vote')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                 @enderror
                             </div>
                         </div>
@@ -99,9 +104,9 @@
                                     value="{{ old('rv_title') }}" required autocomplete="rv_title" autofocus>
 
                                 @error('rv_title')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                 @enderror
                             </div>
                         </div>
@@ -117,9 +122,9 @@
                                     autofocus></textarea>
 
                                 @error('rv_content')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                 @enderror
                             </div>
                         </div>
@@ -130,14 +135,13 @@
                                 class="col-md-4 col-form-label text-md-right">{{ __('Dottore') }}</label>
 
                             <div class="col-md-6">
-                                <input id="user_id" type="text"
-                                    class="form-control @error('user_id') is-invalid @enderror" name="user_id"
-                                    value="{{ $user->id }}" required autocomplete="user_id" autofocus>
+                                <input id="user_id" type="text" class="form-control @error('user_id') is-invalid @enderror"
+                                    name="user_id" value="{{ $user->id }}" required autocomplete="user_id" autofocus>
 
                                 @error('user_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                 @enderror
                             </div>
                         </div>
@@ -161,20 +165,20 @@
 
 
     @foreach ($reviews as $review)
-    @if ($review->user_id === $user->id)
-    <div>
-        @for ($i = 0; $i < $review->rv_vote; $i++)
-            <i class="fas fa-star"></i>
-            @endfor
-    </div>
+        @if ($review->user_id === $user->id)
+            <div>
+                @for ($i = 0; $i < $review->rv_vote; $i++)
+                    <i class="fas fa-star"></i>
+                @endfor
+            </div>
 
-    <h3>{{ $review->rv_title }}</h3> <br>
-    <p style="width:250px">{{ $review->rv_content }}</p> <br>
-    <h5>{{ $review->rv_name }} {{ $review->rv_lastname }}</h5>
-    <hr>
-    @endif
+            <h3>{{ $review->rv_title }}</h3> <br>
+            <p style="width:250px">{{ $review->rv_content }}</p> <br>
+            <h5>{{ $review->rv_name }} {{ $review->rv_lastname }}</h5>
+            <hr>
+        @endif
 
     @endforeach
-</div>
+    </div>
 
 @endsection
