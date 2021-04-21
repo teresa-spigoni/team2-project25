@@ -47,7 +47,7 @@
                             <label for="specializations"
                                 class="col-md-4 col-form-label text-md-right">{{ __('Specializations') }}</label>
                             <select class="form-control custom-select" id="specializations" name="specializations[]"
-                                multiple>
+                                multiple required>
                                 <option value="">Seleziona una o più specializzazioni</option>
                                 @foreach ($specs as $spec)
                                 <option value="{{ $spec->id }}">{{ $spec->spec_name }}</option>

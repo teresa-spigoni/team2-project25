@@ -1900,29 +1900,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     selected: Number,
@@ -1931,14 +1908,16 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       specId: this.selected,
-      users: [],
-      show: false,
-      user: []
+      users: []
     };
   },
   mounted: function mounted() {
     var _this = this;
 
+    //!!!!SPECID E SELECTED NON SI AGGIORNANO AL MOUNTED
+    console.log('mounted');
+    console.log('specid' + this.specId);
+    console.log('selected' + this.selected);
     axios.get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId).then(function (response) {
       _this.users = response.data;
     });
@@ -1946,8 +1925,6 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     specId: function specId() {
       var _this2 = this;
-
-      console.log(this.specId);
 
       if (this.specId > 0) {
         axios.get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId).then(function (response) {
@@ -1960,15 +1937,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  methods: {
-    showUser: function showUser(user) {
-      this.show = true;
-      this.user = user;
-    },
-    goBack: function goBack() {
-      this.show = false;
-    }
-  }
+  methods: {}
 });
 
 /***/ }),
@@ -1994,7 +1963,12 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.prototype.$http = (axios__WEBPACK_IMPOR
 vue__WEBPACK_IMPORTED_MODULE_0__.default.component('index-component', __webpack_require__(/*! ./components/IndexComponent.vue */ "./resources/js/components/IndexComponent.vue").default); // Vue.component('index', require('./components/ExampleComponent.vue').default)
 
 var app = new vue__WEBPACK_IMPORTED_MODULE_0__.default({
-  el: '#app'
+  el: '#app',
+  methods: {
+    historyBack: function historyBack() {
+      window.history.back();
+    }
+  }
 });
 
 /***/ }),
@@ -37570,41 +37544,32 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm.users.length > 0 && _vm.show === false
+    _vm.users.length > 0
       ? _c("table", { staticClass: "table table-hover my-table" }, [
           _vm._m(0),
           _vm._v(" "),
           _c(
             "tbody",
             _vm._l(_vm.users, function(user, index) {
-              return _c(
-                "tr",
-                {
-                  key: index,
-                  on: {
-                    click: function($event) {
-                      return _vm.showUser(user)
-                    }
-                  }
-                },
-                [
-                  _c("td", [
-                    _c("div", [
-                      _vm._v(_vm._s(user.name) + " " + _vm._s(user.lastname))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(user.email))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(user.address))]),
-                  _vm._v(" "),
-                  _c("td", [
+              return _c("tr", { key: index }, [
+                _c("td", [
+                  _c("div", [
+                    _vm._v(_vm._s(user.name) + " " + _vm._s(user.lastname))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(user.email))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(user.address))]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("a", { attrs: { href: "/doctors/" + user.id } }, [
                     _c("img", {
                       attrs: { src: "../" + user.profile_image, width: "150px" }
                     })
                   ])
-                ]
-              )
+                ])
+              ])
             }),
             0
           )
@@ -37616,68 +37581,6 @@ var render = function() {
           _vm._v(
             "\n    Mi dispiace, non abbiamo nessun medico per la specializzazione\n    selezionata.\n  "
           )
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.show === true
-      ? _c("div", [
-          _c("h1", { staticClass: "custom-h1" }, [_vm._v("Pagina Dottore")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card doctor-card" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("img", { attrs: { src: "../" + _vm.user.profile_image } }),
-              _vm._v(" "),
-              _c("h2", { staticClass: "card-title" }, [
-                _c("i", {
-                  staticClass: "fas fa-user-md",
-                  staticStyle: { color: "#32bea6" }
-                }),
-                _vm._v(
-                  "\n          " +
-                    _vm._s(_vm.user.name) +
-                    " " +
-                    _vm._s(_vm.user.lastname) +
-                    "\n        "
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "card-text" },
-                _vm._l(_vm.user.specializations, function(spec, index) {
-                  return _c("h5", { key: index }, [
-                    _vm._v("♦ " + _vm._s(spec.spec_name))
-                  ])
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _c("hr"),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _c("strong", [_vm._v("Email:")]),
-                _vm._v(" " + _vm._s(_vm.user.email))
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _c("strong", [_vm._v("Indirizzo:")]),
-                _vm._v(" " + _vm._s(_vm.user.address) + "\n        ")
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn custom-button",
-                  on: {
-                    click: function($event) {
-                      return _vm.goBack()
-                    }
-                  }
-                },
-                [_vm._v("\n          Torna all'elenco dei medici\n        ")]
-              )
-            ])
-          ])
         ])
       : _vm._e()
   ])

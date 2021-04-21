@@ -2,6 +2,10 @@
 @section('title', 'Show')
 @section('content')
     <h1 class="custom-h1">Pagina Dottore</h1>
+    <button class="btn custom-button" @click="historyBack()">
+        Torna all'elenco
+    </button>
+
     <div class="card doctor-card">
         <div class="card-body">
             <img src="{{ asset($user->profile_image) }}">
@@ -16,25 +20,17 @@
             <hr>
             <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
             <p class="card-text"><strong>Indirizzo:</strong> {{ $user->address }}</p>
-            <button class="btn custom-button">
-                <a href="{{ route('index') }}">
-                    Torna all'index
-                </a>
-            </button>
-            <button type="button" class="btn custom-button" data-toggle="modal" data-target="#message">
-                <a href="{{route('newMessage', compact('user'))}}">Manda un messaggio</a>
-            </button>
+            <a href="">curriculum</a>
         </div>
         <hr>
-        <p class="card-text"><strong>Email:</strong> {{$user->email}}</p>
-        <p class="card-text"><strong>Indirizzo:</strong> {{$user->address}}</p>
-        <button class="btn custom-button"><a href="{{ route('index') }}">Torna all'indexx</a></button>
-
+        <button type="button" class="btn custom-button" data-toggle="modal" data-target="#message">
+            <a href="{{route('newMessage', compact('user'))}}">Manda un messaggio</a>
+        </button>
 
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Scrivi una recensione') }}</div>
+                    <div class="card-header">{{ __('Scrivi una recensione') }}</div>        
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('review') }}">
