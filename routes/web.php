@@ -24,4 +24,5 @@ Route::prefix('auth')
         Route::delete('destroy/{user}', 'PrivateUserController@destroy')->name('destroy');
         Route::get('messages/{user}', 'PrivateUserController@showMessages')->name('messages');
         Route::get('sponsorships/{user}', 'SponsorshipController@buySponsorship')->name('buySponsorship');
+        Route::post('service/{user}', 'PrivateUserController@newService')->name('newService');
     });

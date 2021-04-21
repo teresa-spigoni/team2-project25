@@ -10961,6 +10961,10 @@ a.text-dark:focus {
   color: #fff;
 }
 
+.delete {
+  background: #d0211c;
+}
+
 #main-nav {
   background: #32bea6;
   color: #fff;

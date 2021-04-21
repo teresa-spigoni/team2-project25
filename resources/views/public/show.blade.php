@@ -8,6 +8,9 @@
 
     <div class="card doctor-card">
         <div class="card-body">
+            <button type="button" class="btn custom-button b-absolute" data-toggle="modal" data-target="#message">
+                <a href="{{ route('newMessage', compact('user')) }}">Manda un messaggio</a>
+            </button>
             <img src="{{ asset($user->profile_image) }}">
             <h2 class="card-title"><i class="fas fa-user-md" style="color: #32bea6"></i> {{ $user->name }}
                 {{ $user->lastname }}
@@ -20,7 +23,14 @@
             <hr>
             <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
             <p class="card-text"><strong>Indirizzo:</strong> {{ $user->address }}</p>
-            <a href="">curriculum</a>
+            <a class="card-text" href="">Curriculum</a>
+            <h3>Servizi disponibili del dottore:</h3>
+            @foreach ($user->services as $service)
+                <hr>
+                <div class="card-text"><strong>Prestazione: </strong>{{ $service->service_type }}</div>
+                <div class="card-text"><strong>Indirizzo: </strong>{{ $service->service_address }}</div>
+                <div class="card-text"><strong>Prezzo: </strong>{{ $service->service_price }}</div>
+            @endforeach
         </div>
         <hr>
     </div>
@@ -28,9 +38,7 @@
     <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
     <p class="card-text"><strong>Indirizzo:</strong> {{ $user->address }}</p>
     <a href="">curriculum</a>
-    <button type="button" class="btn custom-button b-absolute" data-toggle="modal" data-target="#message">
-        <a href="{{ route('newMessage', compact('user')) }}">Manda un messaggio</a>
-    </button>
+
     </div>
     <hr>
 

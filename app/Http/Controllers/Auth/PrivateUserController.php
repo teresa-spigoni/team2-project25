@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Message;
+use App\Service;
 use App\Specialization;
 use Illuminate\Http\Request;
 use App\User;
@@ -20,6 +20,16 @@ class PrivateUserController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function newService(Request $request, User $user)
+    {
+        $service = $request->all();
+        $newService = new Service();
+        $newService->fill($service);
+        $newService->user_id = $user->id;
+        $newService->save();
+        return redirect()->route('dashboard', compact('user'));
     }
 
     public function showMessages($id)
