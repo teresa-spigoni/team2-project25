@@ -41,10 +41,10 @@ class UserController extends Controller
         return view('public.show', compact('user'));
     }
 
-    public function show(User $user)
+    public function show(User $user, $spec)
     {
         $reviews = Review::all();
-        return view('public.show', compact('user', 'reviews'));
+        return view('public.show', compact('user', 'reviews', 'spec'));
     }
 
     public function create()

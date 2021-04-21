@@ -1911,6 +1911,9 @@ __webpack_require__.r(__webpack_exports__);
       users: []
     };
   },
+  beforeCreate: function beforeCreate() {
+    console.log('before create');
+  },
   mounted: function mounted() {
     var _this = this;
 
@@ -1965,8 +1968,9 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.component('index-component', __webpack_
 var app = new vue__WEBPACK_IMPORTED_MODULE_0__.default({
   el: '#app',
   methods: {
-    historyBack: function historyBack() {
-      window.history.back();
+    historyBack: function historyBack(spec) {
+      console.log(spec);
+      window.location.href = '/doctors?specialization=' + spec;
     }
   }
 });
@@ -37563,11 +37567,20 @@ var render = function() {
                 _c("td", [_vm._v(_vm._s(user.address))]),
                 _vm._v(" "),
                 _c("td", [
-                  _c("a", { attrs: { href: "/doctors/" + user.id } }, [
-                    _c("img", {
-                      attrs: { src: "../" + user.profile_image, width: "150px" }
-                    })
-                  ])
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "/doctors/" + user.id + "/" + _vm.specId }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "../" + user.profile_image,
+                          width: "150px"
+                        }
+                      })
+                    ]
+                  )
                 ])
               ])
             }),

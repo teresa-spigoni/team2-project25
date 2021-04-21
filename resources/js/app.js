@@ -12,10 +12,10 @@ Vue.component('index-component', require('./components/IndexComponent.vue').defa
 const app = new Vue({
     el: '#app',
     methods: {
-        historyBack() {
-            window.history.back();
+        historyBack(spec) {
+            console.log(spec);
+            window.location.href = '/doctors?specialization=' + spec;
         },
-
     }
 });
 
