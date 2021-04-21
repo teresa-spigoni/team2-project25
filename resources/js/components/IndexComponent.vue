@@ -27,6 +27,7 @@
         <tr>
           <th scope="col">Nome</th>
           <th scope="col">Mail</th>
+          <th scope="col">Indirizzo</th>
           <th scope="col">Immagine</th>
         </tr>
       </thead>
@@ -63,13 +64,13 @@ export default {
     };
   },
   beforeCreate() {
-      console.log('before create')
+    console.log("before create");
   },
   mounted() {
-      //!!!!SPECID E SELECTED NON SI AGGIORNANO AL MOUNTED
-      console.log('mounted')
-      console.log('specid' + this.specId)
-      console.log('selected' + this.selected)
+    //!!!!SPECID E SELECTED NON SI AGGIORNANO AL MOUNTED
+    console.log("mounted");
+    console.log("specid" + this.specId);
+    console.log("selected" + this.selected);
     axios
       .get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId)
       .then((response) => {
@@ -93,7 +94,6 @@ export default {
       }
     },
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
