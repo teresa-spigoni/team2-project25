@@ -11045,12 +11045,6 @@ a.text-dark:focus {
   margin-right: 5px;
 }
 
-.doctor-card button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
 .doctor-card button a {
   color: #fff;
 }
@@ -11062,6 +11056,12 @@ a.text-dark:focus {
 .doctor-card button:hover {
   background: #32bea6;
   border-color: #32bea6;
+}
+
+.b-absolute {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 footer {

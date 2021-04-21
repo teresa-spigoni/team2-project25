@@ -104,9 +104,6 @@ $maincolor: #32bea6;
         }
     }
     button{
-        position: absolute;
-        top: 20px;
-        right: 20px;
 
         a{
             color: #fff;
@@ -121,6 +118,12 @@ $maincolor: #32bea6;
             border-color: $maincolor;
         }
     }
+}
+
+.b-absolute{
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
 
 // footer
@@ -138,3 +141,5 @@ footer{
 
     }
 }
+
+
