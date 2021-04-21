@@ -10946,10 +10946,15 @@ a.text-dark:focus {
   font-family: "Roboto", sans-serif;
 }
 
+.custom-h1 {
+  color: #32bea6;
+}
+
 .custom-button {
-  margin: 10px;
+  margin: 10px 10px 10px 0;
   background: #32bea6;
   border-color: #32bea6;
+  font-size: 18px;
   color: #fff;
 }
 
@@ -10961,8 +10966,39 @@ a.text-dark:focus {
   color: #fff;
 }
 
+.button-none {
+  border: none;
+  background: none;
+  color: #32bea6;
+  font-size: 18px;
+}
+
+.button-none a {
+  color: #32bea6;
+}
+
+.button-none:hover {
+  font-size: 22px;
+  color: #fff;
+}
+
 .delete {
   background: #d0211c;
+  border-color: #d0211c;
+}
+
+.custom-img {
+  width: 50%;
+}
+
+.custom-select {
+  width: 320px;
+  margin-left: 7px;
+}
+
+.custom-select option:hover {
+  background: #32bea6;
+  color: #fff;
 }
 
 #main-nav {
@@ -10986,24 +11022,6 @@ a.text-dark:focus {
   background: #32bea6;
 }
 
-.custom-h1 {
-  color: #32bea6;
-}
-
-.custom-img {
-  width: 50%;
-}
-
-.custom-select {
-  width: 320px;
-  margin-left: 7px;
-}
-
-.custom-select option:hover {
-  background: #32bea6;
-  color: #fff;
-}
-
 .jum {
   background: #32bea6;
   padding-top: 20px;
@@ -11018,6 +11036,12 @@ a.text-dark:focus {
 
 #user_id {
   display: none;
+}
+
+.user_img {
+  width: 200px;
+  border-radius: 50%;
+  border: 4px solid #dfdfdf;
 }
 
 .doctor-card {
@@ -11062,10 +11086,16 @@ a.text-dark:focus {
   border-color: #32bea6;
 }
 
-.b-absolute {
+.b-absolute-tr {
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+.b-absolute-tl {
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 
 footer {

@@ -1,10 +1,11 @@
 <template>
   <div>
-    <h1>Index - pagina di ricerca avanzata</h1>
+    <!-- <h1 class="custom-h1">Index - pagina di ricerca avanzata</h1> -->
     <br />
-    <a href="/">Torna alla home</a>
+    <button class="btn button-none">
+      <a href="/"><i class="fas fa-arrow-left"></i></a>
+    </button>
     <div class="form-group">
-      <label for="specializations">Specializzazione</label>
       <select
         class="form-control"
         name="specializations"
@@ -25,10 +26,10 @@
     <table class="table table-hover my-table" v-if="users.length > 0">
       <thead>
         <tr>
-          <th scope="col">Nome</th>
-          <th scope="col">Mail</th>
+          <th scope="col">Nome e Cognome</th>
+          <th scope="col">Email</th>
           <th scope="col">Indirizzo</th>
-          <th scope="col">Immagine</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
