@@ -24,13 +24,13 @@
         </div>
         <hr>
         <button type="button" class="btn custom-button" data-toggle="modal" data-target="#message">
-            <a href="{{route('newMessage', compact('user'))}}">Manda un messaggio</a>
+            <a href="{{ route('newMessage', compact('user')) }}">Manda un messaggio</a>
         </button>
 
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Scrivi una recensione') }}</div>        
+                    <div class="card-header">{{ __('Scrivi una recensione') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('review') }}">
@@ -38,16 +38,18 @@
                             @method('POST')
                             {{-- nome --}}
                             <div class="form-group row">
-                                <label for="rv_name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                                <label for="rv_name"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="rv_name" type="text" class="form-control @error('rv_name') is-invalid @enderror"
-                                        name="rv_name" value="{{ old('rv_name') }}" required autocomplete="rv_name" autofocus>
+                                    <input id="rv_name" type="text"
+                                        class="form-control @error('rv_name') is-invalid @enderror" name="rv_name"
+                                        value="{{ old('rv_name') }}" required autocomplete="rv_name" autofocus>
 
                                     @error('rv_name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                             </div>
@@ -63,9 +65,9 @@
                                         value="{{ old('rv_lastname') }}" required autocomplete="rv_lastname" autofocus>
 
                                     @error('rv_lastname')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                             </div>
@@ -81,9 +83,9 @@
                                         value="{{ old('rv_vote') }}" required autocomplete="rv_vote" autofocus>
 
                                     @error('rv_vote')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                             </div>
@@ -99,9 +101,9 @@
                                         value="{{ old('rv_title') }}" required autocomplete="rv_title" autofocus>
 
                                     @error('rv_title')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                             </div>
@@ -112,14 +114,14 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Contenuto') }}</label>
 
                                 <div class="col-md-6">
-                                    <textarea id="rv_content"
-                                        class="form-control @error('rv_content') is-invalid @enderror" name="rv_content"
-                                        value="{{ old('rv_content') }}" required autocomplete="rv_content" autofocus></textarea>
+                                    <textarea id="rv_content" class="form-control @error('rv_content') is-invalid @enderror"
+                                        name="rv_content" value="{{ old('rv_content') }}" required
+                                        autocomplete="rv_content" autofocus></textarea>
 
                                     @error('rv_content')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                             </div>
@@ -135,9 +137,9 @@
                                         value="{{ $user->id }}" required autocomplete="user_id" autofocus>
 
                                     @error('user_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                             </div>
@@ -161,12 +163,15 @@
 
         @foreach ($reviews as $review)
             @if ($review->user_id === $user->id)
-                @for ($i = 0; $i < ($review->rv_vote); $i++)
-                    <i class="fas fa-star"></i>
-                @endfor
-                <h3>{{$review->rv_title}}</h3> <br>
-                <p style="width:250px">{{$review->rv_content}}</p> <br>
-                <h5>{{$review->rv_name}} {{$review->rv_lastname}}</h5>
+                <div>
+                    @for ($i = 0; $i < $review->rv_vote; $i++)
+                        <i class="fas fa-star"></i>
+                    @endfor
+                </div>
+
+                <h3>{{ $review->rv_title }}</h3> <br>
+                <p style="width:250px">{{ $review->rv_content }}</p> <br>
+                <h5>{{ $review->rv_name }} {{ $review->rv_lastname }}</h5>
                 <hr>
             @endif
 
