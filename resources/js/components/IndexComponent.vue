@@ -38,7 +38,7 @@
           <td>{{ user.email }}</td>
           <td>{{ user.address }}</td>
           <td>
-            <a :href="'/doctors/' + user.id"
+            <a :href="'/doctors/' + user.id + '/' + specId"
               ><img :src="'../' + user.profile_image" width="150px"
             /></a>
           </td>
@@ -61,6 +61,9 @@ export default {
       specId: this.selected,
       users: [],
     };
+  },
+  beforeCreate() {
+      console.log('before create')
   },
   mounted() {
       //!!!!SPECID E SELECTED NON SI AGGIORNANO AL MOUNTED

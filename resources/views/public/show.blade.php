@@ -2,7 +2,7 @@
 @section('title', 'Show')
 @section('content')
     <h1 class="custom-h1">Pagina Dottore</h1>
-    <button class="btn custom-button" @click="historyBack()">
+    <button class="btn custom-button" @click="historyBack('{{$spec}}')">
         Torna all'elenco
     </button>
 
