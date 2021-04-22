@@ -57,7 +57,7 @@
                         <a href="{{ route('messages', ['user' => Auth::user()]) }}"><i class="fas fa-comments"></i>
                             Visualizza messaggi</a>
                     </button>
-                    <button class="btn custom-button" data-toggle="modal" data-target="#modalSubscriptionForm">
+                    <button class="btn custom-button" data-toggle="modal" data-target="#modalService">
                         Aggiungi prestazione
                     </button>
                     <button class="btn custom-button">
@@ -73,6 +73,9 @@
                 </div>
             </div>
         </div>
+
+
+        {{-- Modale --}}
         <div class="modal fade" id="modalService" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true">
             <form action="{{ route('newService', ['user' => Auth::user()]) }}" method="post">
@@ -88,52 +91,28 @@
                         </div>
                         <div class="modal-body mx-3">
                             <div class="md-form mb-5">
-                                <label data-error="wrong" data-success="right" for="service_type">Nome prestazione</label>
+                                <label data-error="wrong" data-success="right" for="service_type">Nome
+                                    prestazione</label>
                                 <input type="text" class="form-control validate" name="service_type">
                             </div>
-                        </div>
 
-                        {{-- Modale --}}
-                        <div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog"
-                            aria-labelledby="myModalLabel" aria-hidden="true">
-                            <form action="{{ route('newService', ['user' => Auth::user()]) }}" method="post">
-                                @csrf
-                                @method('POST')
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header text-center">
-                                            <h4 class="modal-title w-100 font-weight-bold">Nuova prestazione</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body mx-3">
-                                            <div class="md-form mb-5">
-                                                <label data-error="wrong" data-success="right" for="service_type">Nome
-                                                    prestazione</label>
-                                                <input type="text" class="form-control validate" name="service_type">
-                                            </div>
+                            <div class="md-form mb-4">
+                                <label data-error="wrong" data-success="right" for="service_address">Indirizzo</label>
+                                <input type="text" class="form-control validate" name="service_address">
+                            </div>
 
-                                            <div class="md-form mb-4">
-                                                <label data-error="wrong" data-success="right"
-                                                    for="service_address">Indirizzo</label>
-                                                <input type="text" class="form-control validate" name="service_address">
-                                            </div>
-
-                                            <div class="md-form mb-4">
-                                                <label data-error="wrong" data-success="right"
-                                                    for="service_price">Prezzo</label>
-                                                <input type="number" step="0.01" class="form-control validate"
-                                                    name="service_price">
-                                            </div>
-
-                                        </div>
-                                        <div class="modal-footer d-flex justify-content-center">
-                                            <button type="submit" class="btn custom-button">Crea prestazione</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                            <div class="md-form mb-4">
+                                <label data-error="wrong" data-success="right" for="service_price">Prezzo</label>
+                                <input type="number" step="0.01" class="form-control validate" name="service_price">
+                            </div>
 
                         </div>
-                    @endsection
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="submit" class="btn custom-button">Crea prestazione</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    @endsection

@@ -28,6 +28,15 @@ class PrivateUserController extends Controller
         return view('auth.message', compact('userMessages'));
     }
 
+    public function newService(Request $request, User $user)
+    {
+        $newService = new Service();
+        $newService->fill($request->all());
+        $newService->user_id = $user->id;
+        $newService->save();
+        return view('auth.dashboard', compact('user'));
+    }
+
 
     public function edit(User $user)
     {
