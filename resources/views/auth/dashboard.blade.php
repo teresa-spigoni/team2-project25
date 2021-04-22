@@ -53,7 +53,7 @@
                     <button class="btn custom-button">
                         <a href="{{ route('messages', ['user' => Auth::user()]) }}">Visualizza i tuoi messaggi</a>
                     </button>
-                    <button class="btn custom-button" data-toggle="modal" data-target="#modalSubscriptionForm">
+                    <button class="btn custom-button" data-toggle="modal" data-target="#modalService">
                         Aggiungi una prestazione
                     </button>
                     <button class="btn custom-button">
@@ -68,8 +68,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="modalService" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <form action="{{ route('newService', ['user' => Auth::user()]) }}" method="post">
             @csrf
             @method('POST')
