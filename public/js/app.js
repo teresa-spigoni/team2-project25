@@ -1910,7 +1910,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       specId: this.selected,
-      users: []
+      users: [],
+      results: true
     };
   },
   beforeCreate: function beforeCreate() {
@@ -1925,6 +1926,10 @@ __webpack_require__.r(__webpack_exports__);
     console.log("selected" + this.selected);
     axios.get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId).then(function (response) {
       _this.users = response.data;
+
+      if (_this.users.length === 0) {
+        _this.results = false;
+      }
     });
   },
   watch: {
@@ -1934,6 +1939,10 @@ __webpack_require__.r(__webpack_exports__);
       if (this.specId > 0) {
         axios.get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId).then(function (response) {
           _this2.users = response.data;
+
+          if (_this2.users.length === 0) {
+            _this2.results = false;
+          }
         });
       } else {
         axios.get("http://127.0.0.1:8000/api/doctors").then(function (response) {
@@ -37584,7 +37593,7 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _vm.users.length === 0
+    _vm.results === false
       ? _c("div", [
           _vm._v(
             "\n    Mi dispiace, non abbiamo nessun medico per la specializzazione\n    selezionata.\n  "

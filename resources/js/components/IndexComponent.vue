@@ -48,7 +48,7 @@
       </tbody>
     </table>
 
-    <div v-if="users.length === 0">
+    <div v-if="results === false">
       Mi dispiace, non abbiamo nessun medico per la specializzazione
       selezionata.
     </div>
@@ -62,6 +62,7 @@ export default {
     return {
       specId: this.selected,
       users: [],
+      results: true
     };
   },
   beforeCreate() {
@@ -76,6 +77,9 @@ export default {
       .get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId)
       .then((response) => {
         this.users = response.data;
+        if (this.users.length === 0) {
+          this.results = false;
+        }
       });
   },
   watch: {
@@ -87,6 +91,9 @@ export default {
           )
           .then((response) => {
             this.users = response.data;
+            if (this.users.length === 0) {
+              this.results = false;
+            }
           });
       } else {
         axios.get("http://127.0.0.1:8000/api/doctors").then((response) => {

@@ -17,15 +17,15 @@ class UserController extends Controller
     {
         $users = User::all();
         // ritorno solo le specializzazioni che hanno un medico
-        $specs = Specialization::has('users')->get();
+        $specializations = Specialization::has('users')->get();
 
-        return view('public.homepage', compact('users', 'specs'));
+        return view('public.homepage', compact('users', 'specializations'));
     }
 
     public function toIndex(Request $request)
     {
         $selected = $request->input('specialization');
-        $specializations = Specialization::all();
+        $specializations = Specialization::has('users')->get();
 
         return view('public.index', compact('selected', 'specializations'));
     }

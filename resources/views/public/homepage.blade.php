@@ -8,7 +8,7 @@
     <div class="form-group">
         <select class="form-control" id="specialization" name="specialization" required>
             <option value="">Seleziona la specializzazione</option>
-            @foreach ($specs as $spec)
+            @foreach ($specializations as $spec)
             <option value="{{ $spec->id }}" class="opt">{{ $spec->spec_name }}</option>
             @endforeach
         </select>
