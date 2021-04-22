@@ -16,14 +16,16 @@ class UserController extends Controller
     public function home()
     {
         $users = User::all();
-        $specs = Specialization::all();
-        return view('public.homepage', compact('users', 'specs'));
+        // ritorno solo le specializzazioni che hanno un medico
+        $specializations = Specialization::has('users')->get();
+
+        return view('public.homepage', compact('users', 'specializations'));
     }
 
     public function toIndex(Request $request)
     {
         $selected = $request->input('specialization');
-        $specializations = Specialization::all();
+        $specializations = Specialization::has('users')->get();
 
         return view('public.index', compact('selected', 'specializations'));
     }
