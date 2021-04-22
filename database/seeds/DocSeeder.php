@@ -152,7 +152,7 @@ class DocSeeder extends Seeder
             $newSponsor->save();
         }
 
-        for ($i = 0; $i < rand(5, 15); $i++) {
+        for ($i = 0; $i < rand(15, 25); $i++) {
             $newDoctor = new User();
             $newDoctor->name = $faker->firstname();
             $newDoctor->lastname = $faker->lastname();
