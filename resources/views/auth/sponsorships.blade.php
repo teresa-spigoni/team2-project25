@@ -2,6 +2,22 @@
 @section('title', 'Show')
 @section('content')
 
+    @if (session('success_message'))
+        <div class="alert alert-success">
+            {{ session('success_message') }}
+        </div>
+    @endif
+
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <h5>Sponsorizzazioni</h5>
         @foreach($sponsorships as $sponsor) 
         <div> 
@@ -12,7 +28,9 @@
         <hr>
         @endforeach
 
-        <form method="post" id="payment-form" action="#">
+        <form method="post" id="payment-form" action="{{ url('auth/checkout') }}">
+            @csrf
+            @method('POST')
             <section>
                 <label for="amount">
                     <span class="input-label">Amount</span>
@@ -59,6 +77,7 @@
 
           // Add the nonce to the form and submit
           document.querySelector('#nonce').value = payload.nonce;
+          console.log(document.querySelector('#nonce').value)
           form.submit();
         });
       });
