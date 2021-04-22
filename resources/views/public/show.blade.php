@@ -84,7 +84,7 @@
             </div>
             <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
             <p class="card-text"><strong>Indirizzo:</strong> {{ $user->address }}</p>
-            <a class="card-text" href="">Curriculum</a>
+            <embed src="{{ asset($user->curriculum) }}" type="application/pdf" width="600px" height="300px">
 
             {{-- Prestazioni --}}
             <h3 style="margin-top: 20px">Prestazioni e prezzi:</h3>
