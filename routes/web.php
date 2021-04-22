@@ -21,7 +21,6 @@ Route::prefix('auth')
     ->middleware('auth')
     ->group(function () {
         Route::post('/checkout', function (Request $request) {
-            dd($request);
             $gateway = new Braintree\Gateway([
                 'environment' => config('services.braintree.environment'),
                 'merchantId' => config('services.braintree.merchantId'),
@@ -34,7 +33,7 @@ Route::prefix('auth')
 
             $result = $gateway->transaction()->sale([
                 'amount' => $amount,
-                'paymentMethodNonce' => $nonce,
+                'paymentMethodNonce' => 'fake-valid-nonce',
                 'options' => [
                     'submitForSettlement' => true
                 ]
@@ -43,7 +42,7 @@ Route::prefix('auth')
             if ($result->success) {
                 $transaction = $result->transaction;
                 // header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
-                return back()->with('success_message', 'Transaction successful. The ID is: ' . $transaction->id);
+                return back()->with('success_message', 'Il pagamento è  avvenuto con successo.');
             } else {
                 $errorString = "";
 
@@ -53,9 +52,23 @@ Route::prefix('auth')
 
                 // $_SESSION["errors"] = $errorString;
                 // header("Location: " . $baseUrl . "index.php");
-                return back()->withErrors('An error occured with the message: ' . $result->message);
+                return back()->withErrors('Ops, c\'è stato un errore durante il pagamento. Riprova.');
                 
             }
+        });
+        Route::get('/hosted', function () {
+            $gateway = new Braintree\Gateway([
+                'environment' => config('services.braintree.environment'),
+                'merchantId' => config('services.braintree.merchantId'),
+                'publicKey' => config('services.braintree.publicKey'),
+                'privateKey' => config('services.braintree.privateKey')
+            ]);
+        
+            $token = $gateway->ClientToken()->generate();
+        
+            return view('hosted', [
+                'token' => $token
+            ]);
         });
         Route::get('edit/{user}', 'PrivateUserController@edit')->name('edit');
         Route::put('update/{user}', 'PrivateUserController@update')->name('update');
