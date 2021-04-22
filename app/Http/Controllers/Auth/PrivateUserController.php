@@ -34,7 +34,7 @@ class PrivateUserController extends Controller
         $newService->fill($request->all());
         $newService->user_id = $user->id;
         $newService->save();
-        return view('auth.dashboard', compact('user'));
+        return redirect()->route('dashboard', compact('user'));
     }
 
 
