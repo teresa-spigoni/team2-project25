@@ -20,15 +20,16 @@
 
     <h5>Sponsorizzazioni</h5>
         @foreach($sponsorships as $sponsor) 
-        <div> 
-            <div>nome: {{$sponsor->sponsor_name}} </div>
-            <div>durata: {{$sponsor->sponsor_duration}} ore</div>
-            <div>prezzo: {{$sponsor->sponsor_price}} €</div>
-        </div>
+            <input type="radio" id="{{$sponsor->sponsor_name}}" name="sponsorizzazione" value="{{$sponsor->id}}">
+            <label for="{{$sponsor->sponsor_name}}">
+                <div>nome: {{$sponsor->sponsor_name}} </div>
+                <div>durata: {{$sponsor->sponsor_duration}} ore</div>
+                <div>prezzo: {{$sponsor->sponsor_price}} €</div>
+            </label>
         <hr>
         @endforeach
 
-        <form method="post" id="payment-form" action="{{ url('auth/checkout') }}">
+        <form method="post" id="payment-form" action="{{ route('checkout') }}">
             @csrf
             @method('POST')
             <section>
