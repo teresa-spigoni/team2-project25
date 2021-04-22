@@ -57,7 +57,8 @@
                                 <div class="col-md-6">
                                     <input id="rv_name" type="text"
                                         class="form-control @error('rv_name') is-invalid @enderror" name="rv_name"
-                                        value="{{ old('rv_name') }}" required autocomplete="rv_name" autofocus>
+                                        value="{{ old('rv_name') }}" autocomplete="rv_name" autofocus minlength="3"
+                                        maxlength="50">
 
                                     @error('rv_name')
                                     <span class="invalid-feedback" role="alert">
@@ -75,8 +76,8 @@
                                 <div class="col-md-6">
                                     <input id="rv_lastname" type="text"
                                         class="form-control @error('rv_lastname') is-invalid @enderror"
-                                        name="rv_lastname" value="{{ old('rv_lastname') }}" required
-                                        autocomplete="rv_lastname" autofocus>
+                                        name="rv_lastname" value="{{ old('rv_lastname') }}" autocomplete="rv_lastname"
+                                        autofocus minlength="3" maxlength="50">
 
                                     @error('rv_lastname')
                                     <span class="invalid-feedback" role="alert">
@@ -94,7 +95,8 @@
                                 <div class="col-md-6">
                                     <input id="rv_vote" type="number"
                                         class="form-control @error('rv_vote') is-invalid @enderror" name="rv_vote"
-                                        value="{{ old('rv_vote') }}" required autocomplete="rv_vote" autofocus>
+                                        value="{{ old('rv_vote') }}" required autocomplete="rv_vote" autofocus min="1"
+                                        max="5">
 
                                     @error('rv_vote')
                                     <span class="invalid-feedback" role="alert">
@@ -112,7 +114,8 @@
                                 <div class="col-md-6">
                                     <input id="rv_title" type="text"
                                         class="form-control @error('rv_title') is-invalid @enderror" name="rv_title"
-                                        value="{{ old('rv_title') }}" required autocomplete="rv_title" autofocus>
+                                        value="{{ old('rv_title') }}" required autocomplete="rv_title" autofocus
+                                        minlength="5" maxlength="20">
 
                                     @error('rv_title')
                                     <span class="invalid-feedback" role="alert">
@@ -130,8 +133,8 @@
                                 <div class="col-md-6">
                                     <textarea id="rv_content"
                                         class="form-control @error('rv_content') is-invalid @enderror" name="rv_content"
-                                        value="{{ old('rv_content') }}" required autocomplete="rv_content"
-                                        autofocus></textarea>
+                                        value="{{ old('rv_content') }}" required autocomplete="rv_content" autofocus
+                                        minlength="10"></textarea>
 
                                     @error('rv_content')
                                     <span class="invalid-feedback" role="alert">
@@ -206,28 +209,39 @@
                     </button>
                 </div>
                 <div class="modal-body mx-3">
+
+                    {{-- NOME --}}
                     <div class="md-form mb-5">
                         <label data-error="wrong" data-success="right" for="msg_name">Nome</label>
-                        <input type="text" class="form-control validate" name="msg_name">
+                        <input type="text" class="form-control validate" name="msg_name" required minlength="3"
+                            maxlength="50">
                     </div>
 
+                    {{-- COGNOME --}}
                     <div class="md-form mb-4">
                         <label data-error="wrong" data-success="right" for="msg_lastname">Cognome</label>
-                        <input type="text" class="form-control validate" name="msg_lastname">
+                        <input type="text" class="form-control validate" name="msg_lastname" required minlength="3"
+                            maxlength="50">
                     </div>
 
+                    {{-- EMAIL --}}
                     <div class="md-form mb-4">
                         <label data-error="wrong" data-success="right" for="msg_email">E-Mail</label>
-                        <input type="text" class="form-control validate" name="msg_email">
+                        <input type="email" class="form-control validate" name="msg_email" required>
                     </div>
 
+                    {{-- NUMERO DI TELEFONO --}}
                     <div class="md-form mb-4">
                         <label data-error="wrong" data-success="right" for="msg_phone_number">Numero di telefono</label>
-                        <input type="text" class="form-control validate" name="msg_phone_number">
+                        <input type="text" class="form-control validate" name="msg_phone_number" required minlength="9"
+                            maxlength="10">
                     </div>
+
+                    {{-- MEDDAGGIO --}}
                     <div class="md-form mb-4">
                         <label data-error="wrong" data-success="right" for="msg_content">Messaggio</label>
-                        <textarea name="msg_content" id="msg_content" cols="57" rows="3"></textarea>
+                        <textarea name="msg_content" id="msg_content" cols="57" rows="3" required
+                            minlength="30"></textarea>
                     </div>
 
                 </div>
