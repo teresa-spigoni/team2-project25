@@ -16,7 +16,9 @@ class UserController extends Controller
     public function home()
     {
         $users = User::all();
-        $specs = Specialization::all();
+        // ritorno solo le specializzazioni che hanno un medico
+        $specs = Specialization::has('users')->get();
+
         return view('public.homepage', compact('users', 'specs'));
     }
 
