@@ -106,18 +106,18 @@ class DocSeeder extends Seeder
 
         $serArray = [
             [
-                'service_type' => 'Service 1',
-                'service_price' => 99.99,
+                'service_type' => 'Prima visita',
+                'service_price' => 19.99,
                 'service_address' => $faker->address(),
             ],
             [
-                'service_type' => 'Service 2',
-                'service_price' => 59.99,
-                'service_address' => $faker->address(),
-            ],
-            [
-                'service_type' => 'Service 3',
+                'service_type' => 'Visita di controllo',
                 'service_price' => 29.99,
+                'service_address' => $faker->address(),
+            ],
+            [
+                'service_type' => 'Visita approfondita',
+                'service_price' => 59.99,
                 'service_address' => $faker->address(),
             ]
         ];

@@ -40,9 +40,13 @@
           <td>{{ user.email }}</td>
           <td>{{ user.address }}</td>
           <td>
-            <a :href="'/doctors/' + user.id + '/' + specId"
-              ><img :src="'../' + user.profile_image" width="150px"
-            /></a>
+            <a :href="'/doctors/' + user.id + '/' + specId">
+              <img
+                :src="'../' + user.profile_image"
+                width="150px"
+                style="border-radius: 50%"
+              />
+            </a>
           </td>
         </tr>
       </tbody>
@@ -62,7 +66,7 @@ export default {
     return {
       specId: this.selected,
       users: [],
-      results: true
+      results: true,
     };
   },
   beforeCreate() {
