@@ -51,7 +51,7 @@
                         <a href="{{ route('edit', ['user' => Auth::user()]) }}">Modifica i tuoi dati</a>
                     </button>
                     <button class="btn custom-button">
-                        <a href="{{ route('messages', compact('user')) }}">Visualizza i tuoi messaggi</a>
+                        <a href="{{ route('messages', ['user' => Auth::user()]) }}">Visualizza i tuoi messaggi</a>
                     </button>
                     <button class="btn custom-button" data-toggle="modal" data-target="#modalService">
                         Aggiungi una prestazione

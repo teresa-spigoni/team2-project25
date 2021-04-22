@@ -10,31 +10,31 @@
             Torna alla DashBoard
         </a>
     </button>
-    @if($userMessages->isEmpty())
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">
-                Nessun Messaggio
-            </h5>
-            <p class="card-text">Al momento non ci sono nuovi messaggi</p>
-        </div>
-    </div>
-    @else
-    @foreach ($userMessages as $message)
+    @if ($userMessages->isEmpty())
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Da: {{ $message->msg_name }} {{ $message->msg_lastname }}
+                    Nessun Messaggio
                 </h5>
-                <h6 class="card-subtitle mb-2 text-muted">
-                    E-Mail: <br> {{ $message->msg_email }} <br><br>
-                    Numero di telefono: <br>{{ $message->msg_phone_number }}
-                </h6>
-                <p class="card-text">{{ $message->msg_content }}</p>
+                <p class="card-text">Al momento non ci sono nuovi messaggi</p>
             </div>
         </div>
+    @else
+        @foreach ($userMessages as $message)
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Da: {{ $message->msg_name }} {{ $message->msg_lastname }}
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        E-Mail: <br> {{ $message->msg_email }} <br><br>
+                        Numero di telefono: <br>{{ $message->msg_phone_number }}
+                    </h6>
+                    <p class="card-text">{{ $message->msg_content }}</p>
+                </div>
+            </div>
 
-    @endforeach
+        @endforeach
     @endif
 
 
