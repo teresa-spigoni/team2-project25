@@ -22,10 +22,19 @@ class PrivateUserController extends Controller
         //
     }
 
-    public function showMessage($id)
+    public function showMessages($id)
     {
         $userMessages = User::find($id)->messages;
         return view('auth.message', compact('userMessages'));
+    }
+
+    public function newService(Request $request, User $user)
+    {
+        $newService = new Service();
+        $newService->fill($request->all());
+        $newService->user_id = $user->id;
+        $newService->save();
+        return view('auth.dashboard', compact('user'));
     }
 
 
@@ -44,7 +53,7 @@ class PrivateUserController extends Controller
         if ($request->hasFile('curriculum')) {
             $doc = $request->file('curriculum');
             $originalExtension = $request->file('curriculum')->getClientOriginalExtension();
-            $doc->storeAs('public/', $user->name . "." . $originalExtension); 
+            $doc->storeAs('public/', $user->name . "." . $originalExtension);
             $user->curriculum = 'public/' . $user->name . "." . $doc->clientExtension();
         }
         $user->update($request->all());

@@ -12,8 +12,8 @@ Route::get('/home', 'HomeController@index')->name('dashboard');
 Route::get('/doctors', 'UserController@toIndex')->name('toIndex');
 Route::get('/doctors/{user}/{spec}', 'UserController@show')->name('show');
 Route::get('/create', 'UserController@create')->name('create');
-Route::get('/doctors/newmessage/{user}', 'UserController@newMessage')->name('newMessage');
-Route::post('/doctors/{user}', 'UserController@saveMessage')->name('saveMessage');
+Route::get('newmessage/{user}', 'UserController@newMessage')->name('newMessage');
+Route::post('newmessage/{user}', 'UserController@saveMessage')->name('saveMessage');
 Route::post('/review', 'ReviewController@create')->name('review');
 
 Route::prefix('auth')
