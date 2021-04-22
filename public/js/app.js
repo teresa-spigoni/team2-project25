@@ -1901,6 +1901,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     selected: Number,
@@ -37493,17 +37494,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("Index - pagina di ricerca avanzata")]),
-    _vm._v(" "),
     _c("br"),
     _vm._v(" "),
-    _c("a", { attrs: { href: "/" } }, [_vm._v("Torna alla home")]),
+    _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "specializations" } }, [
-        _vm._v("Specializzazione")
-      ]),
-      _vm._v(" "),
       _c(
         "select",
         {
@@ -37550,7 +37545,7 @@ var render = function() {
     _vm._v(" "),
     _vm.users.length > 0
       ? _c("table", { staticClass: "table table-hover my-table" }, [
-          _vm._m(0),
+          _vm._m(1),
           _vm._v(" "),
           _c(
             "tbody",
@@ -37603,15 +37598,25 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("button", { staticClass: "btn button-none" }, [
+      _c("a", { attrs: { href: "/" } }, [
+        _c("i", { staticClass: "fas fa-arrow-left" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nome")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nome e Cognome")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Mail")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Indirizzo")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Immagine")])
+        _c("th", { attrs: { scope: "col" } })
       ])
     ])
   }

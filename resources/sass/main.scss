@@ -1,15 +1,21 @@
+// colors
+$maincolor: #32bea6;
+$deletecolor: #d0211c;
+
 // utility classes
 * {
     font-family: "Roboto", sans-serif;
 }
 
-$maincolor: #32bea6;
-$deletecolor: #d0211c;
+.custom-h1 {
+    color: $maincolor;
+}
 
 .custom-button {
-    margin: 10px;
+    margin: 10px 10px 10px 0;
     background: $maincolor;
     border-color: $maincolor;
+    font-size: 18px;
     color: #fff;
 
     a {
@@ -23,9 +29,42 @@ $deletecolor: #d0211c;
     }
 }
 
+.button-none{
+    border: none;
+    background: none;
+    color: $maincolor;
+    font-size: 18px;
+
+    a{
+        color: $maincolor;
+    }
+
+    &:hover{
+        font-size: 22px;
+        color: #fff;
+    }
+}
+
 .delete {
     background: $deletecolor;
+    border-color: $deletecolor;
 }
+
+.custom-img {
+    width: 50%;
+}
+
+.custom-select {
+    width: 320px;
+    margin-left: 7px;
+
+    option:hover {
+        background: $maincolor;
+        color: #fff;
+    }
+}
+
+// ----------------------------------------------
 
 #main-nav {
     background: $maincolor;
@@ -48,23 +87,7 @@ $deletecolor: #d0211c;
     background: $maincolor;
 }
 
-.custom-h1 {
-    color: $maincolor;
-}
 
-.custom-img {
-    width: 50%;
-}
-
-.custom-select {
-    width: 320px;
-    margin-left: 7px;
-
-    option:hover {
-        background: $maincolor;
-        color: #fff;
-    }
-}
 
 // jumbotron
 .jum {
@@ -81,6 +104,12 @@ $deletecolor: #d0211c;
 
 #user_id {
     display: none;
+}
+
+.user_img{
+    width: 200px;
+    border-radius: 50%;
+    border: 4px solid #dfdfdf;
 }
 // show
 .doctor-card {
@@ -123,10 +152,16 @@ $deletecolor: #d0211c;
     }
 }
 
-.b-absolute {
+.b-absolute-tr {
     position: absolute;
     top: 20px;
     right: 20px;
+}
+
+.b-absolute-tl {
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
 // footer
