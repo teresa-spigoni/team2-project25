@@ -30,6 +30,7 @@ class PrivateUserController extends Controller
 
     public function newService(Request $request, User $user)
     {
+        $this->serviceValidation($request);
         $newService = new Service();
         $newService->fill($request->all());
         $newService->user_id = $user->id;
@@ -46,6 +47,7 @@ class PrivateUserController extends Controller
 
     public function update(Request $request, User $user)
     {
+        $this->updateValidation($request);
         if ($request->hasFile('profile_image')) {
             $img = $request->file('profile_image')->store('public');
             $user->profile_image = $img;
@@ -70,5 +72,29 @@ class PrivateUserController extends Controller
         $user->reviews()->delete();
         $user->delete();
         return redirect()->route('homepage');
+    }
+
+    // validazione di prestazioni e dettaglio dottore
+
+    protected function serviceValidation(Request $request)
+    {
+        $request->validate([
+            'service_type' => 'required|string|min:5',
+            'service_price' => 'required|numeric|min:10',
+            'service_address' => 'required|string|min:15'
+        ]);
+    }
+
+    protected function updateValidation(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|min:3|max:50',
+            'lastname' => 'required|string|min:3|max:50',
+            'address' => 'required|string|min:15',
+            'phone_number' => 'nullable|string|min:9|max:10',
+            'curriculum' => 'nullable|string',
+            'profile_image' => 'string',
+            'email' => 'required|email'
+        ]);
     }
 }

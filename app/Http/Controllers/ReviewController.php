@@ -13,14 +13,28 @@ class ReviewController extends Controller
         return response()->json(Review::all());
     }
 
-    public function create(Request $review)
+    public function create(Request $request)
     {
-        $data = $review->all();
+        $this->reviewValidation($request);
+        $data = $request->all();
         $newReview = new Review();
         $newReview->fill($data);
         $newReview->save();
 
         $reviewStored = Review::orderBy('id', 'desc')->first();
         return redirect()->route('homepage', $reviewStored);
+    }
+
+    // validazione review
+
+    protected function reviewValidation(Request $request)
+    {
+        $request->validate([
+            'rv_name' => 'string|min:3|max:50',
+            'rv_lastname' => 'nullable|string|min:3|max:50',
+            'rv_vote' => 'required|numeric|min:1|max:5',
+            'rv_title' => 'required|string|min:4|max:30',
+            'rv_content' => 'required|string|min:10'
+        ]);
     }
 }
