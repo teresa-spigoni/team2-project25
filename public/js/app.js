@@ -1982,32 +1982,28 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     orderBy: function orderBy() {
-      var _this3 = this;
-
       if (this.orderBy === "reviewsNum") {
-        this.users = this.users.sort(function (a, b) {
-          return _this3.sum(b) - _this3.sum(a);
-        });
-      } else {}
+        this.sortUsers();
+      }
     }
   },
   methods: {
     getAll: function getAll() {
-      var _this4 = this;
+      var _this3 = this;
 
       return axios.get("http://127.0.0.1:8000/api/doctors").then(function (response) {
-        _this4.users = response.data;
+        _this3.users = response.data;
       });
     },
     filterSpec: function filterSpec() {
-      var _this5 = this;
+      var _this4 = this;
 
       if (this.specId > 0) {
         return axios.get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId).then(function (response) {
-          _this5.users = response.data;
+          _this4.users = response.data;
 
-          if (_this5.users.length === 0) {
-            _this5.results = false;
+          if (_this4.users.length === 0) {
+            _this4.results = false;
           }
         });
       } else {
@@ -2015,7 +2011,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     filterVote: function filterVote() {
-      var _this6 = this;
+      var _this5 = this;
 
       if (this.orderBy === "reviewsNum") {
         this.sortUsers();
@@ -2023,9 +2019,9 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.vote != 0) {
         this.users = this.users.filter(function (user) {
-          var media = _this6.average(user);
+          var media = _this5.average(user);
 
-          if (media == _this6.vote) {
+          if (media == _this5.vote) {
             return user;
           }
         });
@@ -2053,10 +2049,10 @@ __webpack_require__.r(__webpack_exports__);
       return n;
     },
     sortUsers: function sortUsers() {
-      var _this7 = this;
+      var _this6 = this;
 
       this.users = this.users.sort(function (a, b) {
-        return _this7.sum(b) - _this7.sum(a);
+        return _this6.sum(b) - _this6.sum(a);
       });
     }
   }

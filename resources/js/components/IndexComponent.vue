@@ -130,12 +130,8 @@ export default {
     },
     orderBy: function () {
       if (this.orderBy === "reviewsNum") {
-        this.users = this.users.sort((a, b) => {
-          return this.sum(b) - this.sum(a);
-        });
-      } else {
-
-      }
+        this.sortUsers();
+      } 
     },
   },
   methods: {
