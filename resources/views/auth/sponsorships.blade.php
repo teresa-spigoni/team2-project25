@@ -121,7 +121,7 @@
         <hr>
         @endforeach
 
-        <form method="post" id="payment-form" action="{{ route('checkout') }}">
+        <form method="post" id="payment-form" action="{{ route('checkout', compact('user')) }}">
             @csrf
             @method('POST')
             <section>

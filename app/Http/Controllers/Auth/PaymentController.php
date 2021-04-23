@@ -5,10 +5,14 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Braintree;
+use App\User;
 
 class PaymentController extends Controller
 {
-    public function checkout(Request $request) {
+    
+    public function checkout(Request $request, User $user) {
+        dd($user);
+
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
             'merchantId' => config('services.braintree.merchantId'),
@@ -28,7 +32,6 @@ class PaymentController extends Controller
         ]);
 
         if ($result->success) {
-            // $transaction = $result->transaction;
             return back()->with('success_message', 'Il pagamento è  avvenuto con successo.');
         } else {
             $errorString = "";

@@ -19,7 +19,7 @@ Route::prefix('auth')
     ->namespace('Auth')
     ->middleware('auth')
     ->group(function () {
-        Route::post('checkout', 'PaymentController@checkout')->name('checkout');
+        Route::post('checkout/{user}', 'PaymentController@checkout')->name('checkout');
         Route::get('edit/{user}', 'PrivateUserController@edit')->name('edit');
         Route::put('update/{user}', 'PrivateUserController@update')->name('update');
         Route::delete('destroy/{user}', 'PrivateUserController@destroy')->name('destroy');
