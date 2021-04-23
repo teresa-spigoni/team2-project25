@@ -10,15 +10,30 @@ use Illuminate\Support\Facades\Hash;
 use App\Specialization;
 use App\Review;
 use Faker\Provider\ar_JO\Internet;
+use DateInterval;
+use DateTime;
 
 class UserController extends Controller
 {
     public function home()
     {
         $users = User::all();
+        $sponsoredUsers = User::has('sponsorships')->get();
+        $data = new DateTime("now");
+        $realData = $data->add(DateInterval::createFromDateString('2 hours'));
+        $activeSponsorship = [];
+
+            foreach ($sponsoredUsers as $user) {
+                foreach ($user->sponsorships as $sponsorship) {
+                    dd($realData->date);
+                    if ($sponsorship->pivot->expiration_time > $realData) {
+                        array_push($activeSponsorship, $user);
+                    }
+                }
+            };
+
         // ritorno solo le specializzazioni che hanno un medico
         $specializations = Specialization::has('users')->get();
-
         return view('public.homepage', compact('users', 'specializations'));
     }
 
