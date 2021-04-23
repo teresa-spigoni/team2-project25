@@ -11,17 +11,6 @@ use App\User;
 class PrivateUserController extends Controller
 {
 
-
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
     public function showMessages($id)
     {
         $userMessages = User::find($id)->messages;
@@ -38,15 +27,9 @@ class PrivateUserController extends Controller
         return redirect()->route('dashboard', compact('user'));
     }
 
-
-    public function edit(User $user)
-    {
-        $specs = Specialization::all();
-        return view('auth.edit', compact('user', 'specs'));
-    }
-
     public function update(Request $request, User $user)
     {
+        // dd($request);
         $this->updateValidation($request);
         if ($request->hasFile('profile_image')) {
             $img = $request->file('profile_image')->store('public');

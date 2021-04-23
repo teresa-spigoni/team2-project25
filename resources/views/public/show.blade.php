@@ -53,7 +53,11 @@
         {{-- Recensioni --}}
         <br><br>
         <hr><br><br>
-        <h2>Recensioni</h2>
+
+        @php
+        $numreviews = count($user->reviews);
+        @endphp
+        <h2>Recensioni {{$numreviews}}</h2>
         @foreach ($reviews as $review)
         @if ($review->user_id === $user->id)
         <div class="card" style="padding: 20px; margin-bottom:20px">
@@ -68,6 +72,7 @@
         </div>
         @endif
         @endforeach
+
     </div>
 </div>
 

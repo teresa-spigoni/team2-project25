@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Specialization;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -21,8 +23,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(User $user)
     {
-        return view('auth.dashboard');
+        $specs = Specialization::all();
+        return view('auth.dashboard', compact('user', 'specs'));
     }
 }

@@ -33,11 +33,15 @@
         autocomplete="on"
       >
         <option value="" disabled>filtra per media voti</option>
-        <option value="5">&#9733; &#9733; &#9733; &#9733; &#9733;</option>
-        <option value="4">&#9733; &#9733; &#9733; &#9733;</option>
-        <option value="3">&#9733; &#9733; &#9733;</option>
-        <option value="2">&#9733; &#9733;</option>
-        <option value="1">&#9733;</option>
+        <option value="5" style="color: orange">
+          &#9733; &#9733; &#9733; &#9733; &#9733;
+        </option>
+        <option value="4" style="color: orange">
+          &#9733; &#9733; &#9733; &#9733;
+        </option>
+        <option value="3" style="color: orange">&#9733; &#9733; &#9733;</option>
+        <option value="2" style="color: orange">&#9733; &#9733;</option>
+        <option value="1" style="color: orange">&#9733;</option>
         <option value="0">qualunque voto</option>
       </select>
     </div>
@@ -109,8 +113,8 @@ export default {
       specId: this.selected,
       users: [],
       results: true,
-      vote: '',
-      orderBy: '',
+      vote: "",
+      orderBy: "",
     };
   },
   mounted() {
@@ -119,8 +123,8 @@ export default {
   watch: {
     specId: function () {
       this.filterSpec().then(() => {
-        this.vote = '';
-        this.orderBy = '';
+        this.vote = "";
+        this.orderBy = "";
       });
     },
     vote: function () {
@@ -134,7 +138,6 @@ export default {
           return this.sum(b) - this.sum(a);
         });
       } else {
-
       }
     },
   },
