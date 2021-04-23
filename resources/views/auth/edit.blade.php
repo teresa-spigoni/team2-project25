@@ -40,7 +40,7 @@
     {{-- EMAIL --}}
     <div class="form-group">
         <label for="email">Mail</label>
-        <input type="text" class="form-control" name="email" placeholder="Inserisci la mail..."
+        <input type="email" class="form-control" name="email" placeholder="Inserisci la mail..."
             value="{{ $user->email }}" required>
     </div>
 

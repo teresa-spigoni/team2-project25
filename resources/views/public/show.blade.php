@@ -116,7 +116,7 @@
                     {{-- MESSAGGIO --}}
                     <div class="md-form mb-4">
                         <label data-error="wrong" data-success="right" for="msg_content">Messaggio</label>
-                        <textarea name="msg_content" id="msg_content" cols="57" rows="3" required
+                        <textarea name="msg_content" id="msg_content" cols="54" rows="3" required
                             minlength="30"></textarea>
                     </div>
 
@@ -175,7 +175,7 @@
                     {{-- RECENSIONE --}}
                     <div class="md-form mb-4">
                         <label data-error="wrong" data-success="right" for="rv_content">Recensione</label>
-                        <textarea name="rv_content" id="rv_content" cols="57" rows="3" required
+                        <textarea name="rv_content" id="rv_content" cols="54" rows="3" required
                             minlength="10"></textarea>
                     </div>
 
