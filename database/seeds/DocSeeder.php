@@ -20,10 +20,6 @@ class DocSeeder extends Seeder
     public function run(Faker $faker)
     {
 
-        $specArray = Specialization::all();
-
-        $sponsArray = Sponsorship::all();
-
         $serArray = [
             [
                 'service_type' => 'Prima visita',
@@ -41,6 +37,9 @@ class DocSeeder extends Seeder
                 'service_address' => $faker->address(),
             ]
         ];
+
+        $specArray = Specialization::all();
+        $sponsArray = Sponsorship::all();
 
         for ($i = 0; $i < rand(30, 100); $i++) {
             $newDoctor = new User();

@@ -46,8 +46,8 @@
             <thead>
                 <tr>
                     <th scope="col">Nome e Cognome</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Indirizzo</th>
+                    <th scope="col">Specializzazioni</th>
+                    <th scope="col">Media voti</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -56,8 +56,22 @@
                     <td>
                         <div>{{ user.name }} {{ user.lastname }}</div>
                     </td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.address }}</td>
+                    <td>
+                        <div
+                            v-for="(spec, index) in user.specializations"
+                            :key="index"
+                        >
+                            {{ spec.spec_name }}
+                        </div>
+                    </td>
+                    <td>
+                        <i
+                            class="fas fa-star"
+                            style="color: orange"
+                            v-for="(star, index) in average(user)"
+                            :key="index"
+                        ></i>
+                    </td>
                     <td>
                         <a :href="'/doctors/' + user.id + '/' + specId">
                             <img
@@ -72,8 +86,7 @@
         </table>
 
         <div v-if="results === false">
-            Mi dispiace, non abbiamo nessun medico per la specializzazione
-            selezionata.
+            Mi dispiace, non ci sono risultati per i tuoi criteri di ricerca.
         </div>
     </div>
 </template>
@@ -131,23 +144,28 @@ export default {
         },
         filterVote: function() {
             if (this.vote != 0) {
-                let somma = 0;
-                let n = 0;
-                let media = 0;
                 this.users = this.users.filter(user => {
-                    user.reviews.forEach(review => {
-                        somma += review.rv_vote;
-                        n += 1;
-                    });
-                    media = Math.round(somma / n);
-                    console.log(media);
+                    let media = this.average(user);
                     if (media == this.vote) {
                         return user;
                     }
                 });
+                if (this.users.length === 0) {
+                    this.results = false;
+                }
             } else {
                 return;
             }
+        },
+        average: function(user) {
+            let somma = 0;
+            let n = 0;
+            let media = 0;
+            user.reviews.forEach(review => {
+                somma += review.rv_vote;
+                n += 1;
+            });
+            return (media = Math.round(somma / n));
         }
     }
 };
