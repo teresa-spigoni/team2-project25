@@ -15,6 +15,20 @@
         <button class="btn custom-button">
             Cerca
         </button>
+        <br><br>
+
+        <h3>Medici in evidenza</h3>
+        @foreach ($activeSponsorship as $theuser)
+        <a href="/doctors/{{$theuser->id}}/{{$theuser->specializations}} ">
+            <div class="card" style="padding: 20px">
+                <img src="{{$theuser->profile_image}}" alt="" style="border-radius: 50%; width: 250px">
+                {{$theuser->name}} {{$theuser->lastname}} <br>
+                @foreach ($theuser->specializations as $spec)
+                {{ $spec->spec_name }}
+                @endforeach
+            </div>
+        </a>
+        @endforeach
     </div>
 </form>
 @endsection

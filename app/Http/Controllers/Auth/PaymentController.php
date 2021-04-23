@@ -12,7 +12,8 @@ use DateTime;
 
 class PaymentController extends Controller
 {
-    public function checkout(Request $request, User $user) {
+    public function checkout(Request $request, User $user)
+    {
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
             'merchantId' => config('services.braintree.merchantId'),
@@ -32,11 +33,12 @@ class PaymentController extends Controller
         ]);
 
         if ($result->success) {
-            $data=new DateTime("now");
-            $realDate =$data->add(DateInterval::createFromDateString('2 hours'));
+            date_default_timezone_set('Europe/Rome');
+            $date = date("Y-m-d H:i:s");
             $sponsor = Sponsorship::all()->where('sponsor_price', $request->amount)->first();
             $sponId = $sponsor->id;
-            $expirationDate = $realDate->add(DateInterval::createFromDateString($sponsor->sponsor_duration . ' hours'));
+            $thedate = strtotime($date . ' + ' . $sponsor->sponsor_duration . 'minute');
+            $expirationDate = date('Y-m-d H:i:s', $thedate);
             $user->sponsorships()->attach($sponId, ['expiration_time' => $expirationDate]);
             return back()->with('success_message', 'Il pagamento è  avvenuto con successo.');
         } else {
@@ -47,8 +49,6 @@ class PaymentController extends Controller
             }
 
             return back()->withErrors('Ops, c\'è stato un errore durante il pagamento. Riprova.');
-
         }
-
     }
 }

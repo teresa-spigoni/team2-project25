@@ -17,24 +17,24 @@ class UserController extends Controller
 {
     public function home()
     {
+        date_default_timezone_set('Europe/Rome');
         $users = User::all();
         $sponsoredUsers = User::has('sponsorships')->get();
-        $data = new DateTime("now");
-        $realData = $data->add(DateInterval::createFromDateString('2 hours'));
+        $currentDate = date("Y-m-d H:i:s");
         $activeSponsorship = [];
 
-            foreach ($sponsoredUsers as $user) {
-                foreach ($user->sponsorships as $sponsorship) {
-                    dd($realData->date);
-                    if ($sponsorship->pivot->expiration_time > $realData) {
+        foreach ($sponsoredUsers as $user) {
+            foreach ($user->sponsorships as $sponsorship) {
+                if ($sponsorship->pivot->expiration_time > $currentDate) {
+                    if (!in_array($user, $activeSponsorship)) {
                         array_push($activeSponsorship, $user);
                     }
                 }
-            };
+            }
+        };
 
-        // ritorno solo le specializzazioni che hanno un medico
         $specializations = Specialization::has('users')->get();
-        return view('public.homepage', compact('users', 'specializations'));
+        return view('public.homepage', compact('users', 'specializations', 'activeSponsorship'));
     }
 
     public function toIndex(Request $request)
