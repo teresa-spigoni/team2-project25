@@ -18,7 +18,7 @@ class ApiUserController extends Controller
                 return $query->where('specialization_id', $specialization);
             })->get();
         } else {
-            $filtered = User::with('specializations')->get();
+            $filtered = User::with('specializations', 'reviews')->get();
         }
         return response()->json($filtered);
     }

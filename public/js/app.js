@@ -1923,6 +1923,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     selected: Number,
@@ -1982,24 +1985,30 @@ __webpack_require__.r(__webpack_exports__);
       var _this5 = this;
 
       if (this.vote != 0) {
-        var somma = 0;
-        var n = 0;
-        var media = 0;
         this.users = this.users.filter(function (user) {
-          user.reviews.forEach(function (review) {
-            somma += review.rv_vote;
-            n += 1;
-          });
-          media = Math.round(somma / n);
-          console.log(media);
+          var media = _this5.average(user);
 
           if (media == _this5.vote) {
             return user;
           }
         });
+
+        if (this.users.length === 0) {
+          this.results = false;
+        }
       } else {
         return;
       }
+    },
+    average: function average(user) {
+      var somma = 0;
+      var n = 0;
+      var media = 0;
+      user.reviews.forEach(function (review) {
+        somma += review.rv_vote;
+        n += 1;
+      });
+      return media = Math.round(somma / n);
     }
   }
 });
@@ -37664,9 +37673,31 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(user.email))]),
+                _c(
+                  "td",
+                  _vm._l(user.specializations, function(spec, index) {
+                    return _c("div", { key: index }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(spec.spec_name) +
+                          "\n          "
+                      )
+                    ])
+                  }),
+                  0
+                ),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(user.address))]),
+                _c(
+                  "td",
+                  _vm._l(_vm.average(user), function(star, index) {
+                    return _c("i", {
+                      key: index,
+                      staticClass: "fas fa-star",
+                      staticStyle: { color: "orange" }
+                    })
+                  }),
+                  0
+                ),
                 _vm._v(" "),
                 _c("td", [
                   _c(
@@ -37695,7 +37726,7 @@ var render = function() {
     _vm.results === false
       ? _c("div", [
           _vm._v(
-            "\n    Mi dispiace, non abbiamo nessun medico per la specializzazione\n    selezionata.\n  "
+            "\n    Mi dispiace, non ci sono risultati per i tuoi criteri di ricerca.\n  "
           )
         ])
       : _vm._e()
@@ -37720,9 +37751,9 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Nome e Cognome")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Specializzazioni")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Indirizzo")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Media voti")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } })
       ])
