@@ -1906,6 +1906,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     selected: Number,
@@ -1915,47 +1934,76 @@ __webpack_require__.r(__webpack_exports__);
     return {
       specId: this.selected,
       users: [],
-      results: true
+      results: true,
+      vote: 0
     };
   },
-  beforeCreate: function beforeCreate() {
-    console.log("before create");
-  },
   mounted: function mounted() {
-    var _this = this;
-
-    //!!!!SPECID E SELECTED NON SI AGGIORNANO AL MOUNTED
-    console.log("mounted");
-    console.log("specid" + this.specId);
-    console.log("selected" + this.selected);
-    axios.get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId).then(function (response) {
-      _this.users = response.data;
-
-      if (_this.users.length === 0) {
-        _this.results = false;
-      }
-    });
+    this.filterSpec();
   },
   watch: {
     specId: function specId() {
+      var _this = this;
+
+      this.filterSpec().then(function () {
+        _this.vote = 0;
+      });
+    },
+    vote: function vote() {
       var _this2 = this;
 
-      if (this.specId > 0) {
-        axios.get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId).then(function (response) {
-          _this2.users = response.data;
+      this.filterSpec().then(function () {
+        return _this2.filterVote();
+      });
+    }
+  },
+  methods: {
+    getAll: function getAll() {
+      var _this3 = this;
 
-          if (_this2.users.length === 0) {
-            _this2.results = false;
+      return axios.get("http://127.0.0.1:8000/api/doctors").then(function (response) {
+        _this3.users = response.data;
+      });
+    },
+    filterSpec: function filterSpec() {
+      var _this4 = this;
+
+      if (this.specId > 0) {
+        return axios.get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId).then(function (response) {
+          _this4.users = response.data;
+
+          if (_this4.users.length === 0) {
+            _this4.results = false;
           }
         });
       } else {
-        axios.get("http://127.0.0.1:8000/api/doctors").then(function (response) {
-          _this2.users = response.data;
+        return this.getAll();
+      }
+    },
+    filterVote: function filterVote() {
+      var _this5 = this;
+
+      if (this.vote != 0) {
+        var somma = 0;
+        var n = 0;
+        var media = 0;
+        this.users = this.users.filter(function (user) {
+          user.reviews.forEach(function (review) {
+            somma += review.rv_vote;
+            n += 1;
+          });
+          media = Math.round(somma / n);
+          console.log(media);
+
+          if (media == _this5.vote) {
+            return user;
+          }
         });
+      } else {
+        return;
       }
     }
-  },
-  methods: {}
+  }
 });
 
 /***/ }),
@@ -37548,11 +37596,61 @@ var render = function() {
           _vm._v(" "),
           _vm._l(_vm.specializations, function(spec, index) {
             return _c("option", { key: index, domProps: { value: spec.id } }, [
-              _vm._v("\n        " + _vm._s(spec.spec_name) + "\n      ")
+              _vm._v(
+                "\n                " + _vm._s(spec.spec_name) + "\n            "
+              )
             ])
           })
         ],
         2
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.vote,
+              expression: "vote"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { name: "votes", autocomplete: "on" },
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.vote = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            }
+          }
+        },
+        [
+          _c("option", { attrs: { value: "0" } }, [
+            _vm._v("filtra per media voti")
+          ]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "5" } }, [_vm._v("★ ★ ★ ★ ★")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "4" } }, [_vm._v("★ ★ ★ ★")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "3" } }, [_vm._v("★ ★ ★")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2" } }, [_vm._v("★ ★")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "1" } }, [_vm._v("★")])
+        ]
       )
     ]),
     _vm._v(" "),
@@ -37601,7 +37699,7 @@ var render = function() {
     _vm.results === false
       ? _c("div", [
           _vm._v(
-            "\n    Mi dispiace, non abbiamo nessun medico per la specializzazione\n    selezionata.\n  "
+            "\n        Mi dispiace, non abbiamo nessun medico per la specializzazione\n        selezionata.\n    "
           )
         ])
       : _vm._e()

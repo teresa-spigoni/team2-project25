@@ -14,7 +14,7 @@ class ApiUserController extends Controller
         $specialization = $request->query('specialization');
 
         if ($specialization > 0) {
-            $filtered = User::with('specializations')->whereHas('specializations', function ($query) use ($specialization) {
+            $filtered = User::with('specializations', 'reviews')->whereHas('specializations', function ($query) use ($specialization) {
                 return $query->where('specialization_id', $specialization);
             })->get();
         } else {
