@@ -1938,6 +1938,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     selected: Number,
@@ -1948,7 +1958,8 @@ __webpack_require__.r(__webpack_exports__);
       specId: this.selected,
       users: [],
       results: true,
-      vote: 0
+      vote: '',
+      orderBy: ''
     };
   },
   mounted: function mounted() {
@@ -1959,7 +1970,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.filterSpec().then(function () {
-        _this.vote = 0;
+        _this.vote = '';
+        _this.orderBy = '';
       });
     },
     vote: function vote() {
@@ -1968,25 +1980,34 @@ __webpack_require__.r(__webpack_exports__);
       this.filterSpec().then(function () {
         return _this2.filterVote();
       });
+    },
+    orderBy: function orderBy() {
+      var _this3 = this;
+
+      if (this.orderBy === "reviewsNum") {
+        this.users = this.users.sort(function (a, b) {
+          return _this3.sum(b) - _this3.sum(a);
+        });
+      } else {}
     }
   },
   methods: {
     getAll: function getAll() {
-      var _this3 = this;
+      var _this4 = this;
 
       return axios.get("http://127.0.0.1:8000/api/doctors").then(function (response) {
-        _this3.users = response.data;
+        _this4.users = response.data;
       });
     },
     filterSpec: function filterSpec() {
-      var _this4 = this;
+      var _this5 = this;
 
       if (this.specId > 0) {
         return axios.get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId).then(function (response) {
-          _this4.users = response.data;
+          _this5.users = response.data;
 
-          if (_this4.users.length === 0) {
-            _this4.results = false;
+          if (_this5.users.length === 0) {
+            _this5.results = false;
           }
         });
       } else {
@@ -1994,13 +2015,17 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     filterVote: function filterVote() {
-      var _this5 = this;
+      var _this6 = this;
+
+      if (this.orderBy === "reviewsNum") {
+        this.sortUsers();
+      }
 
       if (this.vote != 0) {
         this.users = this.users.filter(function (user) {
-          var media = _this5.average(user);
+          var media = _this6.average(user);
 
-          if (media == _this5.vote) {
+          if (media == _this6.vote) {
             return user;
           }
         });
@@ -2008,8 +2033,6 @@ __webpack_require__.r(__webpack_exports__);
         if (this.users.length === 0) {
           this.results = false;
         }
-      } else {
-        return;
       }
     },
     average: function average(user) {
@@ -2021,6 +2044,20 @@ __webpack_require__.r(__webpack_exports__);
         n += 1;
       });
       return media = Math.round(somma / n);
+    },
+    sum: function sum(user) {
+      var n = 0;
+      user.reviews.forEach(function (el) {
+        n += 1;
+      });
+      return n;
+    },
+    sortUsers: function sortUsers() {
+      var _this7 = this;
+
+      this.users = this.users.sort(function (a, b) {
+        return _this7.sum(b) - _this7.sum(a);
+      });
     }
   }
 });
@@ -37609,15 +37646,17 @@ var render = function() {
           }
         },
         [
+          _c("option", { attrs: { value: "", disabled: "" } }, [
+            _vm._v("scegli una specializzazione")
+          ]),
+          _vm._v(" "),
           _c("option", { attrs: { value: "0" } }, [
             _vm._v("vedi tutti i medici")
           ]),
           _vm._v(" "),
           _vm._l(_vm.specializations, function(spec, index) {
             return _c("option", { key: index, domProps: { value: spec.id } }, [
-              _vm._v(
-                "\n                " + _vm._s(spec.spec_name) + "\n            "
-              )
+              _vm._v("\n        " + _vm._s(spec.spec_name) + "\n      ")
             ])
           })
         ],
@@ -37656,7 +37695,7 @@ var render = function() {
           }
         },
         [
-          _c("option", { attrs: { value: "0" } }, [
+          _c("option", { attrs: { value: "", disabled: "" } }, [
             _vm._v("filtra per media voti")
           ]),
           _vm._v(" "),
@@ -37668,7 +37707,51 @@ var render = function() {
           _vm._v(" "),
           _c("option", { attrs: { value: "2" } }, [_vm._v("★ ★")]),
           _vm._v(" "),
-          _c("option", { attrs: { value: "1" } }, [_vm._v("★")])
+          _c("option", { attrs: { value: "1" } }, [_vm._v("★")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "0" } }, [_vm._v("qualunque voto")])
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.orderBy,
+              expression: "orderBy"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { name: "specializations", autocomplete: "on" },
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.orderBy = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            }
+          }
+        },
+        [
+          _c("option", { attrs: { value: "", disabled: "" } }, [
+            _vm._v("ordina per ...")
+          ]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "reviewsNum" } }, [
+            _vm._v("numero di recensioni")
+          ])
         ]
       )
     ]),
@@ -37692,9 +37775,9 @@ var render = function() {
                   _vm._l(user.specializations, function(spec, index) {
                     return _c("div", { key: index }, [
                       _vm._v(
-                        "\n                        " +
+                        "\n            " +
                           _vm._s(spec.spec_name) +
-                          "\n                    "
+                          "\n          "
                       )
                     ])
                   }),
@@ -37703,14 +37786,21 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "td",
-                  _vm._l(_vm.average(user), function(star, index) {
-                    return _c("i", {
-                      key: index,
-                      staticClass: "fas fa-star",
-                      staticStyle: { color: "orange" }
-                    })
-                  }),
-                  0
+                  [
+                    _vm._l(_vm.average(user), function(star, index) {
+                      return _c("i", {
+                        key: index,
+                        staticClass: "fas fa-star",
+                        staticStyle: { color: "orange" }
+                      })
+                    }),
+                    _vm._v(
+                      "\n          su " +
+                        _vm._s(_vm.sum(user)) +
+                        " recensioni\n        "
+                    )
+                  ],
+                  2
                 ),
                 _vm._v(" "),
                 _c("td", [
@@ -37740,7 +37830,7 @@ var render = function() {
     _vm.results === false
       ? _c("div", [
           _vm._v(
-            "\n        Mi dispiace, non ci sono risultati per i tuoi criteri di ricerca.\n    "
+            "\n    Mi dispiace, non ci sono risultati per i tuoi criteri di ricerca.\n  "
           )
         ])
       : _vm._e()
