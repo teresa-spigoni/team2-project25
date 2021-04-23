@@ -89,7 +89,7 @@
     </nav>
 
     <div class="jum">
-        <img src="https://www.pngkit.com/png/full/254-2543504_doctors-getting-into-medical-school-the-premedical-students.png"
+        <img src="https://images-ext-2.discordapp.net/external/8-kq3LB2eJj8r_8wQAXce3BneV739FHW7T1ASTUHiwI/%3Fv%3D2/https/platform.docplanner.com/img/it/homepage/homepage-bg-it.jpg?width=1440&height=450"
             alt="">
     </div>
 
@@ -110,7 +110,7 @@
         </div>
     @endif
 
-    <form class="card" method="post" id="payment-form" style="padding: 20px" action="{{ route('checkout') }}">
+    <form class="card" method="post" id="payment-form" style="padding: 20px" action="{{ route('checkout', compact('user')) }}">
         @csrf
         @method('POST')
         <h1 class="custom-h1">Sponsorizzazioni</h1><br><br>
