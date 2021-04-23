@@ -110,28 +110,22 @@
         </div>
     @endif
 
-    <h5>Sponsorizzazioni</h5>
-        @foreach($sponsorships as $sponsor) 
-            <input type="radio" id="{{$sponsor->sponsor_name}}" name="sponsorizzazione" value="{{$sponsor->id}}">
-            <label for="{{$sponsor->sponsor_name}}">
-                <div>nome: {{$sponsor->sponsor_name}} </div>
-                <div>durata: {{$sponsor->sponsor_duration}} ore</div>
-                <div>prezzo: {{$sponsor->sponsor_price}} €</div>
-            </label>
-        <hr>
-        @endforeach
-
-        <form method="post" id="payment-form" action="{{ route('checkout') }}">
-            @csrf
-            @method('POST')
-            <section>
+    <form class="card" method="post" id="payment-form" style="padding: 20px" action="{{ route('checkout') }}">
+        @csrf
+        @method('POST')
+        <h1 class="custom-h1">Sponsorizzazioni</h1><br><br>
+            @foreach($sponsorships as $sponsor)
+                <input type="radio" id="amount" name="amount" value="{{$sponsor->sponsor_price}}">
                 <label for="amount">
-                    <span class="input-label">Amount</span>
-                    <div class="input-wrapper amount-wrapper">
-                        <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
-                    </div>
+                    <div>nome: {{$sponsor->sponsor_name}} </div>
+                    <div>durata: {{$sponsor->sponsor_duration}} ore</div>
+                    <div>prezzo: {{$sponsor->sponsor_price}} €</div>
                 </label>
+            <hr>
+            @endforeach
 
+
+            <section>
                 <div class="bt-drop-in-wrapper">
                     <div id="bt-dropin"></div>
                 </div>
@@ -181,7 +175,7 @@
             });
         });
         });
-    </script>    
+    </script>
 </body>
 
 </html>
