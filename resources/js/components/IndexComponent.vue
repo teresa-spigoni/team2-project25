@@ -88,28 +88,13 @@ export default {
   },
   watch: {
     specId: function () {
-      if (this.specId > 0) {
-        this.filterSpec();
-      } else {
-        this.getAll();
-      }
+      this.filterSpec().then(() => {
+        this.vote = 0;
+      });
     },
     vote: function () {
       this.filterSpec().then(() => {
-        let somma = 0;
-        let n = 0;
-        let media = 0;
-        this.users = this.users.filter((user) => {
-          user.reviews.forEach((review) => {
-            somma += review.rv_vote;
-            n += 1;
-          });
-          media = Math.round(somma / n);
-          console.log(media)
-          if (media == this.vote) {
-            return user;
-          }
-        });
+        return this.filterVote();
       });
     },
   },
@@ -120,14 +105,40 @@ export default {
       });
     },
     filterSpec: function () {
-      return axios
-        .get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId)
-        .then((response) => {
-          this.users = response.data;
-          if (this.users.length === 0) {
-            this.results = false;
+      if (this.specId > 0) {
+        return axios
+          .get(
+            "http://127.0.0.1:8000/api/doctors?specialization=" + this.specId
+          )
+          .then((response) => {
+            this.users = response.data;
+            if (this.users.length === 0) {
+              this.results = false;
+            }
+          });
+      } else {
+        return this.getAll();
+      }
+    },
+    filterVote: function () {
+      if (this.vote != 0) {
+        let somma = 0;
+        let n = 0;
+        let media = 0;
+        this.users = this.users.filter((user) => {
+          user.reviews.forEach((review) => {
+            somma += review.rv_vote;
+            n += 1;
+          });
+          media = Math.round(somma / n);
+          console.log(media);
+          if (media == this.vote) {
+            return user;
           }
         });
+      } else {
+        return;
+      }
     },
   },
 };

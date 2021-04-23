@@ -1937,20 +1937,51 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     specId: function specId() {
-      if (this.specId > 0) {
-        this.filterSpec();
-      } else {
-        this.getAll();
-      }
-    },
-    vote: function vote() {
       var _this = this;
 
       this.filterSpec().then(function () {
+        _this.vote = 0;
+      });
+    },
+    vote: function vote() {
+      var _this2 = this;
+
+      this.filterSpec().then(function () {
+        return _this2.filterVote();
+      });
+    }
+  },
+  methods: {
+    getAll: function getAll() {
+      var _this3 = this;
+
+      return axios.get("http://127.0.0.1:8000/api/doctors").then(function (response) {
+        _this3.users = response.data;
+      });
+    },
+    filterSpec: function filterSpec() {
+      var _this4 = this;
+
+      if (this.specId > 0) {
+        return axios.get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId).then(function (response) {
+          _this4.users = response.data;
+
+          if (_this4.users.length === 0) {
+            _this4.results = false;
+          }
+        });
+      } else {
+        return this.getAll();
+      }
+    },
+    filterVote: function filterVote() {
+      var _this5 = this;
+
+      if (this.vote != 0) {
         var somma = 0;
         var n = 0;
         var media = 0;
-        _this.users = _this.users.filter(function (user) {
+        this.users = this.users.filter(function (user) {
           user.reviews.forEach(function (review) {
             somma += review.rv_vote;
             n += 1;
@@ -1958,31 +1989,13 @@ __webpack_require__.r(__webpack_exports__);
           media = Math.round(somma / n);
           console.log(media);
 
-          if (media == _this.vote) {
+          if (media == _this5.vote) {
             return user;
           }
         });
-      });
-    }
-  },
-  methods: {
-    getAll: function getAll() {
-      var _this2 = this;
-
-      return axios.get("http://127.0.0.1:8000/api/doctors").then(function (response) {
-        _this2.users = response.data;
-      });
-    },
-    filterSpec: function filterSpec() {
-      var _this3 = this;
-
-      return axios.get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId).then(function (response) {
-        _this3.users = response.data;
-
-        if (_this3.users.length === 0) {
-          _this3.results = false;
-        }
-      });
+      } else {
+        return;
+      }
     }
   }
 });
