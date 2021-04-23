@@ -1919,6 +1919,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     selected: Number,
@@ -37672,6 +37676,7 @@ var render = function() {
                     },
                     [
                       _c("img", {
+                        staticStyle: { "border-radius": "50%" },
                         attrs: {
                           src: "../" + user.profile_image,
                           width: "150px"

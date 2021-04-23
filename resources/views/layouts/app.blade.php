@@ -20,6 +20,19 @@
         integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
         crossorigin="anonymous" />
 
+    <!-- Verifica Password -->
+    <script language="Javascript" type="text/javascript">
+        function verificapassword(modulo) {
+            if (modulo.password.value != modulo.password_confirmation.value) {
+                alert("Le password non coincidono.")
+                modulo.password.focus()
+                modulo.password.select()
+                return false
+            }
+                return true
+            }
+    </script>
+
 </head>
 
 <body>
@@ -84,7 +97,7 @@
         </nav>
 
         <div class="jum">
-            <img src="https://www.pngkit.com/png/full/254-2543504_doctors-getting-into-medical-school-the-premedical-students.png"
+            <img src="https://images-ext-2.discordapp.net/external/8-kq3LB2eJj8r_8wQAXce3BneV739FHW7T1ASTUHiwI/%3Fv%3D2/https/platform.docplanner.com/img/it/homepage/homepage-bg-it.jpg?width=1440&height=450"
                 alt="">
         </div>
 

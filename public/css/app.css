@@ -10947,14 +10947,14 @@ a.text-dark:focus {
 }
 
 .custom-h1 {
-  color: #32bea6;
+  color: #01c2a5;
 }
 
 .custom-button {
   margin: 10px 10px 10px 0;
-  background: #32bea6;
-  border-color: #32bea6;
-  font-size: 18px;
+  background: #01c2a5;
+  border-color: #01c2a5;
+  font-size: 15px;
   color: #fff;
 }
 
@@ -10969,12 +10969,12 @@ a.text-dark:focus {
 .button-none {
   border: none;
   background: none;
-  color: #32bea6;
+  color: #01c2a5;
   font-size: 18px;
 }
 
 .button-none a {
-  color: #32bea6;
+  color: #01c2a5;
 }
 
 .button-none:hover {
@@ -10997,12 +10997,12 @@ a.text-dark:focus {
 }
 
 .custom-select option:hover {
-  background: #32bea6;
+  background: #01c2a5;
   color: #fff;
 }
 
 #main-nav {
-  background: #32bea6;
+  background: #01c2a5;
   color: #fff;
   box-shadow: none;
 }
@@ -11019,19 +11019,16 @@ a.text-dark:focus {
 }
 
 #dropp {
-  background: #32bea6;
+  background: #01c2a5;
 }
 
 .jum {
-  background: #32bea6;
-  padding-top: 20px;
+  background: #01c2a5;
   text-align: center;
-  color: #fff;
 }
 
 .jum img {
   height: 350px;
-  margin: 0 200px 0 420px;
 }
 
 #user_id {
@@ -11082,8 +11079,8 @@ a.text-dark:focus {
 }
 
 .doctor-card button:hover {
-  background: #32bea6;
-  border-color: #32bea6;
+  background: #01c2a5;
+  border-color: #01c2a5;
 }
 
 .b-absolute-tr {
@@ -11100,7 +11097,7 @@ a.text-dark:focus {
 
 footer {
   text-align: center;
-  background: #32bea6;
+  background: #01c2a5;
   padding: 20px 0;
 }
 

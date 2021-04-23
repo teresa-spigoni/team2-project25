@@ -1,5 +1,5 @@
 // colors
-$maincolor: #32bea6;
+$maincolor: #01c2a5;
 $deletecolor: #d0211c;
 
 // utility classes
@@ -15,7 +15,7 @@ $deletecolor: #d0211c;
     margin: 10px 10px 10px 0;
     background: $maincolor;
     border-color: $maincolor;
-    font-size: 18px;
+    font-size: 15px;
     color: #fff;
 
     a {
@@ -92,13 +92,12 @@ $deletecolor: #d0211c;
 // jumbotron
 .jum {
     background: $maincolor;
-    padding-top: 20px;
+    // padding-top: 20px;
     text-align: center;
-    color: #fff;
+    // color: #fff;
 
     img {
         height: 350px;
-        margin: 0 200px 0 420px;
     }
 }
 
