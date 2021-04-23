@@ -32,11 +32,11 @@
         autocomplete="on"
       >
         <option value="0">filtra per media voti</option>
-        <option value="5">5</option>
-        <option value="4">4</option>
-        <option value="3">3</option>
-        <option value="2">2</option>
-        <option value="1">1</option>
+        <option value="5">&#9733; &#9733; &#9733; &#9733; &#9733;</option>
+        <option value="4">&#9733; &#9733; &#9733; &#9733;</option>
+        <option value="3">&#9733; &#9733; &#9733;</option>
+        <option value="2">&#9733; &#9733;</option>
+        <option value="1">&#9733;</option>
       </select>
     </div>
 
@@ -83,47 +83,44 @@ export default {
       vote: 0,
     };
   },
-  beforeCreate() {
-    console.log("before create");
-  },
   mounted() {
     this.filterSpec();
   },
   watch: {
-    specId: function() {
+    specId: function () {
       if (this.specId > 0) {
         this.filterSpec();
       } else {
         this.getAll();
       }
     },
-    vote: async function() {
-      await this.filterSpec();
-      let somma = 0;
-      let n = 0;
-      let media = 0;
-      return this.users.filter((user, index, array) => {
-        user.reviews.forEach((review) => {
-          somma += review.rv_vote;
-          n += 1;
+    vote: function () {
+      this.filterSpec().then(() => {
+        let somma = 0;
+        let n = 0;
+        let media = 0;
+        this.users = this.users.filter((user) => {
+          user.reviews.forEach((review) => {
+            somma += review.rv_vote;
+            n += 1;
+          });
+          media = Math.round(somma / n);
+          console.log(media)
+          if (media == this.vote) {
+            return user;
+          }
         });
-        media = Math.round(somma / n);
-        console.log(media);
-        if (media >= this.vote) {
-          console.log("media maggiore di vote");
-          return user;
-        }
       });
     },
   },
   methods: {
-    getAll: function() {
-        axios.get("http://127.0.0.1:8000/api/doctors").then((response) => {
-          this.users = response.data;
-        });
+    getAll: function () {
+      return axios.get("http://127.0.0.1:8000/api/doctors").then((response) => {
+        this.users = response.data;
+      });
     },
-    filterSpec: function() {
-      axios
+    filterSpec: function () {
+      return axios
         .get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId)
         .then((response) => {
           this.users = response.data;
