@@ -37,7 +37,7 @@ class PaymentController extends Controller
             $date = date("Y-m-d H:i:s");
             $sponsor = Sponsorship::all()->where('sponsor_price', $request->amount)->first();
             $sponId = $sponsor->id;
-            $thedate = strtotime($date . ' + ' . $sponsor->sponsor_duration . 'minute');
+            $thedate = strtotime($date . ' + ' . $sponsor->sponsor_duration . 'hour');
             $expirationDate = date('Y-m-d H:i:s', $thedate);
             $user->sponsorships()->attach($sponId, ['expiration_time' => $expirationDate]);
             return back()->with('success_message', 'Il pagamento è  avvenuto con successo.');

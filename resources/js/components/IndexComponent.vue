@@ -6,7 +6,8 @@
       <a href="/"><i class="fas fa-arrow-left"></i></a>
     </button>
 
-    <div class="form-group">
+    <br />
+    <div class="form-group inline-b">
       <select
         class="form-control"
         name="specializations"
@@ -25,7 +26,7 @@
       </select>
     </div>
 
-    <div class="form-group">
+    <div class="form-group inline-b">
       <select
         class="form-control"
         name="votes"
@@ -46,7 +47,7 @@
       </select>
     </div>
 
-    <div class="form-group">
+    <div class="form-group inline-b">
       <select
         class="form-control"
         name="specializations"
@@ -91,7 +92,7 @@
               <img
                 :src="'../' + user.profile_image"
                 width="150px"
-                style="border-radius: 50%"
+                class="user-image"
               />
             </a>
           </td>

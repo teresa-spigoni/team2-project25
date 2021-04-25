@@ -27,9 +27,14 @@ class PrivateUserController extends Controller
         return redirect()->route('dashboard', compact('user'));
     }
 
+    public function edit(User $user)
+    {
+        $specs = Specialization::all();
+        return view('auth.edit', compact('user', 'specs'));
+    }
+
     public function update(Request $request, User $user)
     {
-        // dd($request);
         $this->updateValidation($request);
         if ($request->hasFile('profile_image')) {
             $img = $request->file('profile_image')->store('public');
@@ -42,6 +47,12 @@ class PrivateUserController extends Controller
             $user->curriculum = 'public/' . $user->name . "." . $doc->clientExtension();
         }
         $user->update($request->all());
+
+        $user->specializations()->detach();
+
+        foreach ($request['specializations'] as $spec) {
+            $user->specializations()->attach($spec);
+        }
 
         return redirect()->route('dashboard');
     }

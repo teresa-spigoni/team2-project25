@@ -1952,6 +1952,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     selected: Number,
@@ -37619,7 +37620,9 @@ var render = function() {
     _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group inline-b" }, [
       _c(
         "select",
         {
@@ -37668,7 +37671,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
+    _c("div", { staticClass: "form-group inline-b" }, [
       _c(
         "select",
         {
@@ -37738,7 +37741,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
+    _c("div", { staticClass: "form-group inline-b" }, [
       _c(
         "select",
         {
@@ -37835,7 +37838,7 @@ var render = function() {
                     },
                     [
                       _c("img", {
-                        staticStyle: { "border-radius": "50%" },
+                        staticClass: "user-image",
                         attrs: {
                           src: "../" + user.profile_image,
                           width: "150px"

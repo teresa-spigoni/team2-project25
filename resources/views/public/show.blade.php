@@ -19,7 +19,7 @@
         </button>
 
         {{-- Informazioni del dottore --}}
-        <img src="{{ asset($user->profile_image) }}">
+        <img class="user-image" src="{{ asset($user->profile_image) }}">
         <h2 class="card-title"><i class="fas fa-user-md" style="color: #32bea6"></i> {{ $user->name }}
             {{ $user->lastname }}
         </h2>
