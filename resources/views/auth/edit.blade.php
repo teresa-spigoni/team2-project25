@@ -46,7 +46,7 @@
 
     {{-- INDIRIZZO --}}
     <div class="form-group">
-        <label for="lastname">Indirizzo</label>
+        <label for="address">Indirizzo</label>
         <input type="text" class="form-control" name="address" placeholder="Inserisci l'indirizzo..."
             value="{{ $user->address }}" required minlength="15">
     </div>

@@ -10946,8 +10946,60 @@ a.text-dark:focus {
   font-family: "Roboto", sans-serif;
 }
 
+.sponsor-check {
+  color: #01c2a5;
+}
+
+.logged {
+  color: #01c2a5;
+  font-size: 10px;
+  vertical-align: middle;
+}
+
+.dash-services {
+  width: 200px;
+}
+
+.dash-services:hover {
+  color: #01c2a5;
+  background: rgba(1, 194, 165, 0.1);
+}
+
+.inline-b {
+  display: inline-block;
+}
+
 .custom-h1 {
   color: #01c2a5;
+}
+
+.user-image {
+  border-radius: 50%;
+  width: 165px;
+}
+
+.card {
+  padding: 20px;
+}
+
+.evidence-card {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.evidence-card a {
+  color: inherit;
+}
+
+.evidence-card a:hover {
+  text-decoration: none;
+  color: #01c2a5;
+}
+
+.evidence-card .card {
+  width: 205px;
+  margin: 5px 10px 10px 0;
+  min-height: 300px;
 }
 
 .custom-button {
@@ -10985,10 +11037,6 @@ a.text-dark:focus {
 .delete {
   background: #d0211c;
   border-color: #d0211c;
-}
-
-.custom-img {
-  width: 50%;
 }
 
 .custom-select {
@@ -11035,21 +11083,9 @@ a.text-dark:focus {
   display: none;
 }
 
-.user_img {
-  width: 200px;
-  border-radius: 50%;
-  border: 4px solid #dfdfdf;
-}
-
 .doctor-card {
   position: relative;
   padding: 40px;
-}
-
-.doctor-card img {
-  width: 200px;
-  border-radius: 50%;
-  border: 4px solid #dfdfdf;
 }
 
 .doctor-card .card-title {

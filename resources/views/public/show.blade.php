@@ -19,7 +19,7 @@
         </button>
 
         {{-- Informazioni del dottore --}}
-        <img src="{{ asset($user->profile_image) }}">
+        <img class="user-image" src="{{ asset($user->profile_image) }}">
         <h2 class="card-title"><i class="fas fa-user-md" style="color: #32bea6"></i> {{ $user->name }}
             {{ $user->lastname }}
         </h2>
@@ -53,7 +53,11 @@
         {{-- Recensioni --}}
         <br><br>
         <hr><br><br>
-        <h2>Recensioni</h2>
+
+        @php
+        $numreviews = count($user->reviews);
+        @endphp
+        <h2>Recensioni {{$numreviews}}</h2>
         @foreach ($reviews as $review)
         @if ($review->user_id === $user->id)
         <div class="card" style="padding: 20px; margin-bottom:20px">
@@ -68,6 +72,7 @@
         </div>
         @endif
         @endforeach
+
     </div>
 </div>
 

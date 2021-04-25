@@ -1948,6 +1948,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     selected: Number,
@@ -1958,8 +1963,8 @@ __webpack_require__.r(__webpack_exports__);
       specId: this.selected,
       users: [],
       results: true,
-      vote: '',
-      orderBy: ''
+      vote: "",
+      orderBy: ""
     };
   },
   mounted: function mounted() {
@@ -1970,8 +1975,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.filterSpec().then(function () {
-        _this.vote = '';
-        _this.orderBy = '';
+        _this.vote = "";
+        _this.orderBy = "";
       });
     },
     vote: function vote() {
@@ -37611,7 +37616,9 @@ var render = function() {
     _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group inline-b" }, [
       _c(
         "select",
         {
@@ -37660,7 +37667,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
+    _c("div", { staticClass: "form-group inline-b" }, [
       _c(
         "select",
         {
@@ -37695,22 +37702,42 @@ var render = function() {
             _vm._v("filtra per media voti")
           ]),
           _vm._v(" "),
-          _c("option", { attrs: { value: "5" } }, [_vm._v("★ ★ ★ ★ ★")]),
+          _c(
+            "option",
+            { staticStyle: { color: "orange" }, attrs: { value: "5" } },
+            [_vm._v("\n        ★ ★ ★ ★ ★\n      ")]
+          ),
           _vm._v(" "),
-          _c("option", { attrs: { value: "4" } }, [_vm._v("★ ★ ★ ★")]),
+          _c(
+            "option",
+            { staticStyle: { color: "orange" }, attrs: { value: "4" } },
+            [_vm._v("\n        ★ ★ ★ ★\n      ")]
+          ),
           _vm._v(" "),
-          _c("option", { attrs: { value: "3" } }, [_vm._v("★ ★ ★")]),
+          _c(
+            "option",
+            { staticStyle: { color: "orange" }, attrs: { value: "3" } },
+            [_vm._v("★ ★ ★")]
+          ),
           _vm._v(" "),
-          _c("option", { attrs: { value: "2" } }, [_vm._v("★ ★")]),
+          _c(
+            "option",
+            { staticStyle: { color: "orange" }, attrs: { value: "2" } },
+            [_vm._v("★ ★")]
+          ),
           _vm._v(" "),
-          _c("option", { attrs: { value: "1" } }, [_vm._v("★")]),
+          _c(
+            "option",
+            { staticStyle: { color: "orange" }, attrs: { value: "1" } },
+            [_vm._v("★")]
+          ),
           _vm._v(" "),
           _c("option", { attrs: { value: "0" } }, [_vm._v("qualunque voto")])
         ]
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
+    _c("div", { staticClass: "form-group inline-b" }, [
       _c(
         "select",
         {
@@ -37807,7 +37834,7 @@ var render = function() {
                     },
                     [
                       _c("img", {
-                        staticStyle: { "border-radius": "50%" },
+                        staticClass: "user-image",
                         attrs: {
                           src: "../" + user.profile_image,
                           width: "150px"

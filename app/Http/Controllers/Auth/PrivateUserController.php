@@ -11,17 +11,6 @@ use App\User;
 class PrivateUserController extends Controller
 {
 
-
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
     public function showMessages($id)
     {
         $userMessages = User::find($id)->messages;
@@ -37,7 +26,6 @@ class PrivateUserController extends Controller
         $newService->save();
         return redirect()->route('dashboard', compact('user'));
     }
-
 
     public function edit(User $user)
     {
@@ -59,6 +47,12 @@ class PrivateUserController extends Controller
             $user->curriculum = 'public/' . $user->name . "." . $doc->clientExtension();
         }
         $user->update($request->all());
+
+        $user->specializations()->detach();
+
+        foreach ($request['specializations'] as $spec) {
+            $user->specializations()->attach($spec);
+        }
 
         return redirect()->route('dashboard');
     }
