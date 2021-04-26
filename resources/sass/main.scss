@@ -6,6 +6,9 @@ $deletecolor: #d0211c;
 // utility classes
 * {
     font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 .sponsor-check{
@@ -66,7 +69,7 @@ $deletecolor: #d0211c;
 .custom-button {
     margin: 10px 10px 10px 0;
     background: $maincolor;
-    border-color: $maincolor;
+    border: 2px solid $maincolor;
     font-size: 15px;
     color: #fff;
 
@@ -75,8 +78,11 @@ $deletecolor: #d0211c;
     }
 
     &:hover {
+        color: $maincolor;
+        background: white;
+        
         a {
-            color: #fff;
+            color: $maincolor;
         }
     }
 }
@@ -131,11 +137,14 @@ $deletecolor: #d0211c;
             border-radius: 50%;
         }
     }
+
+    #dropp {
+        background: white;
+        color: $maincolor;
+    }
+    
 }
 
-#dropp {
-    background: $maincolor;
-}
 
 
 
@@ -174,20 +183,6 @@ $deletecolor: #d0211c;
         strong {
             font-size: 18px;
             margin-right: 5px;
-        }
-    }
-    button {
-        a {
-            color: #fff;
-
-            &:hover {
-                color: #fff;
-            }
-        }
-
-        &:hover {
-            background: $maincolor;
-            border-color: $maincolor;
         }
     }
 }

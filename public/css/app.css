@@ -10944,6 +10944,9 @@ a.text-dark:focus {
 
 * {
   font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .sponsor-check {
@@ -11005,7 +11008,7 @@ a.text-dark:focus {
 .custom-button {
   margin: 10px 10px 10px 0;
   background: #01c2a5;
-  border-color: #01c2a5;
+  border: 2px solid #01c2a5;
   font-size: 15px;
   color: #fff;
 }
@@ -11014,8 +11017,13 @@ a.text-dark:focus {
   color: #fff;
 }
 
+.custom-button:hover {
+  color: #01c2a5;
+  background: white;
+}
+
 .custom-button:hover a {
-  color: #fff;
+  color: #01c2a5;
 }
 
 .button-none {
@@ -11066,8 +11074,9 @@ a.text-dark:focus {
   border-radius: 50%;
 }
 
-#dropp {
-  background: #01c2a5;
+#main-nav #dropp {
+  background: white;
+  color: #01c2a5;
 }
 
 .jum {
@@ -11104,19 +11113,6 @@ a.text-dark:focus {
 .doctor-card .card-text strong {
   font-size: 18px;
   margin-right: 5px;
-}
-
-.doctor-card button a {
-  color: #fff;
-}
-
-.doctor-card button a:hover {
-  color: #fff;
-}
-
-.doctor-card button:hover {
-  background: #01c2a5;
-  border-color: #01c2a5;
 }
 
 .b-absolute-tr {
