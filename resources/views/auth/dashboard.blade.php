@@ -77,8 +77,9 @@
                 @endforeach
             </div>
 
-            <br>
+            @if (count(Auth::user()->services) > 0)
             <hr>
+
             <h3>Prestazioni:</h3>
             @foreach (Auth::user()->services as $service)
             <div class="card inline-b dash-services">
@@ -86,6 +87,7 @@
                 €{{ $service->service_price }}
             </div>
             @endforeach
+            @endif
             <br><br>
             <hr>
             {{--

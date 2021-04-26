@@ -1955,7 +1955,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     selected: Number,
@@ -37651,8 +37650,6 @@ var render = function() {
     _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
-    _c("br"),
-    _vm._v(" "),
     _vm.specializations.length > 0
       ? _c("div", { staticClass: "form-group inline-b" }, [
           _c(
@@ -37861,7 +37858,9 @@ var render = function() {
                       ? _c("span", [
                           _vm._v("su " + _vm._s(_vm.sum(user)) + " recensioni")
                         ])
-                      : _c("span", [_vm._v("Non ha ancora nessuna recensione")])
+                      : _c("span", [
+                          _vm._v("Non ci sono recensioni disponibili")
+                        ])
                   ],
                   2
                 ),

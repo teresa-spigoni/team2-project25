@@ -104,7 +104,7 @@ table{
 }
 
 .custom-button {
-    margin: 10px 10px 10px 0;
+    margin: 5px 5px 5px 0;
     background: $maincolor;
     border: 2px solid $maincolor;
     font-size: 15px;
@@ -143,6 +143,11 @@ table{
 .delete {
     background: $deletecolor;
     border-color: $deletecolor;
+
+    &:hover{
+        background: #fff;
+        color: $deletecolor;
+    }
 }
 
 .custom-select {
@@ -275,13 +280,17 @@ table{
     .doc-info{
 
         margin-bottom: 30px;
+        margin-right: 100px;
+        vertical-align: top;
 
         img{
-            vertical-align: -15px;
+            vertical-align: top;
         }
 
         .box{
+            width: 310px;
             margin-left: 30px;
+            margin-top: 20px;
         }
     }
 
@@ -312,12 +321,31 @@ table{
         margin-right: 5px;
     }
 
-
     .service-card{
+
+        width: 370px;
+        margin-bottom: 5px;
+
         &:hover{
             border-color: $maincolor;
         }
     }
+
+    .review{
+
+        .card{
+            margin-bottom: 5px;
+
+            .fa-star{
+                color: orange;
+            }
+        }
+
+        .card:hover{
+            border-color: $maincolor;
+        }
+    }
+
 }
 
 .b-absolute-tr {

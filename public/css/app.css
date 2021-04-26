@@ -11042,7 +11042,7 @@ table {
 }
 
 .custom-button {
-  margin: 10px 10px 10px 0;
+  margin: 5px 5px 5px 0;
   background: #01c2a5;
   border: 2px solid #01c2a5;
   font-size: 15px;
@@ -11081,6 +11081,11 @@ table {
 .delete {
   background: #d0211c;
   border-color: #d0211c;
+}
+
+.delete:hover {
+  background: #fff;
+  color: #d0211c;
 }
 
 .custom-select {
@@ -11206,14 +11211,18 @@ table {
 
 .doctor-card .doc-info {
   margin-bottom: 30px;
+  margin-right: 100px;
+  vertical-align: top;
 }
 
 .doctor-card .doc-info img {
-  vertical-align: -15px;
+  vertical-align: top;
 }
 
 .doctor-card .doc-info .box {
+  width: 310px;
   margin-left: 30px;
+  margin-top: 20px;
 }
 
 .doctor-card #specs {
@@ -11242,7 +11251,24 @@ table {
   margin-right: 5px;
 }
 
+.doctor-card .service-card {
+  width: 370px;
+  margin-bottom: 5px;
+}
+
 .doctor-card .service-card:hover {
+  border-color: #01c2a5;
+}
+
+.doctor-card .review .card {
+  margin-bottom: 5px;
+}
+
+.doctor-card .review .card .fa-star {
+  color: orange;
+}
+
+.doctor-card .review .card:hover {
   border-color: #01c2a5;
 }
 

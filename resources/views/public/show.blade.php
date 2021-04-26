@@ -13,7 +13,7 @@
 
 
             {{-- Informazioni del dottore --}}
-            <div class="doc-info">
+            <div class="doc-info inline-b">
                 <img class="user-image" src="{{ asset($user->profile_image) }}">
 
                 <div class="inline-b box">
@@ -31,66 +31,71 @@
                         @endforeach
                     </div>
                 </div>
+
+                <br><br>
+                <hr>
+
+
+                {{-- pulsante per inviare un messaggio --}}
+                <button class="btn custom-button " data-toggle="modal" data-target="#modalMessage">
+                    <i class="fas fa-comment-medical"></i> Invia un messaggio
+                </button>
+
+                {{-- pulsante per scrivere una recensione --}}
+                <button class="btn custom-button rev-button" data-toggle="modal" data-target="#modalReview">
+                    <i class="fas fa-plus"></i> Scrivi una recensione
+                </button>
+
+                {{-- pulsante per visualizzare il CV --}}
+                @if (isset($user->curriculum))
+                <br>
+                <button class="btn custom-button">
+                    <a href="{{ asset($user->curriculum) }}" type="application/pdf" width="600px" height="300px">
+                        <i class="fas fa-file-pdf"></i>Curriculum</a>
+                </button>
+                @endif
+
             </div>
-
-
-            {{-- pulsante per visualizzare il CV --}}
-            @if (isset($user->curriculum))
-            <button class="btn custom-button">
-                <a href="{{ asset($user->curriculum) }}" type="application/pdf" width="600px" height="300px">
-                    <i class="fas fa-file-pdf"></i>Curriculum</a>
-            </button>
-            @endif
-
-            {{-- pulsante per inviare un messaggio --}}
-            <button class="btn custom-button " data-toggle="modal" data-target="#modalMessage">
-                <i class="fas fa-comment-medical"></i> Invia un messaggio
-            </button>
-
-            {{-- pulsante per scrivere una recensione --}}
-            <button class="btn custom-button rev-button" data-toggle="modal" data-target="#modalReview">
-                <i class="fas fa-plus"></i> Scrivi una recensione
-            </button>
-
-            <br><br><br>
 
             {{-- Prestazioni --}}
-            @foreach ($user->services as $service)
-            <div class="card service-card" style="width: 500px; padding: 20px; margin-bottom:20px">
-                <h4><strong>{{ $service->service_type }}</strong></h4>
-                <h5>€{{ $service->service_price }}</h5>
-                <div class="card-text">
-                    <strong>
-                        <i class="fas fa-map-marker-alt" style="color: #01c2a5"></i>
-                        Indirizzo:
-                    </strong>
-                    {{ $service->service_address }}
+            <div class="prestazioni inline-b">
+                @foreach ($user->services as $service)
+                <div class="card service-card">
+                    <h4><strong>{{ $service->service_type }}</strong></h4>
+                    <h5>€{{ $service->service_price }}</h5>
+                    <div class="card-text">
+                        <strong>
+                            <i class="fas fa-map-marker-alt" style="color: #01c2a5"></i>
+                            {{ $service->service_address }}
+                        </strong>
+                    </div>
                 </div>
+                @endforeach
             </div>
-            @endforeach
+
+
 
             {{-- Recensioni --}}
-            <br><br>
-            <hr><br><br>
+            <br><br><br><br>
 
             @php
             $numreviews = count($user->reviews);
             @endphp
-            <h2>Recensioni {{$numreviews}}</h2>
-            @foreach ($reviews as $review)
-            @if ($review->user_id === $user->id)
-            <div class="card" style="padding: 20px; margin-bottom:20px">
-                <div>
-                    @for ($i = 0; $i < $review->rv_vote; $i++)
-                        <i class="fas fa-star" style="color: orange"></i>
-                        @endfor
+            <div class="review">
+                <h2>Recensioni {{$numreviews}}</h2>
+                @foreach ($reviews as $review)
+                @if ($review->user_id === $user->id)
+                <div class="card">
+                    <div>
+                        @for ($i = 0; $i < $review->rv_vote; $i++)
+                            <i class="fas fa-star"></i> @endfor </div>
+                    <h3>{{ $review->rv_title }}</h3>
+                    <p style="width:250px">{{ $review->rv_content }}</p>
+                    <h5>{{ $review->rv_name }} {{ $review->rv_lastname }}</h5>
                 </div>
-                <h3>{{ $review->rv_title }}</h3>
-                <p style="width:250px">{{ $review->rv_content }}</p>
-                <h5>{{ $review->rv_name }} {{ $review->rv_lastname }}</h5>
+                @endif
+                @endforeach
             </div>
-            @endif
-            @endforeach
 
         </div>
     </div>

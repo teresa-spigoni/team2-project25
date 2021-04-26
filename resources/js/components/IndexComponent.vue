@@ -6,7 +6,6 @@
       <a href="/"><i class="fas fa-arrow-left"></i></a>
     </button>
 
-    <br />
     <div class="form-group inline-b" v-if="specializations.length > 0">
       <select
         class="form-control"
@@ -88,7 +87,7 @@
             <span v-if="user.reviews.length > 0"
               >su {{ sum(user) }} recensioni</span
             >
-            <span v-else>Non ha ancora nessuna recensione</span>
+            <span v-else>Non ci sono recensioni disponibili</span>
           </td>
           <td class="img-col">
             <a :href="'/doctors/' + user.id + '/' + specId">
