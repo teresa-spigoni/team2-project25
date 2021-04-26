@@ -9,10 +9,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>BDoctors - @yield('title')</title>
-
+    <link rel="icon" type="image/png" href="https://prowly-uploads.s3.eu-west-1.amazonaws.com/uploads/4818/assets/40124/miodottore-mktpl-symbol-turquoise.png">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -50,7 +52,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse nav-right" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
@@ -96,12 +98,7 @@
             </div>
         </nav>
 
-        <div class="jum">
-            <img src="https://images-ext-2.discordapp.net/external/8-kq3LB2eJj8r_8wQAXce3BneV739FHW7T1ASTUHiwI/%3Fv%3D2/https/platform.docplanner.com/img/it/homepage/homepage-bg-it.jpg?width=1440&height=450"
-                alt="">
-        </div>
-
-        <main class="py-4 container">
+        <main>
             @yield('content')
         </main>
 

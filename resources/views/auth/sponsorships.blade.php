@@ -13,6 +13,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -80,12 +82,7 @@
         </div>
     </nav>
 
-    <div class="jum">
-        <img src="https://images-ext-2.discordapp.net/external/8-kq3LB2eJj8r_8wQAXce3BneV739FHW7T1ASTUHiwI/%3Fv%3D2/https/platform.docplanner.com/img/it/homepage/homepage-bg-it.jpg?width=1440&height=450"
-            alt="">
-    </div>
-
-    <main class="py-4 container">
+    <main class="container">
         @if (session('success_message'))
         <div class="alert alert-success">
             {{ session('success_message') }}

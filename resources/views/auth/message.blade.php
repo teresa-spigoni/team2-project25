@@ -4,6 +4,8 @@
 
 @section('content')
 
+<div class="container">
+
     <h1>Pagina messaggi</h1>
     <button class="btn custom-button">
         <a href="{{ route('dashboard') }}">
@@ -36,6 +38,7 @@
 
         @endforeach
     @endif
-
+    
+</div>
 
 @endsection

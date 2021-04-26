@@ -2,49 +2,58 @@
 @section('title', 'Home')
 @section('content')
 
-<h1 class="custom-h1">CERCA IL DOTTORE ADATTO A TE</h1>
+<div class="jum">
+    <div class="container jum-container">
+        <div class="jum-left">
+            <div class="jum-title">CERCA IL DOTTORE ADATTO A TE</div>
 
-<form action="{{ route('toIndex') }}" method="post">
-    @csrf
-    @method('GET')
+            <form action="{{ route('toIndex') }}" method="post">
+                @csrf
+                @method('GET')
 
-    <div class="form-group">
+                <div class="form-group">
 
-        {{-- select specializzazioni --}}
-        <select class="form-control" id="specialization" name="specialization" required>
-            <option value="">Seleziona la specializzazione</option>
-            @foreach ($specializations as $spec)
-            <option value="{{ $spec->id }}" class="opt">{{ $spec->spec_name }}</option>
-            @endforeach
-        </select>
-        {{-- pulsante di ricerca --}}
-        <button class="btn custom-button">
-            Cerca
-        </button>
-
-        <br><br>
-
-        <h3>Medici in evidenza</h3>
-
-        <div class="container evidence-card">
-            {{-- card medico in evidenza --}}
-            @foreach ($activeSponsorship as $theuser)
-            <div>
-                <a href="/doctors/{{$theuser->id}}/{{$theuser->specializations}} ">
-
-                    <div class="card">
-                        <img src="{{$theuser->profile_image}}" alt="" class="user-image">
-                        <br><br>
-                        <h4>{{$theuser->name}} {{$theuser->lastname}}</h4>
-                        @foreach ($theuser->specializations as $spec)
-                        - {{ $spec->spec_name }} <br>
+                    {{-- select specializzazioni --}}
+                    <select class="form-control col-auto" id="specialization" name="specialization" required>
+                        <option value="">Seleziona la specializzazione</option>
+                        @foreach ($specializations as $spec)
+                        <option value="{{ $spec->id }}" class="opt">{{ $spec->spec_name }}</option>
                         @endforeach
+                    </select>
+                    {{-- pulsante di ricerca --}}
+                    <div class="search">
+                        Cerca
                     </div>
-                </a>
-            </div>
-            @endforeach
+                </div>
+            </form>
         </div>
-    </div>
 
-</form>
+        <img src="https://media.discordapp.net/attachments/831086712775376901/836165547225251870/img-removebg-preview.png"
+            alt="">
+    </div>
+</div>
+
+<div class="container">
+
+    <h3>Medici in evidenza</h3>
+
+    <div class="container evidence-card">
+        {{-- card medico in evidenza --}}
+        @foreach ($activeSponsorship as $theuser)
+        <div>
+            <a href="/doctors/{{$theuser->id}}/{{$theuser->specializations}} ">
+
+                <div class="card">
+                    <img src="{{$theuser->profile_image}}" alt="" class="user-image">
+                    <br><br>
+                    <h4>{{$theuser->name}} {{$theuser->lastname}}</h4>
+                    @foreach ($theuser->specializations as $spec)
+                    - {{ $spec->spec_name }} <br>
+                    @endforeach
+                </div>
+            </a>
+        </div>
+        @endforeach
+    </div>
+</div>
 @endsection

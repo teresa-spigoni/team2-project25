@@ -10943,7 +10943,7 @@ a.text-dark:focus {
 }
 
 * {
-  font-family: "Roboto", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -10974,6 +10974,8 @@ a.text-dark:focus {
 
 .custom-h1 {
   color: #01c2a5;
+  margin-top: 20px;
+  font-weight: bold;
 }
 
 .user-image {
@@ -11063,6 +11065,11 @@ a.text-dark:focus {
   box-shadow: none;
 }
 
+#main-nav .navbar-brand {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
 #main-nav a {
   color: #fff;
 }
@@ -11074,18 +11081,68 @@ a.text-dark:focus {
   border-radius: 50%;
 }
 
+#main-nav .nav-right {
+  font-size: 19px;
+}
+
 #main-nav #dropp {
   background: white;
   color: #01c2a5;
 }
 
+#main-nav #dropp:hover {
+  font-weight: bold;
+}
+
 .jum {
   background: #01c2a5;
+  height: 380px;
+}
+
+.jum-container {
+  position: relative;
+  height: 380px;
+}
+
+.jum-left {
+  position: absolute;
+  left: 30px;
+  bottom: 120px;
+}
+
+.jum-left .jum-title {
+  color: white;
+  font-size: 30px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.jum-left select {
+  color: #376467;
+  cursor: pointer;
+  display: inline-block;
+  width: 80%;
+}
+
+.jum-left .search {
+  color: white;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 19px;
+  font-weight: bold;
+  width: 17%;
   text-align: center;
 }
 
+.jum-left .search:hover {
+  transform: scale(1.1);
+}
+
 .jum img {
-  height: 350px;
+  height: 360px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 #user_id {
