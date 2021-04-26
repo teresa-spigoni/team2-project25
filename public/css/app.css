@@ -10949,12 +10949,20 @@ a.text-dark:focus {
   padding: 0;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 #app {
   min-height: 100vh;
 }
 
 #app > main {
   min-height: calc(78vh - 20px);
+}
+
+table {
+  margin-top: 20px;
 }
 
 .sponsor-check {
@@ -10998,6 +11006,11 @@ a.text-dark:focus {
   width: 165px;
 }
 
+.img-col {
+  width: 200px;
+  text-align: center;
+}
+
 .card {
   padding: 20px;
 }
@@ -11005,11 +11018,11 @@ a.text-dark:focus {
 .evidence-card {
   display: flex;
   flex-wrap: wrap;
-  text-align: center;
 }
 
 .evidence-card a {
   color: inherit;
+  text-align: center;
 }
 
 .evidence-card a:hover {
@@ -11018,6 +11031,7 @@ a.text-dark:focus {
 }
 
 .evidence-card .card {
+  text-align: center;
   width: 205px;
   margin: 5px 10px 10px 0;
   min-height: 300px;
@@ -11060,8 +11074,8 @@ a.text-dark:focus {
 }
 
 .button-none:hover {
-  font-size: 22px;
-  color: #fff;
+  transform: scale(1.2);
+  color: #01c2a5;
 }
 
 .delete {
@@ -11142,7 +11156,17 @@ a.text-dark:focus {
 .jum-left select {
   cursor: pointer;
   display: inline-block;
+  color: #01c2a5;
   width: 80%;
+}
+
+.jum-left select:focus {
+  color: #01c2a5;
+}
+
+.jum-left select option:hover {
+  background: #01c2a5;
+  color: #fff;
 }
 
 .jum-left .search {
@@ -11170,17 +11194,38 @@ a.text-dark:focus {
   display: none;
 }
 
+.dash-card {
+  margin-top: 40px;
+}
+
 .doctor-card {
+  margin-top: 30px;
   position: relative;
   padding: 40px;
 }
 
-.doctor-card .card-title {
-  margin-top: 40px;
+.doctor-card .doc-info {
+  margin-bottom: 30px;
+}
+
+.doctor-card .doc-info img {
+  vertical-align: -15px;
+}
+
+.doctor-card .doc-info .box {
+  margin-left: 30px;
 }
 
 .doctor-card #specs {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+}
+
+.doctor-card #specs h5 {
+  margin-bottom: -2px;
+}
+
+.doctor-card #mail {
+  margin-top: -15px;
 }
 
 .doctor-card .card-text {
@@ -11191,6 +11236,14 @@ a.text-dark:focus {
 .doctor-card .card-text strong {
   font-size: 18px;
   margin-right: 5px;
+}
+
+.doctor-card button i {
+  margin-right: 5px;
+}
+
+.doctor-card .service-card:hover {
+  border-color: #01c2a5;
 }
 
 .b-absolute-tr {

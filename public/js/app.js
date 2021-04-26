@@ -1954,6 +1954,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     selected: Number,
@@ -2015,7 +2017,7 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
       } else {
-        console.log('vedi tutti');
+        console.log("vedi tutti");
         return this.getAll();
       }
     },
@@ -37864,7 +37866,7 @@ var render = function() {
                   2
                 ),
                 _vm._v(" "),
-                _c("td", [
+                _c("td", { staticClass: "img-col" }, [
                   _c(
                     "a",
                     {

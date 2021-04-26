@@ -85,10 +85,12 @@
               v-for="(star, index) in average(user)"
               :key="index"
             ></i>
-            <span v-if="user.reviews.length > 0">su {{ sum(user) }} recensioni</span>
+            <span v-if="user.reviews.length > 0"
+              >su {{ sum(user) }} recensioni</span
+            >
             <span v-else>Non ha ancora nessuna recensione</span>
           </td>
-          <td>
+          <td class="img-col">
             <a :href="'/doctors/' + user.id + '/' + specId">
               <img
                 :src="'../' + user.profile_image"
@@ -116,7 +118,7 @@ export default {
       users: [],
       results: true,
       vote: "",
-      orderBy: ""
+      orderBy: "",
     };
   },
   mounted() {
@@ -137,7 +139,7 @@ export default {
     orderBy: function () {
       if (this.orderBy === "reviewsNum") {
         return this.sortUsers();
-      } 
+      }
     },
   },
   methods: {
@@ -161,7 +163,7 @@ export default {
             }
           });
       } else {
-        console.log('vedi tutti')
+        console.log("vedi tutti");
         return this.getAll();
       }
     },
@@ -193,7 +195,7 @@ export default {
           n += 1;
         });
         return (media = Math.round(somma / n));
-      } 
+      }
     },
     sum: function (user) {
       let n = 0;

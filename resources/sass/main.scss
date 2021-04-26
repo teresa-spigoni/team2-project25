@@ -11,12 +11,20 @@ $deletecolor: #d0211c;
     padding: 0;
 }
 
+a:hover{
+    text-decoration: none;
+}
+
 #app {
     min-height: 100vh;
 
     > main {
         min-height: calc(78vh - 20px);
     }
+}
+
+table{
+    margin-top: 20px;
 }
 
 .sponsor-check {
@@ -59,6 +67,11 @@ $deletecolor: #d0211c;
     width: 165px;
 }
 
+.img-col{
+    width: 200px;
+    text-align: center;
+}
+
 .card {
     padding: 20px;
 }
@@ -66,10 +79,11 @@ $deletecolor: #d0211c;
 .evidence-card {
     display: flex;
     flex-wrap: wrap;
-    text-align: center;
 
     a {
         color: inherit;
+        text-align: center;
+
 
         &:hover {
             text-decoration: none;
@@ -78,6 +92,7 @@ $deletecolor: #d0211c;
     }
 
     .card {
+        text-align: center;
         width: 205px;
         margin: 5px 10px 10px 0;
         min-height: 300px;
@@ -102,7 +117,7 @@ $deletecolor: #d0211c;
     &:hover {
         color: $maincolor;
         background: white;
-        
+
         a {
             color: $maincolor;
         }
@@ -120,8 +135,8 @@ $deletecolor: #d0211c;
     }
 
     &:hover {
-        font-size: 22px;
-        color: #fff;
+        transform: scale(1.2);
+        color: $maincolor;
     }
 }
 
@@ -206,7 +221,17 @@ $deletecolor: #d0211c;
         select {
             cursor: pointer;
             display: inline-block;
+            color: $maincolor;
             width: 80%;
+
+            &:focus {
+                color: $maincolor;
+            }
+
+            option:hover{
+                background: $maincolor;
+                color: #fff;
+            }
         }
 
         .search {
@@ -214,7 +239,7 @@ $deletecolor: #d0211c;
             width: 17%;
             text-align: center;
             display: inline-block;
-            
+
             &:hover {
                 color: #fff;
                 font-weight: bold;
@@ -236,18 +261,43 @@ $deletecolor: #d0211c;
     display: none;
 }
 
+.dash-card{
+    margin-top: 40px;
+}
 
 // show
 .doctor-card {
+    margin-top: 30px;
     position: relative;
     padding: 40px;
 
-    .card-title {
-        margin-top: 40px;
-    }
-    #specs {
+
+    .doc-info{
+
         margin-bottom: 30px;
+
+        img{
+            vertical-align: -15px;
+        }
+
+        .box{
+            margin-left: 30px;
+        }
     }
+
+    #specs {
+
+        margin-bottom: 10px;
+
+        h5{
+            margin-bottom: -2px;
+        }
+    }
+
+    #mail{
+        margin-top: -15px;
+    }
+
     .card-text {
         margin: 2px 0;
         font-size: 14px;
@@ -255,6 +305,17 @@ $deletecolor: #d0211c;
         strong {
             font-size: 18px;
             margin-right: 5px;
+        }
+    }
+
+    button i{
+        margin-right: 5px;
+    }
+
+
+    .service-card{
+        &:hover{
+            border-color: $maincolor;
         }
     }
 }
@@ -286,7 +347,7 @@ $deletecolor: #d0211c;
             margin: 0 40px 50px 0;
             cursor: pointer;
         }
-    
+
     }
 
 }

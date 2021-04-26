@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card dash-card">
 
                 {{-- <div class="card-body">
                     @if (session('status'))
@@ -141,7 +141,8 @@
 
 {{-- Modale per la prestazione --}}
 <div class="modal fade" id="modalService" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <form action="{{ route('newService', ['user' => Auth::user()]) }}" method="post" class="needs-validation" novalidate>
+    <form action="{{ route('newService', ['user' => Auth::user()]) }}" method="post" class="needs-validation"
+        novalidate>
         @csrf
         @method('POST')
         <div class="modal-dialog" role="document">

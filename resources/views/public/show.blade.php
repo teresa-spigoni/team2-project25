@@ -11,46 +11,61 @@
         </button>
         <div class="card-body">
 
+
+            {{-- Informazioni del dottore --}}
+            <div class="doc-info">
+                <img class="user-image" src="{{ asset($user->profile_image) }}">
+
+                <div class="inline-b box">
+                    <h2 class="card-title inline-b">
+                        {{ $user->name }}
+                        {{ $user->lastname }}
+                    </h2>
+                    <p class="card-text" id="mail">{{ $user->email }}</p>
+                    @if (isset($user->phone_number))
+                    <p class="card-text"><strong>{{ $user->phone_number }}</strong></p>
+                    @endif
+                    <div class="card-text" id="specs">
+                        @foreach ($user->specializations as $spec)
+                        <h5>{{ $spec->spec_name }}</h5>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+
+            {{-- pulsante per visualizzare il CV --}}
+            @if (isset($user->curriculum))
+            <button class="btn custom-button">
+                <a href="{{ asset($user->curriculum) }}" type="application/pdf" width="600px" height="300px">
+                    <i class="fas fa-file-pdf"></i>Curriculum</a>
+            </button>
+            @endif
+
             {{-- pulsante per inviare un messaggio --}}
-            <button class="btn custom-button b-absolute-tr" data-toggle="modal" data-target="#modalMessage">
-                <i class="fas fa-comment-medical" style="margin-right: 5px"></i> Invia un messaggio
+            <button class="btn custom-button " data-toggle="modal" data-target="#modalMessage">
+                <i class="fas fa-comment-medical"></i> Invia un messaggio
             </button>
 
             {{-- pulsante per scrivere una recensione --}}
-            <button class="btn custom-button b-absolute-tr" data-toggle="modal" data-target="#modalReview" style="top:60px">
-                <i class="fas fa-plus" style="margin-right: 5px"></i> Scrivi una recensione
+            <button class="btn custom-button rev-button" data-toggle="modal" data-target="#modalReview">
+                <i class="fas fa-plus"></i> Scrivi una recensione
             </button>
 
-            {{-- Informazioni del dottore --}}
-            <img class="user-image" src="{{ asset($user->profile_image) }}">
-            <h2 class="card-title"><i class="fas fa-user-md" style="color: #32bea6"></i> {{ $user->name }}
-                {{ $user->lastname }}
-            </h2>
-            <div class="card-text" id="specs">
-                @foreach ($user->specializations as $spec)
-                <h5>&diams; {{ $spec->spec_name }}</h5>
-                @endforeach
-            </div>
-            @if (isset($user->phone_number))
-            <p class="card-text"><strong>Phone:</strong> {{ $user->phone_number }}</p>
-            @endif
-            <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
-            <p class="card-text"><strong>Indirizzo:</strong> {{ $user->address }}</p>
-            @if (isset($user->curriculum))
-                <button class="btn custom-button b-absolute-tr" style="top: 101px"><a
-                        href="{{ asset($user->curriculum) }}" type="application/pdf"
-                        width="600px" height="300px"><i class="fas fa-file-pdf"
-                            style="margin-right: 10px; font-size: 20px"></i>Curriculum</a></button>
-            @endif
-            <br>
+            <br><br><br>
+
             {{-- Prestazioni --}}
-            <h2>Prestazioni</h2>
             @foreach ($user->services as $service)
-            <div class="card" style="width: 500px; padding: 20px; margin-bottom:20px">
-                <h3><strong>{{ $service->service_type }}</strong></h3>
-                <h4>€{{ $service->service_price }}</h4>
-                <div class="card-text"><strong><i class="fas fa-map-marker-alt"></i> Indirizzo:
-                    </strong>{{ $service->service_address }}</div>
+            <div class="card service-card" style="width: 500px; padding: 20px; margin-bottom:20px">
+                <h4><strong>{{ $service->service_type }}</strong></h4>
+                <h5>€{{ $service->service_price }}</h5>
+                <div class="card-text">
+                    <strong>
+                        <i class="fas fa-map-marker-alt" style="color: #01c2a5"></i>
+                        Indirizzo:
+                    </strong>
+                    {{ $service->service_address }}
+                </div>
             </div>
             @endforeach
 
@@ -81,7 +96,8 @@
     </div>
 
     {{-- modale per scrivere un messaggio --}}
-    <div class="modal fade" id="modalMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
         <form action="{{ route('saveMessage', compact('user')) }}" method="post">
             @csrf
             @method('POST')
@@ -117,9 +133,10 @@
 
                         {{-- NUMERO DI TELEFONO --}}
                         <div class="md-form mb-4">
-                            <label data-error="wrong" data-success="right" for="msg_phone_number">Numero di telefono</label>
-                            <input type="text" class="form-control validate" name="msg_phone_number" required minlength="9"
-                                maxlength="10">
+                            <label data-error="wrong" data-success="right" for="msg_phone_number">Numero di
+                                telefono</label>
+                            <input type="text" class="form-control validate" name="msg_phone_number" required
+                                minlength="9" maxlength="10">
                         </div>
 
                         {{-- MESSAGGIO --}}
@@ -140,7 +157,8 @@
     </div>
 
     {{-- modale per scrivere una recensione --}}
-    <div class="modal fade" id="modalReview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalReview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
         <form action="{{ route('review') }}" method="post">
             @csrf
             @method('POST')
