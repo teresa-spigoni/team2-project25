@@ -65,7 +65,8 @@
             @if ($numSponsAttive > 0)
             <br>
             <div class="sponsor-check">
-                <i class="fas fa-check"></i> Sponsored
+                <i class="fas fa-check"></i>
+                Piano {{$sponsor->sponsor_name}} attivo.
             </div>
             @endif
             <br>
@@ -117,12 +118,19 @@
             </button>
 
             {{-- pulsante per acquistare una sponsorizzazione --}}
+            @if (count(Auth::user()->sponsorships) > 0)
+            <button class="btn custom-button" data-toggle="modal" data-target="#modalSponsor">
+                <i class="fas fa-shopping-cart"></i>
+                Dettagli sponsorizzazione
+            </button>
+            @else 
             <button class="btn custom-button">
                 <a href="{{ route('buySponsorship', ['user' => Auth::user()]) }}">
                     <i class="fas fa-shopping-cart"></i>
                     Acquista sponsorizzazione
                 </a>
             </button>
+            @endif
 
             {{-- pulsante che elimina l'account --}}
             <form action="{{ route('destroy', ['user' => Auth::user()]) }}" method="post">
@@ -184,6 +192,29 @@
     </form>
 
 </div>
+
+{{-- Modale per la sponsorizzazione --}}
+@if (count(Auth::user()->sponsorships) > 0)
+    <div class="modal fade" id="modalSponsor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Dettagli sponsorizzazione</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div>Piano: {{$sponsor->sponsor_name}}</div>
+                    <div>Attivato in data: {{substr($sponsor->pivot->created_at, 0, 10)}} alle {{substr($sponsor->pivot->created_at, 11, 5)}}</div>
+                    <div>Scadrà il: {{substr($sponsor->pivot->expiration_time, 0, 10)}} alle {{substr($sponsor->pivot->expiration_time, 11, 5)}}</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+
 
 
 {{-- Modale per modificare i dati --}}

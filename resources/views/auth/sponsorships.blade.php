@@ -24,7 +24,7 @@
 
 </head>
 
-<body>
+<body class="layout">
     <nav id="main-nav" class="navbar navbar-expand-md navbar-light">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}" style="font-size: 30px">
@@ -99,24 +99,22 @@
         </div>
         @endif
 
+        <div class="title">Sponsorizzazioni</div>
+
         <form class="card" method="post" id="payment-form" style="padding: 20px"
             action="{{ route('checkout', compact('user')) }}">
             @csrf
             @method('POST')
-            <h1 class="custom-h1">Sponsorizzazioni</h1><br>
             <div class="spons-container">
                 @foreach($sponsorships as $sponsor)
-                <div class="card">
-                    <input type="radio" id="amount" name="amount" value="{{$sponsor->sponsor_price}}">
-                    <label for="amount">
+                    <input type="radio" id="{{$sponsor->sponsor_name}}" name="amount" value="{{$sponsor->sponsor_price}}">
+                    <label class="card" for="{{$sponsor->sponsor_name}}">
                         <div>{{$sponsor->sponsor_name}} </div>
                         <div>durata: {{$sponsor->sponsor_duration}} ore</div>
                         <div>{{$sponsor->sponsor_price}} €</div>
                     </label>
-                </div>
                 @endforeach
             </div>
-
 
             <section>
                 <div class="bt-drop-in-wrapper">
@@ -125,7 +123,7 @@
             </section>
 
             <input id="nonce" name="payment_method_nonce" type="hidden" />
-            <button class="button" type="submit"><span>Test Transaction</span></button>
+            <button class="custom-button" type="submit"><span>Procedi al pagamento</span></button>
         </form>
 
     </main>

@@ -11,7 +11,7 @@ $deletecolor: #d0211c;
     padding: 0;
 }
 
-#app {
+.layout {
     min-height: 100vh;
 
     > main {
@@ -50,7 +50,7 @@ $deletecolor: #d0211c;
 .title {
     color: $maincolor;
     font-size: 26px;
-    margin: 20px 0;
+    padding: 20px 0;
     font-weight: bold;
 }
 
@@ -279,14 +279,30 @@ $deletecolor: #d0211c;
         display: flex;
         flex-wrap: wrap;
 
+        input {
+            display: none;
+        }
 
-        .card {
+        label {
+            cursor: pointer;
             display: inline-block;
             width: 200px;
             margin: 0 40px 50px 0;
-            cursor: pointer;
         }
-    
+
+        input:checked + label {
+            color: $maincolor;
+            font-weight: bold;
+        }
+    }
+
+    section {
+        width: 50%;
+    }
+
+    button {
+        width: 20%;
+        text-align: center;
     }
 
 }

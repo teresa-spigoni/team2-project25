@@ -38,7 +38,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" class="layout">
 
         <nav id="main-nav" class="navbar navbar-expand-md navbar-light">
             <div class="container">
