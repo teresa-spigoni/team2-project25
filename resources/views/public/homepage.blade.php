@@ -35,7 +35,7 @@
 
 <div class="container">
 
-    <h3>Medici in evidenza</h3>
+    <div class="title">Medici in evidenza</div>
 
     <div class="container evidence-card">
         {{-- card medico in evidenza --}}
@@ -45,10 +45,9 @@
 
                 <div class="card">
                     <img src="{{$theuser->profile_image}}" alt="" class="user-image">
-                    <br><br>
-                    <h4>{{$theuser->name}} {{$theuser->lastname}}</h4>
+                    <h4 class="doctor-name">{{$theuser->name}} {{$theuser->lastname}}</h4>
                     @foreach ($theuser->specializations as $spec)
-                    - {{ $spec->spec_name }} <br>
+                    &diams; {{ $spec->spec_name }} <br>
                     @endforeach
                 </div>
             </a>

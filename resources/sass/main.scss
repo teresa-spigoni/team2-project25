@@ -11,7 +11,7 @@ $deletecolor: #d0211c;
     padding: 0;
 }
 
-.sponsor-check{
+.sponsor-check {
     color: $maincolor;
 }
 
@@ -39,6 +39,13 @@ $deletecolor: #d0211c;
     font-weight: bold;
 }
 
+.title {
+    color: $maincolor;
+    font-size: 26px;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
 .user-image {
     border-radius: 50%;
     width: 165px;
@@ -46,22 +53,27 @@ $deletecolor: #d0211c;
 
 .card {
     padding: 20px;
+    
+    .doctor-name {
+        text-align: center;
+        margin: 30px 0 10px 0;
+    }
 }
 
 .evidence-card {
     display: flex;
     flex-wrap: wrap;
 
-    a{
+    a {
         color: inherit;
 
-        &:hover{
+        &:hover {
             text-decoration: none;
             color: $maincolor;
         }
     }
 
-    .card{
+    .card {
         width: 205px;
         margin: 5px 10px 10px 0;
         min-height: 300px;
@@ -89,17 +101,17 @@ $deletecolor: #d0211c;
     }
 }
 
-.button-none{
+.button-none {
     border: none;
     background: none;
     color: $maincolor;
     font-size: 18px;
 
-    a{
+    a {
         color: $maincolor;
     }
 
-    &:hover{
+    &:hover {
         font-size: 22px;
         color: #fff;
     }
@@ -170,7 +182,7 @@ $deletecolor: #d0211c;
 
     &-left {
         position: absolute;
-        left: 30px;
+        // left: 30px;
         bottom: 120px;
 
         .jum-title {
