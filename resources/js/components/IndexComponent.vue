@@ -7,7 +7,7 @@
     </button>
 
     <br />
-    <div class="form-group inline-b">
+    <div class="form-group inline-b" v-if="specializations.length > 0">
       <select
         class="form-control"
         name="specializations"
@@ -119,23 +119,23 @@ export default {
     };
   },
   mounted() {
-    this.filterSpec();
+    return this.filterSpec();
   },
   watch: {
     specId: function () {
-      this.filterSpec().then(() => {
+      return this.filterSpec().then(() => {
         this.vote = "";
         this.orderBy = "";
       });
     },
     vote: function () {
-      this.filterSpec().then(() => {
+      return this.filterSpec().then(() => {
         return this.filterVote();
       });
     },
     orderBy: function () {
       if (this.orderBy === "reviewsNum") {
-        this.sortUsers();
+        return this.sortUsers();
       } 
     },
   },
@@ -155,15 +155,18 @@ export default {
             this.users = response.data;
             if (this.users.length === 0) {
               this.results = false;
+            } else {
+              this.results = true;
             }
           });
       } else {
+        console.log('vedi tutti')
         return this.getAll();
       }
     },
     filterVote: function () {
       if (this.orderBy === "reviewsNum") {
-        this.sortUsers();
+        return this.sortUsers();
       }
       if (this.vote != 0) {
         this.users = this.users.filter((user) => {
@@ -174,6 +177,8 @@ export default {
         });
         if (this.users.length === 0) {
           this.results = false;
+        } else {
+          this.results = true;
         }
       }
     },

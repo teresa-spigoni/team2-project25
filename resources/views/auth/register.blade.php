@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" onsubmit="return verificapassword(this)">
+                    <form method="POST" action="{{ route('register') }}" onsubmit="return verificapassword(this)" class="needs-validation" novalidate>
                         @csrf
 
                         {{-- NOME --}}
@@ -25,6 +25,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                <div class="invalid-feedback">Inserisci il nome.</div>
                             </div>
                         </div>
 
@@ -44,6 +45,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                <div class="invalid-feedback">Inserisci il cognome.</div>
                             </div>
                         </div>
 
@@ -58,6 +60,7 @@
                                 <option value="{{ $spec->id }}">{{ $spec->spec_name }}</option>
                                 @endforeach
                             </select>
+                            <div class="invalid-feedback">Inserisci una o più specializzazioni.</div>
                         </div>
 
                         {{-- INDIRIZZO --}}
@@ -76,6 +79,8 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                <div class="invalid-feedback">Inserisci l'indirizzo.</div>
+
                             </div>
                         </div>
 
@@ -93,6 +98,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                <div class="invalid-feedback">Inserisci l'indirizzo email.</div>
                             </div>
                         </div>
 
@@ -111,6 +117,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                <div class="invalid-feedback">Scegli una password.</div>
                             </div>
                         </div>
 
@@ -134,6 +141,7 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>

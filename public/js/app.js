@@ -1968,13 +1968,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.filterSpec();
+    return this.filterSpec();
   },
   watch: {
     specId: function specId() {
       var _this = this;
 
-      this.filterSpec().then(function () {
+      return this.filterSpec().then(function () {
         _this.vote = "";
         _this.orderBy = "";
       });
@@ -1982,13 +1982,13 @@ __webpack_require__.r(__webpack_exports__);
     vote: function vote() {
       var _this2 = this;
 
-      this.filterSpec().then(function () {
+      return this.filterSpec().then(function () {
         return _this2.filterVote();
       });
     },
     orderBy: function orderBy() {
       if (this.orderBy === "reviewsNum") {
-        this.sortUsers();
+        return this.sortUsers();
       }
     }
   },
@@ -2009,9 +2009,12 @@ __webpack_require__.r(__webpack_exports__);
 
           if (_this4.users.length === 0) {
             _this4.results = false;
+          } else {
+            _this4.results = true;
           }
         });
       } else {
+        console.log('vedi tutti');
         return this.getAll();
       }
     },
@@ -2019,7 +2022,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this5 = this;
 
       if (this.orderBy === "reviewsNum") {
-        this.sortUsers();
+        return this.sortUsers();
       }
 
       if (this.vote != 0) {
@@ -2033,6 +2036,8 @@ __webpack_require__.r(__webpack_exports__);
 
         if (this.users.length === 0) {
           this.results = false;
+        } else {
+          this.results = true;
         }
       }
     },
@@ -2084,6 +2089,27 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 vue__WEBPACK_IMPORTED_MODULE_0__.default.prototype.$http = (axios__WEBPACK_IMPORTED_MODULE_1___default());
 vue__WEBPACK_IMPORTED_MODULE_0__.default.component('index-component', __webpack_require__(/*! ./components/IndexComponent.vue */ "./resources/js/components/IndexComponent.vue").default); // Vue.component('index', require('./components/ExampleComponent.vue').default)
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+
+(function () {
+  'use strict';
+
+  window.addEventListener('load', function () {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation'); // Loop over them and prevent submission
+
+    var validation = Array.prototype.filter.call(forms, function (form) {
+      form.addEventListener('submit', function (event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
 
 var app = new vue__WEBPACK_IMPORTED_MODULE_0__.default({
   el: '#app',
@@ -37618,54 +37644,58 @@ var render = function() {
     _vm._v(" "),
     _c("br"),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group inline-b" }, [
-      _c(
-        "select",
-        {
-          directives: [
+    _vm.specializations.length > 0
+      ? _c("div", { staticClass: "form-group inline-b" }, [
+          _c(
+            "select",
             {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.specId,
-              expression: "specId"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { name: "specializations", autocomplete: "on" },
-          on: {
-            change: function($event) {
-              var $$selectedVal = Array.prototype.filter
-                .call($event.target.options, function(o) {
-                  return o.selected
-                })
-                .map(function(o) {
-                  var val = "_value" in o ? o._value : o.value
-                  return val
-                })
-              _vm.specId = $event.target.multiple
-                ? $$selectedVal
-                : $$selectedVal[0]
-            }
-          }
-        },
-        [
-          _c("option", { attrs: { value: "", disabled: "" } }, [
-            _vm._v("scegli una specializzazione")
-          ]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "0" } }, [
-            _vm._v("vedi tutti i medici")
-          ]),
-          _vm._v(" "),
-          _vm._l(_vm.specializations, function(spec, index) {
-            return _c("option", { key: index, domProps: { value: spec.id } }, [
-              _vm._v("\n        " + _vm._s(spec.spec_name) + "\n      ")
-            ])
-          })
-        ],
-        2
-      )
-    ]),
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.specId,
+                  expression: "specId"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { name: "specializations", autocomplete: "on" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.specId = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "", disabled: "" } }, [
+                _vm._v("scegli una specializzazione")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "0" } }, [
+                _vm._v("vedi tutti i medici")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.specializations, function(spec, index) {
+                return _c(
+                  "option",
+                  { key: index, domProps: { value: spec.id } },
+                  [_vm._v("\n        " + _vm._s(spec.spec_name) + "\n      ")]
+                )
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "form-group inline-b" }, [
       _c(

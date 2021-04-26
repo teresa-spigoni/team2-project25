@@ -4,7 +4,7 @@
 
 <h1 class="custom-h1">Modifica qui i tuoi dati</h1>
 
-<form action="{{ route('update', compact('user')) }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('update', compact('user')) }}" method="post" enctype="multipart/form-data" >
     @csrf
     @method('PUT')
 

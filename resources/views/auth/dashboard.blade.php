@@ -140,7 +140,7 @@
 
 {{-- Modale per la prestazione --}}
 <div class="modal fade" id="modalService" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <form action="{{ route('newService', ['user' => Auth::user()]) }}" method="post">
+    <form action="{{ route('newService', ['user' => Auth::user()]) }}" method="post" class="needs-validation" novalidate>
         @csrf
         @method('POST')
         <div class="modal-dialog" role="document">
@@ -156,12 +156,14 @@
                         <label data-error="wrong" data-success="right" for="service_type">Nome
                             prestazione</label>
                         <input type="text" class="form-control validate" name="service_type" required minlength="5">
+                        <div class="invalid-feedback">Inserisci un nome.</div>
                     </div>
 
                     <div class="md-form mb-4">
                         <label data-error="wrong" data-success="right" for="service_address">Indirizzo
                             Prestazione</label>
                         <input type="text" class="form-control validate" name="service_address" required minlength="15">
+                        <div class="invalid-feedback">Inserisci l'indirizzo.</div>
                     </div>
 
                     <div class="md-form mb-4">
@@ -169,6 +171,7 @@
                             Prestazione</label>
                         <input type="number" step="0.01" class="form-control validate" name="service_price" min="10.00"
                             required>
+                        <div class="invalid-feedback">Inserisci il prezzo.</div>
                     </div>
 
                 </div>
