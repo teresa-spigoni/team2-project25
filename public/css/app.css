@@ -10981,7 +10981,7 @@ table {
 
 .dash-services:hover {
   color: #01c2a5;
-  background: rgba(1, 194, 165, 0.1);
+  border-color: #01c2a5;
 }
 
 .inline-b {
@@ -11055,7 +11055,7 @@ table {
 
 .custom-button:hover {
   color: #01c2a5;
-  background: white;
+  background: #fff;
 }
 
 .custom-button:hover a {
@@ -11126,13 +11126,12 @@ table {
 }
 
 #main-nav #dropp {
-  background: white;
-  color: black;
+  background: #fff;
+  color: #000;
 }
 
 #main-nav #dropp:hover {
   color: #01c2a5;
-  background: rgba(1, 194, 165, 0.1);
   font-weight: bold;
 }
 
@@ -11152,7 +11151,7 @@ table {
 }
 
 .jum-left .jum-title {
-  color: white;
+  color: #fff;
   font-size: 30px;
   letter-spacing: 1px;
   margin-bottom: 10px;
@@ -11272,6 +11271,10 @@ table {
   border-color: #01c2a5;
 }
 
+.relative {
+  position: relative;
+}
+
 .b-absolute-tr {
   position: absolute;
   top: 20px;
@@ -11298,6 +11301,46 @@ table {
   width: 200px;
   margin: 0 40px 50px 0;
   cursor: pointer;
+}
+
+.message {
+  width: 600px;
+  margin-top: 20px;
+}
+
+.message .msg-p {
+  height: 20px;
+  width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: height 2s;
+}
+
+.message:hover .msg-p {
+  overflow: visible;
+  white-space: unset;
+  height: auto;
+  min-height: 20px;
+}
+
+.message a {
+  color: inherit;
+}
+
+.message a:hover {
+  text-decoration: underline;
+}
+
+.message i {
+  color: #01c2a5;
+  margin-right: 10px;
+  margin-top: 10px;
+  font-size: 25px;
+}
+
+.message .message-mail {
+  margin-top: -10px;
 }
 
 footer {

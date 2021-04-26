@@ -39,9 +39,10 @@ table{
 
 .dash-services {
     width: 200px;
+
     &:hover{
         color: $maincolor;
-        background: $maincolorrgba;
+        border-color: $maincolor;
     }
 }
 
@@ -116,7 +117,7 @@ table{
 
     &:hover {
         color: $maincolor;
-        background: white;
+        background: #fff;
 
         a {
             color: $maincolor;
@@ -160,7 +161,6 @@ table{
     }
 }
 
-// ----------------------------------------------
 
 #main-nav {
     background: $maincolor;
@@ -190,12 +190,11 @@ table{
 
 
     #dropp {
-        background: white;
-        color: black;
+        background: #fff;
+        color: #000;
 
         &:hover{
             color: $maincolor;
-            background: $maincolorrgba;
             font-weight: bold;
         }
     }
@@ -217,7 +216,7 @@ table{
         bottom: 120px;
 
         .jum-title {
-            color: white;
+            color: #fff;
             font-size: 30px;
             letter-spacing: 1px;
             margin-bottom: 10px;
@@ -348,6 +347,10 @@ table{
 
 }
 
+.relative{
+    position: relative;
+}
+
 .b-absolute-tr {
     position: absolute;
     top: 20px;
@@ -378,6 +381,47 @@ table{
 
     }
 
+}
+
+.message{
+    width: 600px;
+    margin-top: 20px;
+
+    .msg-p{
+        height: 20px;
+        width: 400px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        transition: height 2s;
+
+    }
+
+    &:hover .msg-p{
+        overflow: visible;
+        white-space: unset;
+        height: auto;
+        min-height: 20px;
+    }
+
+    a{
+        color: inherit;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+
+    i{
+        color: $maincolor;
+        margin-right: 10px;
+        margin-top: 10px;
+        font-size: 25px;
+    }
+
+    .message-mail{
+        margin-top: -10px;
+    }
 }
 
 // footer

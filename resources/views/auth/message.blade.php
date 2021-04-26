@@ -4,41 +4,43 @@
 
 @section('content')
 
-<div class="container">
+<div class="container relative">
 
-    <h1>Pagina messaggi</h1>
-    <button class="btn custom-button">
+    <button class="btn button-none">
         <a href="{{ route('dashboard') }}">
-            Torna alla DashBoard
+            <i class="fas fa-arrow-left"></i>
         </a>
     </button>
-    @if ($userMessages->isEmpty())
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">
-                    Nessun Messaggio
-                </h5>
-                <p class="card-text">Al momento non ci sono nuovi messaggi</p>
-            </div>
-        </div>
-    @else
-        @foreach ($userMessages as $message)
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        Da: {{ $message->msg_name }} {{ $message->msg_lastname }}
-                    </h5>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                        E-Mail: <br> {{ $message->msg_email }} <br><br>
-                        Numero di telefono: <br>{{ $message->msg_phone_number }}
-                    </h6>
-                    <p class="card-text">{{ $message->msg_content }}</p>
-                </div>
-            </div>
+    <h1 class="custom-h1 inline-b">Messaggi ricevuti</h1>
 
-        @endforeach
+    @if ($userMessages->isEmpty())
+    <div class="card relative">
+        <br>
+        <div class="card-body">
+            <h5 class="card-title">
+                Nessun Messaggio
+            </h5>
+            <p class="card-text">Al momento non ci sono nuovi messaggi</p>
+        </div>
+    </div>
+    @else
+    @foreach ($userMessages as $message)
+    <div class="card message relative">
+        <div class="card-body">
+            <h5 class="card-title">
+                Da: {{ $message->msg_name }} {{ $message->msg_lastname }}
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+                <div class="message-mail">{{ $message->msg_email }}</div>
+                <div><a href="tel: {{ $message->msg_phone_number }}">{{ $message->msg_phone_number }}</a></div>
+            </h6>
+            <p class="card-text msg-p">{{ $message->msg_content }}</p>
+        </div>
+    </div>
+
+    @endforeach
     @endif
-    
+
 </div>
 
 @endsection

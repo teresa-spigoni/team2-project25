@@ -86,8 +86,8 @@ class PrivateUserController extends Controller
             'lastname' => 'required|string|min:3|max:50',
             'address' => 'required|string|min:15',
             'phone_number' => 'nullable|string|min:9|max:10',
-            'curriculum' => 'nullable',
-            'profile_image' => 'nullable',
+            // 'curriculum' => 'nullable',
+            // 'profile_image' => 'nullable',
             'email' => 'required|email'
         ]);
     }

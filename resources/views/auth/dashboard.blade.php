@@ -80,29 +80,32 @@
             @if (count(Auth::user()->services) > 0)
             <hr>
 
-            <h3>Prestazioni:</h3>
+            <h3 class="custom-h1">Prestazioni:</h3>
             @foreach (Auth::user()->services as $service)
             <div class="card inline-b dash-services">
-                <h5>{{ $service->service_type }}</h5>
+                <h5><strong>{{ $service->service_type }}</strong></h5>
+                {{ $service->service_address }}
+                <br>
                 €{{ $service->service_price }}
             </div>
             @endforeach
             @endif
             <br><br>
             <hr>
-            {{--
+
+
             <button class="btn custom-button" data-toggle="modal" data-target="#modalEdit">
                 <i class="fas fa-user-edit"></i>
                 Modifica i tuoi dati
-            </button> --}}
+            </button>
 
             {{-- pulsante per modificare i dati --}}
-            <button class="btn custom-button">
+            {{-- <button class="btn custom-button">
                 <a href="{{ route('edit', ['user' => Auth::user()]) }}">
-                    <i class="fas fa-user-edit"></i>
-                    Modifica i tuoi dati
-                </a>
-            </button>
+            <i class="fas fa-user-edit"></i>
+            Modifica i tuoi dati
+            </a>
+            </button> --}}
 
             {{-- pulsante per visualizzare i messaggi --}}
             <button class="btn custom-button">
@@ -190,97 +193,99 @@
 
 
 {{-- Modale per modificare i dati --}}
-{{-- <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="{{ route('update', ['user' => Auth::user()]) }}" method="post">
-@csrf
-@method('PUT')
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header text-center">
-            <h4 class="modal-title w-100 font-weight-bold">I tuoi dati</h4>
+        @csrf
+        @method('PUT')
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">I tuoi dati</h4>
 
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+
+                    <div class="md-form mb-5">
+                        <label data-error="wrong" data-success="right" for="name">
+                            Nome
+                        </label>
+                        <input type="text" class="form-control validate" name="name" required minlength="3"
+                            maxlength="50" value="{{Auth::user()->name}}">
+                    </div>
+
+                    <div class="md-form mb-4">
+                        <label data-error="wrong" data-success="right" for="lastname">
+                            Cognome
+                        </label>
+                        <input type="text" class="form-control validate" name="lastname" required minlength="3"
+                            maxlength="50" value="{{Auth::user()->lastname}}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="specializations">Specializzazione</label>
+                        <select class="form-control" id="specializations" name="specializations[]" multiple required>
+                            <option value="">nessuno</option>
+                            @foreach ($specs as $spec)
+                            <option value="{{ $spec->id }}" @foreach (Auth::user()->specializations as $userSpec)
+                                @if($userSpec->id === $spec->id)
+                                selected
+                                @endif
+                                @endforeach
+                                >{{ $spec->spec_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="md-form mb-4">
+                        <label data-error="wrong" data-success="right" for="email">
+                            Email
+                        </label>
+                        <input type="email" class="form-control validate" name="email" required
+                            value="{{Auth::user()->email}}">
+                    </div>
+
+                    <div class="md-form mb-4">
+                        <label data-error="wrong" data-success="right" for="address">
+                            Indirizzo
+                        </label>
+                        <input type="text" class="form-control validate" name="address" minlength="15" required
+                            value="{{Auth::user()->address}}">
+                    </div>
+
+                    <div class="md-form mb-4">
+                        <label data-error="wrong" data-success="right" for="phone_number">
+                            Numero di telefono
+                        </label>
+                        <input type="text" class="form-control validate" name="phone_number" minlength="9"
+                            maxlength="10" value="{{Auth::user()->phone_number}}">
+                    </div>
+
+                    <div class="md-form mb-4">
+                        <label data-error="wrong" data-success="right" for="sprofile_image">
+                            Foto profilo
+                        </label>
+                        <input type="file" class="form-control validate" name="profile_image"
+                            value="{{Auth::user()->profile_image}}">
+                    </div>
+
+                    <div class="md-form mb-4">
+                        <label data-error="wrong" data-success="right" for="curriculum">
+                            Curriculum
+                        </label>
+                        <input type="file" class="form-control validate" name="curriculum"
+                            value="{{Auth::user()->curriculum}}">
+                    </div>
+
+                </div>
+                <div class="modal-footer d-flex justify-content-right">
+                    <button type="submit" class="btn custom-button">Salva</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body mx-3">
-
-            <div class="md-form mb-5">
-                <label data-error="wrong" data-success="right" for="name">
-                    Nome
-                </label>
-                <input type="text" class="form-control validate" name="name" required minlength="3" maxlength="50"
-                    value="{{Auth::user()->name}}">
-            </div>
-
-            <div class="md-form mb-4">
-                <label data-error="wrong" data-success="right" for="lastname">
-                    Cognome
-                </label>
-                <input type="text" class="form-control validate" name="lastname" required minlength="3" maxlength="50"
-                    value="{{Auth::user()->lastname}}">
-            </div>
-
-            <div class="form-group">
-                <label for="specializations">Specializzazione</label>
-                <select class="form-control" id="specializations" name="specializations[]" multiple required>
-                    <option value="">nessuno</option>
-                    @foreach ($specs as $spec)
-                    <option value="{{ $spec->id }}" @foreach (Auth::user()->specializations as $userSpec)
-                        @if($userSpec->id === $spec->id)
-                        selected
-                        @endif
-                        @endforeach
-                        >{{ $spec->spec_name }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="md-form mb-4">
-                <label data-error="wrong" data-success="right" for="email">
-                    Email
-                </label>
-                <input type="email" class="form-control validate" name="email" required value="{{Auth::user()->email}}">
-            </div>
-
-            <div class="md-form mb-4">
-                <label data-error="wrong" data-success="right" for="address">
-                    Indirizzo
-                </label>
-                <input type="text" class="form-control validate" name="address" minlength="15" required
-                    value="{{Auth::user()->address}}">
-            </div>
-
-            <div class="md-form mb-4">
-                <label data-error="wrong" data-success="right" for="phone_number">
-                    Numero di telefono
-                </label>
-                <input type="text" class="form-control validate" name="phone_number" minlength="9" maxlength="10"
-                    value="{{Auth::user()->phone_number}}">
-            </div>
-
-            <div class="md-form mb-4">
-                <label data-error="wrong" data-success="right" for="sprofile_image">
-                    Foto profilo
-                </label>
-                <input type="file" class="form-control validate" name="profile_image"
-                    value="{{Auth::user()->profile_image}}">
-            </div>
-
-            <div class="md-form mb-4">
-                <label data-error="wrong" data-success="right" for="curriculum">
-                    Curriculum
-                </label>
-                <input type="file" class="form-control validate" name="curriculum" value="{{Auth::user()->curriculum}}">
-            </div>
-
-        </div>
-        <div class="modal-footer d-flex justify-content-right">
-            <button type="submit" class="btn custom-button">Salva</button>
-        </div>
-    </div>
-</div>
-</form> --}}
+    </form>
 
 </div>
 @endsection
