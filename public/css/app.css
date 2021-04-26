@@ -10949,6 +10949,14 @@ a.text-dark:focus {
   padding: 0;
 }
 
+#app {
+  min-height: 100vh;
+}
+
+#app > main {
+  min-height: calc(78vh - 20px);
+}
+
 .sponsor-check {
   color: #01c2a5;
 }
@@ -10994,14 +11002,10 @@ a.text-dark:focus {
   padding: 20px;
 }
 
-.card .doctor-name {
-  text-align: center;
-  margin: 30px 0 10px 0;
-}
-
 .evidence-card {
   display: flex;
   flex-wrap: wrap;
+  text-align: center;
 }
 
 .evidence-card a {
@@ -11017,6 +11021,10 @@ a.text-dark:focus {
   width: 205px;
   margin: 5px 10px 10px 0;
   min-height: 300px;
+}
+
+.evidence-card .doctor-name {
+  margin: 30px 0 10px 0;
 }
 
 .custom-button {
@@ -11075,6 +11083,7 @@ a.text-dark:focus {
   background: #01c2a5;
   color: #fff;
   box-shadow: none;
+  height: 12vh;
 }
 
 #main-nav .navbar-brand {
@@ -11094,15 +11103,17 @@ a.text-dark:focus {
 }
 
 #main-nav .nav-right {
-  font-size: 19px;
+  font-size: 18px;
 }
 
 #main-nav #dropp {
   background: white;
-  color: #01c2a5;
+  color: black;
 }
 
 #main-nav #dropp:hover {
+  color: #01c2a5;
+  background: rgba(1, 194, 165, 0.1);
   font-weight: bold;
 }
 
@@ -11129,23 +11140,22 @@ a.text-dark:focus {
 }
 
 .jum-left select {
-  color: #376467;
   cursor: pointer;
   display: inline-block;
   width: 80%;
 }
 
 .jum-left .search {
-  color: white;
-  display: inline-block;
-  cursor: pointer;
   font-size: 19px;
-  font-weight: bold;
   width: 17%;
   text-align: center;
+  display: inline-block;
 }
 
 .jum-left .search:hover {
+  color: #fff;
+  font-weight: bold;
+  background-color: #01c2a5;
   transform: scale(1.1);
 }
 
@@ -11195,10 +11205,28 @@ a.text-dark:focus {
   left: 20px;
 }
 
+#payment-form {
+  margin: 30px 0;
+}
+
+#payment-form .spons-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#payment-form .spons-container .card {
+  display: inline-block;
+  width: 200px;
+  margin: 0 40px 50px 0;
+  cursor: pointer;
+}
+
 footer {
   text-align: center;
   background: #01c2a5;
+  margin-top: 20px;
   padding: 20px 0;
+  height: 10vh;
 }
 
 footer a {

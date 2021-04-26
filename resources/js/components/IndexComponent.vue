@@ -85,7 +85,8 @@
               v-for="(star, index) in average(user)"
               :key="index"
             ></i>
-            su {{ sum(user) }} recensioni
+            <span v-if="user.reviews.length > 0">su {{ sum(user) }} recensioni</span>
+            <span v-else>Non ha ancora nessuna recensione</span>
           </td>
           <td>
             <a :href="'/doctors/' + user.id + '/' + specId">
@@ -115,7 +116,7 @@ export default {
       users: [],
       results: true,
       vote: "",
-      orderBy: "",
+      orderBy: ""
     };
   },
   mounted() {
@@ -186,18 +187,22 @@ export default {
       let somma = 0;
       let n = 0;
       let media = 0;
-      user.reviews.forEach((review) => {
-        somma += review.rv_vote;
-        n += 1;
-      });
-      return (media = Math.round(somma / n));
+      if (user.reviews.length > 0) {
+        user.reviews.forEach((review) => {
+          somma += review.rv_vote;
+          n += 1;
+        });
+        return (media = Math.round(somma / n));
+      } 
     },
     sum: function (user) {
       let n = 0;
-      user.reviews.forEach((el) => {
-        n += 1;
-      });
-      return n;
+      if (user.reviews.length > 0) {
+        user.reviews.forEach((el) => {
+          n += 1;
+        });
+        return n;
+      }
     },
     sortUsers: function () {
       this.users = this.users.sort((a, b) => {

@@ -103,16 +103,19 @@
             action="{{ route('checkout', compact('user')) }}">
             @csrf
             @method('POST')
-            <h1 class="custom-h1">Sponsorizzazioni</h1><br><br>
-            @foreach($sponsorships as $sponsor)
-            <input type="radio" id="amount" name="amount" value="{{$sponsor->sponsor_price}}">
-            <label for="amount">
-                <div>nome: {{$sponsor->sponsor_name}} </div>
-                <div>durata: {{$sponsor->sponsor_duration}} ore</div>
-                <div>prezzo: {{$sponsor->sponsor_price}} €</div>
-            </label>
-            <hr>
-            @endforeach
+            <h1 class="custom-h1">Sponsorizzazioni</h1><br>
+            <div class="spons-container">
+                @foreach($sponsorships as $sponsor)
+                <div class="card">
+                    <input type="radio" id="amount" name="amount" value="{{$sponsor->sponsor_price}}">
+                    <label for="amount">
+                        <div>{{$sponsor->sponsor_name}} </div>
+                        <div>durata: {{$sponsor->sponsor_duration}} ore</div>
+                        <div>{{$sponsor->sponsor_price}} €</div>
+                    </label>
+                </div>
+                @endforeach
+            </div>
 
 
             <section>

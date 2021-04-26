@@ -1953,6 +1953,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     selected: Number,
@@ -2045,18 +2046,24 @@ __webpack_require__.r(__webpack_exports__);
       var somma = 0;
       var n = 0;
       var media = 0;
-      user.reviews.forEach(function (review) {
-        somma += review.rv_vote;
-        n += 1;
-      });
-      return media = Math.round(somma / n);
+
+      if (user.reviews.length > 0) {
+        user.reviews.forEach(function (review) {
+          somma += review.rv_vote;
+          n += 1;
+        });
+        return media = Math.round(somma / n);
+      }
     },
     sum: function sum(user) {
       var n = 0;
-      user.reviews.forEach(function (el) {
-        n += 1;
-      });
-      return n;
+
+      if (user.reviews.length > 0) {
+        user.reviews.forEach(function (el) {
+          n += 1;
+        });
+        return n;
+      }
     },
     sortUsers: function sortUsers() {
       var _this6 = this;
@@ -37847,11 +37854,12 @@ var render = function() {
                         staticStyle: { color: "orange" }
                       })
                     }),
-                    _vm._v(
-                      "\n          su " +
-                        _vm._s(_vm.sum(user)) +
-                        " recensioni\n        "
-                    )
+                    _vm._v(" "),
+                    user.reviews.length > 0
+                      ? _c("span", [
+                          _vm._v("su " + _vm._s(_vm.sum(user)) + " recensioni")
+                        ])
+                      : _c("span", [_vm._v("Non ha ancora nessuna recensione")])
                   ],
                   2
                 ),

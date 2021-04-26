@@ -11,11 +11,19 @@ $deletecolor: #d0211c;
     padding: 0;
 }
 
+#app {
+    min-height: 100vh;
+
+    > main {
+        min-height: calc(78vh - 20px);
+    }
+}
+
 .sponsor-check {
     color: $maincolor;
 }
 
-.logged{
+.logged {
     color: $maincolor;
     font-size: 10px;
     vertical-align:middle;
@@ -53,16 +61,12 @@ $deletecolor: #d0211c;
 
 .card {
     padding: 20px;
-    
-    .doctor-name {
-        text-align: center;
-        margin: 30px 0 10px 0;
-    }
 }
 
 .evidence-card {
     display: flex;
     flex-wrap: wrap;
+    text-align: center;
 
     a {
         color: inherit;
@@ -77,6 +81,10 @@ $deletecolor: #d0211c;
         width: 205px;
         margin: 5px 10px 10px 0;
         min-height: 300px;
+    }
+
+    .doctor-name {
+        margin: 30px 0 10px 0;
     }
 }
 
@@ -138,6 +146,7 @@ $deletecolor: #d0211c;
     background: $maincolor;
     color: #fff;
     box-shadow: none;
+    height: 12vh;
 
     .navbar-brand {
         font-weight: bold;
@@ -156,14 +165,17 @@ $deletecolor: #d0211c;
     }
 
     .nav-right {
-        font-size: 19px;
+        font-size: 18px;
     }
+
 
     #dropp {
         background: white;
-        color: $maincolor;
+        color: black;
 
-        &:hover {
+        &:hover{
+            color: $maincolor;
+            background: $maincolorrgba;
             font-weight: bold;
         }
     }
@@ -182,7 +194,6 @@ $deletecolor: #d0211c;
 
     &-left {
         position: absolute;
-        // left: 30px;
         bottom: 120px;
 
         .jum-title {
@@ -193,22 +204,21 @@ $deletecolor: #d0211c;
         }
 
         select {
-            color: #376467;
             cursor: pointer;
             display: inline-block;
             width: 80%;
         }
 
         .search {
-            color: white;
-            display: inline-block;
-            cursor: pointer;
             font-size: 19px;
-            font-weight: bold;
             width: 17%;
             text-align: center;
-
+            display: inline-block;
+            
             &:hover {
+                color: #fff;
+                font-weight: bold;
+                background-color: $maincolor;
                 transform: scale(1.1);
             }
         }
@@ -261,11 +271,33 @@ $deletecolor: #d0211c;
     left: 20px;
 }
 
+// sponsorship
+#payment-form {
+    margin: 30px 0;
+
+    .spons-container {
+        display: flex;
+        flex-wrap: wrap;
+
+
+        .card {
+            display: inline-block;
+            width: 200px;
+            margin: 0 40px 50px 0;
+            cursor: pointer;
+        }
+    
+    }
+
+}
+
 // footer
 footer {
     text-align: center;
     background: $maincolor;
+    margin-top: 20px;
     padding: 20px 0;
+    height: 10vh;
 
     a {
         color: #fff;

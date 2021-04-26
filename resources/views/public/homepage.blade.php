@@ -21,9 +21,9 @@
                         @endforeach
                     </select>
                     {{-- pulsante di ricerca --}}
-                    <div class="search">
+                    <button class="search custom-button" type="submit">
                         Cerca
-                    </div>
+                    </button>
                 </div>
             </form>
         </div>
@@ -47,7 +47,7 @@
                     <img src="{{$theuser->profile_image}}" alt="" class="user-image">
                     <h4 class="doctor-name">{{$theuser->name}} {{$theuser->lastname}}</h4>
                     @foreach ($theuser->specializations as $spec)
-                    &diams; {{ $spec->spec_name }} <br>
+                    {{ $spec->spec_name }} <br>
                     @endforeach
                 </div>
             </a>
