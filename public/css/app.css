@@ -11222,9 +11222,13 @@ td a:hover {
 
 .evidence-card .card {
   text-align: center;
-  width: 205px;
+  width: 250px;
   margin: 5px 10px 10px 0;
-  min-height: 300px;
+  min-height: 370px;
+}
+
+.evidence-card .card img {
+  margin: 0 auto;
 }
 
 .evidence-card .doctor-name {
@@ -11338,9 +11342,14 @@ table {
   padding: 40px;
 }
 
+.doctor-card .card-body {
+  display: flex;
+}
+
 .doctor-card .doc-info {
+  width: 560px;
   margin-bottom: 30px;
-  margin-right: 100px;
+  margin-right: 60px;
   vertical-align: top;
 }
 
@@ -11387,6 +11396,12 @@ table {
 
 .doctor-card .service-card:hover {
   border-color: #01c2a5;
+  color: #01c2a5;
+}
+
+.doctor-card .review {
+  width: 560px;
+  margin-top: 50px;
 }
 
 .doctor-card .review .card {

@@ -209,7 +209,7 @@ td {
     }
 }
 
-// register 
+// register
 .register-card {
     margin-top: 20px;
 
@@ -295,9 +295,13 @@ td {
 
     .card {
         text-align: center;
-        width: 205px;
+        width: 250px;
         margin: 5px 10px 10px 0;
-        min-height: 300px;
+        min-height: 370px;
+
+        img{
+            margin: 0 auto;
+        }
     }
 
     .doctor-name {
@@ -323,12 +327,12 @@ table {
     .dash-services {
         width: 200px;
         margin: 5px 5px 0 0;
-    
+
         &:hover {
             color: $maincolor;
             border-color: $maincolor;
         }
-    }    
+    }
 }
 
 .dash-card {
@@ -420,9 +424,14 @@ table {
     position: relative;
     padding: 40px;
 
+    .card-body{
+        display: flex;
+    }
+
     .doc-info {
+        width: 560px;
         margin-bottom: 30px;
-        margin-right: 100px;
+        margin-right: 60px;
         vertical-align: top;
 
         img {
@@ -468,10 +477,14 @@ table {
 
         &:hover {
             border-color: $maincolor;
+            color: $maincolor;
         }
     }
 
     .review {
+        width: 560px;
+        margin-top: 50px;
+
         .card {
             margin-bottom: 5px;
 
@@ -504,37 +517,37 @@ table {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
-    
+
                 input {
                     display: none;
                 }
-    
+
                 label {
                     cursor: pointer;
                     display: inline-block;
                     width: 30%;
-    
+
                     .sponsor-name {
                         font-size: 18px;
                     }
                 }
-    
+
                 label:hover {
                     color: $maincolor;
                     background: $maincolorrgba;
                     font-weight: bold;
                 }
-    
+
                 input:checked + label {
                     color: $maincolor;
                     font-weight: bold;
                 }
             }
-    
+
             section {
                 margin: 30px auto;
                 width: 80%;
-    
+
                 .braintree-heading {
                     width: 100%;
                     text-align: center;

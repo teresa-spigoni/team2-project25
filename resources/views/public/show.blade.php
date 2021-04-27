@@ -39,14 +39,14 @@
 
                 @guest
                 {{-- pulsante per inviare un messaggio --}}
-                    <button class="btn custom-button " data-toggle="modal" data-target="#modalMessage">
-                        <i class="fas fa-comment-medical"></i> Invia un messaggio
-                    </button>
+                <button class="btn custom-button " data-toggle="modal" data-target="#modalMessage">
+                    <i class="fas fa-comment-medical"></i> Invia un messaggio
+                </button>
 
-                    {{-- pulsante per scrivere una recensione --}}
-                    <button class="btn custom-button rev-button" data-toggle="modal" data-target="#modalReview">
-                        <i class="fas fa-plus"></i> Scrivi una recensione
-                    </button>
+                {{-- pulsante per scrivere una recensione --}}
+                <button class="btn custom-button rev-button" data-toggle="modal" data-target="#modalReview">
+                    <i class="fas fa-plus"></i> Scrivi una recensione
+                </button>
                 @endguest
 
                 {{-- pulsante per visualizzare il CV --}}
@@ -58,10 +58,34 @@
                 </button>
                 @endif
 
+
+                {{-- Recensioni --}}
+                <div class="review inline-b">
+                    @php
+                    $numreviews = count($user->reviews);
+                    @endphp
+                    <h2 class="custom-h1">Recensioni {{$numreviews}}</h2>
+                    @foreach ($reviews as $review)
+                    @if ($review->user_id === $user->id)
+                    <div class="card">
+                        <div>
+                            @for ($i = 0; $i < $review->rv_vote; $i++)
+                                <i class="fas fa-star"></i> @endfor </div>
+                        <h3>{{ $review->rv_title }}</h3>
+                        <div>Il {{ substr($review->created_at, 0, 10) }} alle {{ substr($review->created_at, 11, 5) }}
+                        </div>
+                        <p style="width:250px">{{ $review->rv_content }}</p>
+                        <h5>{{ $review->rv_name }} {{ $review->rv_lastname }}</h5>
+                    </div>
+                    @endif
+                    @endforeach
+                </div>
+
             </div>
 
             {{-- Prestazioni --}}
             <div class="prestazioni inline-b">
+                <h2 class="custom-h1">Prestazioni</h2>
                 @foreach ($user->services as $service)
                 <div class="card service-card">
                     <h4><strong>{{ $service->service_type }}</strong></h4>
@@ -71,31 +95,6 @@
                         {{ $service->service_address }}
                     </div>
                 </div>
-                @endforeach
-            </div>
-
-
-
-            {{-- Recensioni --}}
-            <br><br><br><br>
-
-            @php
-            $numreviews = count($user->reviews);
-            @endphp
-            <div class="review">
-                <h2>Recensioni {{$numreviews}}</h2>
-                @foreach ($reviews as $review)
-                @if ($review->user_id === $user->id)
-                <div class="card">
-                    <div>
-                        @for ($i = 0; $i < $review->rv_vote; $i++)
-                            <i class="fas fa-star"></i> @endfor </div>
-                    <h3>{{ $review->rv_title }}</h3>
-                    <div>Il {{ substr($review->created_at, 0, 10) }} alle {{ substr($review->created_at, 11, 5) }}</div>
-                    <p style="width:250px">{{ $review->rv_content }}</p>
-                    <h5>{{ $review->rv_name }} {{ $review->rv_lastname }}</h5>
-                </div>
-                @endif
                 @endforeach
             </div>
 
@@ -160,7 +159,6 @@
                 </div>
             </div>
         </form>
-
     </div>
 
     {{-- modale per scrivere una recensione --}}
@@ -225,8 +223,8 @@
                 </div>
             </div>
         </form>
-
     </div>
+
 </div>
 
 @endsection
