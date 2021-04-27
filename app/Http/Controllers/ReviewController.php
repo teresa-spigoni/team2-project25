@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Review;
+use App\User;
 
 class ReviewController extends Controller
 {
@@ -37,4 +38,5 @@ class ReviewController extends Controller
             'rv_content' => 'required|string|min:10'
         ]);
     }
+
 }

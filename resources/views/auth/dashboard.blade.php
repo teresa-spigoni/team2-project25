@@ -99,6 +99,13 @@
                         {{ $service->service_address }}
                         <br>
                         €{{ $service->service_price }}
+                        <form action="{{ route('destroyService', ['user' => Auth::user(), 'service' => $service->id]) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn custom-button delete" type="submit">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </form>
                     </div>
                     @endforeach
                 </div>
