@@ -11095,6 +11095,7 @@ td a:hover {
 }
 
 #main-nav .navbar-brand {
+  font-size: 28px;
   font-weight: bold;
   letter-spacing: 1px;
 }
@@ -11154,6 +11155,7 @@ td a:hover {
 .jum {
   background: #01c2a5;
   height: 380px;
+  overflow: hidden;
 }
 
 .jum-container {
@@ -11166,11 +11168,36 @@ td a:hover {
   bottom: 120px;
 }
 
+@media screen and (max-width: 1200px) {
+  .jum-left {
+    top: 60px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .jum-left {
+    top: 30px;
+  }
+}
+
 .jum-left .jum-title {
   color: #fff;
   font-size: 30px;
   letter-spacing: 1px;
   margin-bottom: 10px;
+}
+
+@media screen and (max-width: 991px) {
+  .jum-left .jum-title {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .jum-left .jum-title {
+    font-size: 28px;
+    line-height: 29px;
+  }
 }
 
 .jum-left select {
@@ -11210,14 +11237,48 @@ td a:hover {
   right: 0;
 }
 
+@media screen and (max-width: 1200px) {
+  .jum img {
+    height: 80vh;
+    right: -50px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .jum img {
+    height: 70vh;
+    bottom: -50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .jum img {
+    height: 60vh;
+    bottom: -20px;
+  }
+}
+
 .evidence h2 {
   margin: 90px 0 0 20px;
   font-size: 30px;
 }
 
+@media screen and (max-width: 992px) {
+  .evidence h2 {
+    text-align: center;
+    margin: 20px 0;
+  }
+}
+
 .evidence .evidence-card {
   display: flex;
   flex-wrap: wrap;
+}
+
+@media screen and (max-width: 992px) {
+  .evidence .evidence-card {
+    justify-content: center;
+  }
 }
 
 .evidence .evidence-card a {
@@ -11234,7 +11295,20 @@ td a:hover {
   text-align: center;
   width: 260px;
   margin: 5px 10px 10px 0;
-  min-height: 350px;
+  min-height: 360px;
+}
+
+@media screen and (max-width: 1200px) {
+  .evidence .evidence-card .card {
+    width: 210px;
+    margin: 5px 15px 10px 0;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .evidence .evidence-card .card {
+    margin: 5px 10px 10px 0;
+  }
 }
 
 .evidence .evidence-card .card img {

@@ -164,6 +164,7 @@ td {
     height: 12vh;
 
     .navbar-brand {
+        font-size: 28px;
         font-weight: bold;
         letter-spacing: 1px;
     }
@@ -227,6 +228,7 @@ td {
 .jum {
     background: $maincolor;
     height: 380px;
+    overflow: hidden;
 
     &-container {
         position: relative;
@@ -237,11 +239,29 @@ td {
         position: absolute;
         bottom: 120px;
 
+        @media screen and (max-width: 1200px) {
+            top: 60px;
+        }
+
+        @media screen and (max-width: 991px) {
+            top: 30px;
+        }
+
         .jum-title {
             color: #fff;
             font-size: 30px;
             letter-spacing: 1px;
             margin-bottom: 10px;
+
+            @media screen and (max-width: 991px) {
+                margin-bottom: 0;
+            }
+
+            @media screen and (max-width: 575px) {
+                font-size: 28px;
+                line-height: 29px;
+            }    
+    
         }
 
         select {
@@ -280,6 +300,21 @@ td {
         position: absolute;
         bottom: 0;
         right: 0;
+
+        @media screen and (max-width: 1200px) {
+            height: 80vh;
+            right: -50px;
+        }
+
+        @media screen and (max-width: 991px) {
+            height: 70vh;
+            bottom: -50px;
+        }
+
+        @media screen and (max-width: 767px) {
+            height: 60vh;
+            bottom: -20px;
+        }
     }
 }
 
@@ -289,11 +324,21 @@ td {
     h2{
         margin: 90px 0 0 20px;
         font-size: 30px;
+
+        @media screen and (max-width: 992px) {
+            text-align: center;
+            margin: 20px 0;
+        }
     }
 
     .evidence-card {
         display: flex;
         flex-wrap: wrap;
+
+        @media screen and (max-width: 992px) {
+            justify-content: center;
+        }
+
 
         a {
             color: inherit;
@@ -310,6 +355,16 @@ td {
             width: 260px;
             margin: 5px 10px 10px 0;
             min-height: 360px;
+
+            @media screen and (max-width: 1200px) {
+                width: 210px;
+                margin: 5px 15px 10px 0;
+            }    
+
+            @media screen and (max-width: 991px) {
+                margin: 5px 10px 10px 0;
+            }    
+
 
             img{
                 margin: 0 auto;

@@ -40,9 +40,9 @@
 <body>
     <div id="app" class="layout">
 
-        <nav id="main-nav" class="navbar navbar-expand-md navbar-light">
+        <nav id="main-nav" class="navbar navbar-expand navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}" style="font-size: 30px">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHK4VZoPGy-_lCyOFjKY-FTDHq9B057V0Hj-tYYGYiL1r9MlTdLz409t0fp4AvQuciiDg&usqp=CAU"
                         alt=""> BDoctors
                 </a>
