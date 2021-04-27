@@ -24,7 +24,7 @@
 
 </head>
 
-<body>
+<body class="layout">
     <nav id="main-nav" class="navbar navbar-expand-md navbar-light">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}" style="font-size: 30px">
@@ -36,7 +36,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse nav-right" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
 
@@ -46,16 +46,16 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
-                    <li class="nav-item">
+                    <li class="nav-item nav-item-guest">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('create') }}">{{ __('Register') }}</a>
+                    <li class="nav-item nav-item-guest">
+                        <a class="nav-link" href="{{ route('create') }}">{{ __('Registrati') }}</a>
                     </li>
                     @endif
                     @else
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown nav-item-user">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
@@ -82,7 +82,7 @@
         </div>
     </nav>
 
-    <main class="container">
+    <main class="container sponsor-page">
         @if (session('success_message'))
         <div class="alert alert-success">
             {{ session('success_message') }}
@@ -99,24 +99,26 @@
         </div>
         @endif
 
+        <button class="button-none">
+            <a href="{{route('dashboard', compact('user'))}}"><i class="fas fa-arrow-left"></i> Torna alla dashboard</a>
+        </button>
+        
+        <div class="title">Sponsorizzazioni</div>
+
         <form class="card" method="post" id="payment-form" style="padding: 20px"
             action="{{ route('checkout', compact('user')) }}">
             @csrf
             @method('POST')
-            <h1 class="custom-h1">Sponsorizzazioni</h1><br>
             <div class="spons-container">
                 @foreach($sponsorships as $sponsor)
-                <div class="card">
-                    <input type="radio" id="amount" name="amount" value="{{$sponsor->sponsor_price}}">
-                    <label for="amount">
-                        <div>{{$sponsor->sponsor_name}} </div>
+                    <input type="radio" id="{{$sponsor->sponsor_name}}" name="amount" value="{{$sponsor->sponsor_price}}">
+                    <label class="card" for="{{$sponsor->sponsor_name}}">
+                        <div class="sponsor-name">{{$sponsor->sponsor_name}} </div>
                         <div>durata: {{$sponsor->sponsor_duration}} ore</div>
                         <div>{{$sponsor->sponsor_price}} €</div>
                     </label>
-                </div>
                 @endforeach
             </div>
-
 
             <section>
                 <div class="bt-drop-in-wrapper">
@@ -125,7 +127,7 @@
             </section>
 
             <input id="nonce" name="payment_method_nonce" type="hidden" />
-            <button class="button" type="submit"><span>Test Transaction</span></button>
+            <button class="custom-button" type="submit"><span>Procedi al pagamento</span></button>
         </form>
 
     </main>

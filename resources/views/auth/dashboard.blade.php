@@ -6,44 +6,6 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card dash-card">
-
-                    {{-- <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-            </div>
-
-            {{ __('You are logged in!') }} <br><br>
-            <button class="btn custom-button">
-                <a href="{{ route('edit', ['user' => Auth::user()]) }}">
-                    fbicjw
-                </a>
-            </button>
-            <button class="btn custom-button">
-                <a href="{{ route('messages', ['user' => Auth::user()]) }}">Visualizza i tuoi messaggi</a>
-            </button>
-            <button class="btn custom-button" data-toggle="modal" data-target="#modalService">
-                Aggiungi una prestazione
-            </button>
-            <button class="btn custom-button">
-                <a href="{{ route('buySponsorship', ['user' => Auth::user()]) }}">Acquista
-                    sponsorizzazione</a>
-                <a href="{{ route('message', ['user' => Auth::user()]) }}">
-                    Visualizza messagi
-                </a>
-            </button>
-            <form action="{{ route('destroy', ['user' => Auth::user()]) }}" method="post">
-                @csrf
-                @method('DELETE')
-                <button class="btn custom-button" type="submit">Elimina account</button>
-            </form>
-            @endif
-        </div> --}}
-
-
-
-
-
                     @php
                         date_default_timezone_set('Europe/Rome');
                         $currentDate = date('Y-m-d H:i:s');
@@ -54,32 +16,25 @@
                             }
                         }
                     @endphp
-
                     <img src="{{ Auth::user()->profile_image }}" class="user-image inline-b" alt="profile-pic">
-
-
                     <div class="card-body">
                         <strong style="font-size: 22px">{{ Auth::user()->name }} {{ Auth::user()->lastname }} <i
                                 class="fas fa-circle logged"></i></strong>
-
                         @if ($numSponsAttive > 0)
                             <br>
                             <div class="sponsor-check">
-                                <i class="fas fa-check"></i> Sponsored
+                                <i class="fas fa-check"></i>
+                                Piano {{ $sponsor->sponsor_name }} attivo.
                             </div>
                         @endif
                         <br>
-
-
                         <div class="card-text" id="specs">
                             @foreach (Auth::user()->specializations as $spec)
                                 <h6>{{ $spec->spec_name }}</h6>
                             @endforeach
                         </div>
-
                         @if (count(Auth::user()->services) > 0)
                             <hr>
-
                             <h3 class="custom-h1">Prestazioni:</h3>
                             @foreach (Auth::user()->services as $service)
                                 <div class="card inline-b dash-services">
@@ -92,9 +47,6 @@
                         @endif
                         <br><br>
                         <hr>
-
-
-
 
                         {{-- pulsante per modificare i dati --}}
                         <button class="btn custom-button">
@@ -119,12 +71,19 @@
                         </button>
 
                         {{-- pulsante per acquistare una sponsorizzazione --}}
-                        <button class="btn custom-button">
-                            <a href="{{ route('buySponsorship', ['user' => Auth::user()]) }}">
+                        @if (count(Auth::user()->sponsorships) > 0)
+                            <button class="btn custom-button" data-toggle="modal" data-target="#modalSponsor">
                                 <i class="fas fa-shopping-cart"></i>
-                                Acquista sponsorizzazione
-                            </a>
-                        </button>
+                                Dettagli sponsorizzazione
+                            </button>
+                        @else
+                            <button class="btn custom-button">
+                                <a href="{{ route('buySponsorship', ['user' => Auth::user()]) }}">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Acquista sponsorizzazione
+                                </a>
+                            </button>
+                        @endif
 
                         {{-- pulsante che elimina l'account --}}
                         <form action="{{ route('destroy', ['user' => Auth::user()]) }}" method="post">
@@ -135,11 +94,34 @@
                             </button>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
 
+        {{-- Modale per la sponsorizzazione --}}
+        @if (count(Auth::user()->sponsorships) > 0)
+            <div class="modal fade" id="modalSponsor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title w-100 font-weight-bold">Dettagli sponsorizzazione</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3">
+                            <div>Piano: {{ $sponsor->sponsor_name }}</div>
+                            <div>Attivato in data: {{ substr($sponsor->pivot->created_at, 0, 10) }} alle
+                                {{ substr($sponsor->pivot->created_at, 11, 5) }}</div>
+                            <div>Scadrà il: {{ substr($sponsor->pivot->expiration_time, 0, 10) }} alle
+                                {{ substr($sponsor->pivot->expiration_time, 11, 5) }}</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
 
         {{-- Modale per la prestazione --}}
         <div class="modal fade" id="modalService" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -163,7 +145,6 @@
                                 <input type="text" class="form-control validate" name="service_type" required minlength="5">
                                 <div class="invalid-feedback">Inserisci un nome.</div>
                             </div>
-
                             <div class="md-form mb-4">
                                 <label data-error="wrong" data-success="right" for="service_address">Indirizzo
                                     Prestazione</label>
@@ -171,7 +152,6 @@
                                     minlength="15">
                                 <div class="invalid-feedback">Inserisci l'indirizzo.</div>
                             </div>
-
                             <div class="md-form mb-4">
                                 <label data-error="wrong" data-success="right" for="service_price">Prezzo
                                     Prestazione</label>
@@ -179,7 +159,6 @@
                                     min="10.00" required>
                                 <div class="invalid-feedback">Inserisci il prezzo.</div>
                             </div>
-
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
                             <button type="submit" class="btn custom-button">Crea prestazione</button>
@@ -187,9 +166,5 @@
                     </div>
                 </div>
             </form>
-
         </div>
-
-
-
     @endsection

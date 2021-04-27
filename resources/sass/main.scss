@@ -5,17 +5,17 @@ $deletecolor: #d0211c;
 
 // utility classes
 * {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-a:hover{
+a:hover {
     text-decoration: none;
 }
 
-#app {
+.layout {
     min-height: 100vh;
 
     > main {
@@ -23,7 +23,7 @@ a:hover{
     }
 }
 
-table{
+table {
     margin-top: 20px;
 }
 
@@ -34,13 +34,13 @@ table{
 .logged {
     color: $maincolor;
     font-size: 10px;
-    vertical-align:middle;
+    vertical-align: middle;
 }
 
 .dash-services {
     width: 200px;
 
-    &:hover{
+    &:hover {
         color: $maincolor;
         border-color: $maincolor;
     }
@@ -59,7 +59,7 @@ table{
 .title {
     color: $maincolor;
     font-size: 26px;
-    margin: 20px 0;
+    padding: 20px 0;
     font-weight: bold;
 }
 
@@ -68,7 +68,7 @@ table{
     width: 165px;
 }
 
-.img-col{
+.img-col {
     width: 200px;
     text-align: center;
 }
@@ -84,7 +84,6 @@ table{
     a {
         color: inherit;
         text-align: center;
-
 
         &:hover {
             text-decoration: none;
@@ -129,15 +128,14 @@ table{
     border: none;
     background: none;
     color: $maincolor;
-    font-size: 18px;
+    font-size: 16px;
 
     a {
         color: $maincolor;
     }
 
     &:hover {
-        transform: scale(1.2);
-        color: $maincolor;
+        font-weight: bold;
     }
 }
 
@@ -145,7 +143,7 @@ table{
     background: $deletecolor;
     border-color: $deletecolor;
 
-    &:hover{
+    &:hover {
         background: #fff;
         color: $deletecolor;
     }
@@ -160,7 +158,6 @@ table{
         color: #fff;
     }
 }
-
 
 #main-nav {
     background: $maincolor;
@@ -186,20 +183,23 @@ table{
 
     .nav-right {
         font-size: 18px;
-    }
 
+        .nav-item-guest:hover,
+        .nav-item-user:hover {
+            font-weight: bold;
+        }
+    }
 
     #dropp {
         background: #fff;
         color: #000;
 
-        &:hover{
+        &:hover {
             color: $maincolor;
             font-weight: bold;
         }
     }
 }
-
 
 // jumbotron
 .jum {
@@ -232,7 +232,7 @@ table{
                 color: $maincolor;
             }
 
-            option:hover{
+            option:hover {
                 background: $maincolor;
                 color: #fff;
             }
@@ -265,7 +265,7 @@ table{
     display: none;
 }
 
-.dash-card{
+.dash-card {
     margin-top: 40px;
 }
 
@@ -275,18 +275,16 @@ table{
     position: relative;
     padding: 40px;
 
-
-    .doc-info{
-
+    .doc-info {
         margin-bottom: 30px;
         margin-right: 100px;
         vertical-align: top;
 
-        img{
+        img {
             vertical-align: top;
         }
 
-        .box{
+        .box {
             width: 310px;
             margin-left: 30px;
             margin-top: 20px;
@@ -294,15 +292,14 @@ table{
     }
 
     #specs {
-
         margin-bottom: 10px;
 
-        h5{
+        h5 {
             margin-bottom: -2px;
         }
     }
 
-    #mail{
+    #mail {
         margin-top: -15px;
     }
 
@@ -316,38 +313,35 @@ table{
         }
     }
 
-    button i{
+    button i {
         margin-right: 5px;
     }
 
-    .service-card{
-
+    .service-card {
         width: 370px;
         margin-bottom: 5px;
 
-        &:hover{
+        &:hover {
             border-color: $maincolor;
         }
     }
 
-    .review{
-
-        .card{
+    .review {
+        .card {
             margin-bottom: 5px;
 
-            .fa-star{
+            .fa-star {
                 color: orange;
             }
         }
 
-        .card:hover{
+        .card:hover {
             border-color: $maincolor;
         }
     }
-
 }
 
-.relative{
+.relative {
     position: relative;
 }
 
@@ -364,63 +358,96 @@ table{
 }
 
 // sponsorship
-#payment-form {
-    margin: 30px 0;
-
-    .spons-container {
-        display: flex;
-        flex-wrap: wrap;
-
-
-        .card {
-            display: inline-block;
-            width: 200px;
-            margin: 0 40px 50px 0;
-            cursor: pointer;
-        }
-
+.sponsor-page {
+    .title {
+        padding: 0;
     }
 
+    .button-none {
+        padding-top: 20px;
+    }
+
+    #payment-form {
+        margin: 15px 0;
+
+        .spons-container {
+            display: flex;
+            flex-wrap: wrap;
+
+            input {
+                display: none;
+            }
+
+            label {
+                cursor: pointer;
+                display: inline-block;
+                width: 200px;
+                margin: 0 40px 50px 0;
+
+                .sponsor-name {
+                    font-size: 18px;
+                }
+            }
+
+            label:hover {
+                color: $maincolor;
+                background: $maincolorrgba;
+            }
+
+            input:checked + label {
+                color: $maincolor;
+                font-weight: bold;
+            }
+        }
+
+        section {
+            width: 50%;
+        }
+    }
 }
 
-.message{
+.message {
     width: 600px;
     margin-top: 20px;
 
-    .msg-p{
+    .msg-p {
         height: 20px;
         width: 400px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         transition: height 2s;
-
     }
 
-    &:hover .msg-p{
+    &:hover .msg-p {
         overflow: visible;
         white-space: unset;
         height: auto;
         min-height: 20px;
     }
 
-    a{
+    a {
         color: inherit;
 
-        &:hover{
+        &:hover {
             text-decoration: underline;
         }
     }
 
-    i{
+    i {
         color: $maincolor;
         margin-right: 10px;
         margin-top: 10px;
         font-size: 25px;
     }
 
-    .message-mail{
+    .message-mail {
         margin-top: -10px;
+    }
+
+    button {
+        width: 20%;
+        text-align: center;
     }
 }
 

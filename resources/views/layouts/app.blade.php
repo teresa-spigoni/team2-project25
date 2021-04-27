@@ -38,7 +38,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" class="layout">
 
         <nav id="main-nav" class="navbar navbar-expand-md navbar-light">
             <div class="container">
@@ -62,16 +62,16 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                        <li class="nav-item">
+                        <li class="nav-item nav-item-guest">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('create') }}">{{ __('Register') }}</a>
+                        <li class="nav-item nav-item-guest">
+                            <a class="nav-link" href="{{ route('create') }}">{{ __('Registrati') }}</a>
                         </li>
                         @endif
                         @else
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown nav-item-user">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
