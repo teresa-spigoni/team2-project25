@@ -122,11 +122,16 @@ td {
 
     a {
         color: $maincolor;
+
+        &:hover{
+            color: $maincolor;
+        }
     }
 
     &:hover {
         font-weight: bold;
         transform: scale(1.2);
+        color: $maincolor;
     }
 }
 
@@ -325,12 +330,23 @@ table {
     flex-wrap: wrap;
 
     .dash-services {
-        width: 200px;
+        width: calc(50% - 5px);
         margin: 5px 5px 0 0;
+        position: relative;
+        padding-right: 40px;
 
         &:hover {
             color: $maincolor;
             border-color: $maincolor;
+        }
+
+        .del-b{
+            font-size: 14px;
+            padding: 2px 5px;
+            position: absolute;
+            top: 10px;
+            right: 0;
+            color: $deletecolor;
         }
     }
 }
@@ -345,6 +361,7 @@ table {
     .dash-info{
         width: 300px;
     }
+
 
     .dash-buttons{
         width: 250px;
