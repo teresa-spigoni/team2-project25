@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="index">
     <!-- <h1 class="custom-h1">Index - pagina di ricerca avanzata</h1> -->
     <br />
     <button class="btn button-none">
       <a href="/"><i class="fas fa-arrow-left"></i></a>
     </button>
 
-    <div class="form-group inline-b" v-if="specializations.length > 0">
+    <div class="form-group search" v-if="specializations.length > 0">
       <select
         class="form-control"
         name="specializations"
@@ -25,7 +25,7 @@
       </select>
     </div>
 
-    <div class="form-group inline-b">
+    <div class="form-group search">
       <select
         class="form-control"
         name="votes"
@@ -46,7 +46,7 @@
       </select>
     </div>
 
-    <div class="form-group inline-b">
+    <div class="form-group search">
       <select
         class="form-control"
         name="specializations"
@@ -63,7 +63,7 @@
         <tr>
           <th scope="col">Nome e Cognome</th>
           <th scope="col">Specializzazioni</th>
-          <th scope="col">Media voti</th>
+          <th scope="col" class="average">Media voti</th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -81,7 +81,7 @@
               </div>
             </a>
           </td>
-          <td>
+          <td class="average">
             <a :href="'/doctors/' + user.id + '/' + specId">
               <i
                 class="fas fa-star"

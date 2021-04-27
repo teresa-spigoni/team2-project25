@@ -11319,13 +11319,35 @@ td a:hover {
   margin: 30px 0 10px 0;
 }
 
-table {
+.index .search {
+  display: inline-block;
+}
+
+@media screen and (max-width: 767px) {
+  .index .search {
+    display: block;
+  }
+}
+
+.index table {
   margin-top: 20px;
 }
 
-.img-col {
+@media screen and (max-width: 767px) {
+  .index table .average {
+    display: none;
+  }
+}
+
+.index table .img-col {
   width: 200px;
   text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .index table .img-col {
+    width: 160px;
+  }
 }
 
 .all-services {

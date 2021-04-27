@@ -365,7 +365,6 @@ td {
                 margin: 5px 10px 10px 0;
             }    
 
-
             img{
                 margin: 0 auto;
             }
@@ -378,14 +377,35 @@ td {
 }
 
 // index
-table {
-    margin-top: 20px;
+.index {
+    .search {
+        display: inline-block;
+
+        @media screen and (max-width: 767px) {
+            display: block;
+        }    
+    }
+
+    table {
+        margin-top: 20px;
+
+        .average {
+            @media screen and (max-width: 767px) {
+                display: none;
+            }    
+        }
+
+        .img-col {
+            width: 200px;
+            text-align: center;
+    
+            @media screen and (max-width: 767px) {
+                width: 160px;
+            }    
+        }        
+    }
 }
 
-.img-col {
-    width: 200px;
-    text-align: center;
-}
 
 // dashboard
 .all-services {

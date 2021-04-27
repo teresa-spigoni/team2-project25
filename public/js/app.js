@@ -37651,13 +37651,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "index" }, [
     _c("br"),
     _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
     _vm.specializations.length > 0
-      ? _c("div", { staticClass: "form-group inline-b" }, [
+      ? _c("div", { staticClass: "form-group search" }, [
           _c(
             "select",
             {
@@ -37709,7 +37709,7 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group inline-b" }, [
+    _c("div", { staticClass: "form-group search" }, [
       _c(
         "select",
         {
@@ -37779,7 +37779,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group inline-b" }, [
+    _c("div", { staticClass: "form-group search" }, [
       _c(
         "select",
         {
@@ -37862,7 +37862,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("td", [
+                _c("td", { staticClass: "average" }, [
                   _c(
                     "a",
                     {
@@ -37945,7 +37945,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Specializzazioni")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Media voti")]),
+        _c("th", { staticClass: "average", attrs: { scope: "col" } }, [
+          _vm._v("Media voti")
+        ]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } })
       ])
