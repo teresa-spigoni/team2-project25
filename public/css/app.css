@@ -10949,6 +10949,10 @@ a.text-dark:focus {
   padding: 0;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .layout {
   min-height: 100vh;
 }
@@ -11106,6 +11110,11 @@ a.text-dark:focus {
   font-size: 18px;
 }
 
+#main-nav .nav-right .nav-item-guest:hover,
+#main-nav .nav-right .nav-item-user:hover {
+  font-weight: bold;
+}
+
 #main-nav #dropp {
   background: white;
   color: black;
@@ -11206,7 +11215,7 @@ a.text-dark:focus {
 }
 
 #payment-form {
-  margin: 30px 0;
+  margin: 15px 0;
 }
 
 #payment-form .spons-container {
@@ -11223,6 +11232,15 @@ a.text-dark:focus {
   display: inline-block;
   width: 200px;
   margin: 0 40px 50px 0;
+}
+
+#payment-form .spons-container label .sponsor-name {
+  font-size: 18px;
+}
+
+#payment-form .spons-container label:hover {
+  color: #01c2a5;
+  background: rgba(1, 194, 165, 0.1);
 }
 
 #payment-form .spons-container input:checked + label {

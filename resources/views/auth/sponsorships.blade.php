@@ -46,16 +46,16 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
-                    <li class="nav-item">
+                    <li class="nav-item nav-item-guest">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('create') }}">{{ __('Register') }}</a>
+                    <li class="nav-item nav-item-guest">
+                        <a class="nav-link" href="{{ route('create') }}">{{ __('Registrati') }}</a>
                     </li>
                     @endif
                     @else
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown nav-item-user">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
@@ -99,6 +99,8 @@
         </div>
         @endif
 
+        <a href="{{route('dashboard', compact('user'))}}"><i class="fas fa-arrow-left"></i> Torna alla dashboard</a>
+        
         <div class="title">Sponsorizzazioni</div>
 
         <form class="card" method="post" id="payment-form" style="padding: 20px"
@@ -109,7 +111,7 @@
                 @foreach($sponsorships as $sponsor)
                     <input type="radio" id="{{$sponsor->sponsor_name}}" name="amount" value="{{$sponsor->sponsor_price}}">
                     <label class="card" for="{{$sponsor->sponsor_name}}">
-                        <div>{{$sponsor->sponsor_name}} </div>
+                        <div class="sponsor-name">{{$sponsor->sponsor_name}} </div>
                         <div>durata: {{$sponsor->sponsor_duration}} ore</div>
                         <div>{{$sponsor->sponsor_price}} €</div>
                     </label>

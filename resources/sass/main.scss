@@ -11,6 +11,10 @@ $deletecolor: #d0211c;
     padding: 0;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 .layout {
     min-height: 100vh;
 
@@ -166,6 +170,10 @@ $deletecolor: #d0211c;
 
     .nav-right {
         font-size: 18px;
+
+        .nav-item-guest:hover, .nav-item-user:hover {
+            font-weight: bold;
+        }
     }
 
 
@@ -273,7 +281,7 @@ $deletecolor: #d0211c;
 
 // sponsorship
 #payment-form {
-    margin: 30px 0;
+    margin: 15px 0;
 
     .spons-container {
         display: flex;
@@ -288,6 +296,15 @@ $deletecolor: #d0211c;
             display: inline-block;
             width: 200px;
             margin: 0 40px 50px 0;
+
+            .sponsor-name {
+                font-size: 18px;
+            }
+        }
+
+        label:hover {
+            color: $maincolor;
+            background: $maincolorrgba; 
         }
 
         input:checked + label {
