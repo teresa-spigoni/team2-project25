@@ -70,24 +70,30 @@
       <tbody>
         <tr v-for="(user, index) in users" :key="index">
           <td>
-            <div>{{ user.name }} {{ user.lastname }}</div>
+            <a :href="'/doctors/' + user.id + '/' + specId">
+              <div>{{ user.name }} {{ user.lastname }}</div>
+            </a>
           </td>
           <td>
-            <div v-for="(spec, index) in user.specializations" :key="index">
-              {{ spec.spec_name }}
-            </div>
+            <a :href="'/doctors/' + user.id + '/' + specId">
+              <div v-for="(spec, index) in user.specializations" :key="index">
+                {{ spec.spec_name }}
+              </div>
+            </a>
           </td>
           <td>
-            <i
-              class="fas fa-star"
-              style="color: orange"
-              v-for="(star, index) in average(user)"
-              :key="index"
-            ></i>
-            <span v-if="user.reviews.length > 0"
-              >su {{ sum(user) }} recensioni</span
-            >
-            <span v-else>Non ci sono recensioni disponibili</span>
+            <a :href="'/doctors/' + user.id + '/' + specId">
+              <i
+                class="fas fa-star"
+                style="color: orange"
+                v-for="(star, index) in average(user)"
+                :key="index"
+              ></i>
+              <span v-if="user.reviews.length > 0"
+                >su {{ sum(user) }} recensioni</span
+              >
+              <span v-else>Non ci sono recensioni disponibili</span>
+            </a>
           </td>
           <td class="img-col">
             <a :href="'/doctors/' + user.id + '/' + specId">

@@ -1955,6 +1955,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     selected: Number,
@@ -37824,46 +37830,66 @@ var render = function() {
             _vm._l(_vm.users, function(user, index) {
               return _c("tr", { key: index }, [
                 _c("td", [
-                  _c("div", [
-                    _vm._v(_vm._s(user.name) + " " + _vm._s(user.lastname))
-                  ])
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "/doctors/" + user.id + "/" + _vm.specId }
+                    },
+                    [
+                      _c("div", [
+                        _vm._v(_vm._s(user.name) + " " + _vm._s(user.lastname))
+                      ])
+                    ]
+                  )
                 ]),
                 _vm._v(" "),
-                _c(
-                  "td",
-                  _vm._l(user.specializations, function(spec, index) {
-                    return _c("div", { key: index }, [
-                      _vm._v(
-                        "\n            " +
-                          _vm._s(spec.spec_name) +
-                          "\n          "
-                      )
-                    ])
-                  }),
-                  0
-                ),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  [
-                    _vm._l(_vm.average(user), function(star, index) {
-                      return _c("i", {
-                        key: index,
-                        staticClass: "fas fa-star",
-                        staticStyle: { color: "orange" }
-                      })
+                _c("td", [
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "/doctors/" + user.id + "/" + _vm.specId }
+                    },
+                    _vm._l(user.specializations, function(spec, index) {
+                      return _c("div", { key: index }, [
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(spec.spec_name) +
+                            "\n            "
+                        )
+                      ])
                     }),
-                    _vm._v(" "),
-                    user.reviews.length > 0
-                      ? _c("span", [
-                          _vm._v("su " + _vm._s(_vm.sum(user)) + " recensioni")
-                        ])
-                      : _c("span", [
-                          _vm._v("Non ci sono recensioni disponibili")
-                        ])
-                  ],
-                  2
-                ),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "/doctors/" + user.id + "/" + _vm.specId }
+                    },
+                    [
+                      _vm._l(_vm.average(user), function(star, index) {
+                        return _c("i", {
+                          key: index,
+                          staticClass: "fas fa-star",
+                          staticStyle: { color: "orange" }
+                        })
+                      }),
+                      _vm._v(" "),
+                      user.reviews.length > 0
+                        ? _c("span", [
+                            _vm._v(
+                              "su " + _vm._s(_vm.sum(user)) + " recensioni"
+                            )
+                          ])
+                        : _c("span", [
+                            _vm._v("Non ci sono recensioni disponibili")
+                          ])
+                    ],
+                    2
+                  )
+                ]),
                 _vm._v(" "),
                 _c("td", { staticClass: "img-col" }, [
                   _c(

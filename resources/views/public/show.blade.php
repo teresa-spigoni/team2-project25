@@ -37,15 +37,17 @@
                 <hr>
 
 
+                @guest
                 {{-- pulsante per inviare un messaggio --}}
-                <button class="btn custom-button " data-toggle="modal" data-target="#modalMessage">
-                    <i class="fas fa-comment-medical"></i> Invia un messaggio
-                </button>
+                    <button class="btn custom-button " data-toggle="modal" data-target="#modalMessage">
+                        <i class="fas fa-comment-medical"></i> Invia un messaggio
+                    </button>
 
-                {{-- pulsante per scrivere una recensione --}}
-                <button class="btn custom-button rev-button" data-toggle="modal" data-target="#modalReview">
-                    <i class="fas fa-plus"></i> Scrivi una recensione
-                </button>
+                    {{-- pulsante per scrivere una recensione --}}
+                    <button class="btn custom-button rev-button" data-toggle="modal" data-target="#modalReview">
+                        <i class="fas fa-plus"></i> Scrivi una recensione
+                    </button>
+                @endguest
 
                 {{-- pulsante per visualizzare il CV --}}
                 @if (isset($user->curriculum))
@@ -65,10 +67,8 @@
                     <h4><strong>{{ $service->service_type }}</strong></h4>
                     <h5>€{{ $service->service_price }}</h5>
                     <div class="card-text">
-                        <strong>
-                            <i class="fas fa-map-marker-alt" style="color: #01c2a5"></i>
-                            {{ $service->service_address }}
-                        </strong>
+                        <i class="fas fa-map-marker-alt" style="color: #01c2a5"></i>
+                        {{ $service->service_address }}
                     </div>
                 </div>
                 @endforeach
@@ -91,6 +91,7 @@
                         @for ($i = 0; $i < $review->rv_vote; $i++)
                             <i class="fas fa-star"></i> @endfor </div>
                     <h3>{{ $review->rv_title }}</h3>
+                    <div>Il {{ substr($review->created_at, 0, 10) }} alle {{ substr($review->created_at, 11, 5) }}</div>
                     <p style="width:250px">{{ $review->rv_content }}</p>
                     <h5>{{ $review->rv_name }} {{ $review->rv_lastname }}</h5>
                 </div>
@@ -104,7 +105,7 @@
     {{-- modale per scrivere un messaggio --}}
     <div class="modal fade" id="modalMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
-        <form action="{{ route('saveMessage', compact('user')) }}" method="post">
+        <form action="{{ route('saveMessage', compact('user', 'spec')) }}" method="post">
             @csrf
             @method('POST')
             <div class="modal-dialog" role="document">
@@ -165,7 +166,7 @@
     {{-- modale per scrivere una recensione --}}
     <div class="modal fade" id="modalReview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
-        <form action="{{ route('review') }}" method="post">
+        <form action="{{ route('review', compact('user', 'spec')) }}" method="post">
             @csrf
             @method('POST')
             <div class="modal-dialog" role="document">
@@ -181,14 +182,14 @@
                         {{-- NOME --}}
                         <div class="md-form mb-5">
                             <label data-error="wrong" data-success="right" for="rv_name">Nome</label>
-                            <input type="text" class="form-control validate" name="rv_name" required minlength="3"
+                            <input type="text" class="form-control validate" name="rv_name" minlength="3"
                                 maxlength="50">
                         </div>
 
                         {{-- COGNOME --}}
                         <div class="md-form mb-4">
                             <label data-error="wrong" data-success="right" for="rv_lastname">Cognome</label>
-                            <input type="text" class="form-control validate" name="rv_lastname" required minlength="3"
+                            <input type="text" class="form-control validate" name="rv_lastname" minlength="3"
                                 maxlength="50">
                         </div>
 

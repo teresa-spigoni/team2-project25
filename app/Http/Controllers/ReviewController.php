@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Review;
+use App\User;
 
 class ReviewController extends Controller
 {
@@ -13,16 +14,16 @@ class ReviewController extends Controller
         return response()->json(Review::all());
     }
 
-    public function create(Request $request)
+    public function create(Request $request, User $user, $spec)
     {
         $this->reviewValidation($request);
         $data = $request->all();
         $newReview = new Review();
         $newReview->fill($data);
         $newReview->save();
-
-        $reviewStored = Review::orderBy('id', 'desc')->first();
-        return redirect()->route('homepage', $reviewStored);
+        $reviews = Review::all()->reverse();
+        return view('public.show', compact('user', 'reviews', 'spec'));
+;
     }
 
     // validazione review
