@@ -37,4 +37,5 @@ class ReviewController extends Controller
             'rv_content' => 'required|string|min:10'
         ]);
     }
+
 }

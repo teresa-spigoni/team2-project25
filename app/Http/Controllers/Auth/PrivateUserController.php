@@ -92,4 +92,9 @@ class PrivateUserController extends Controller
             'email' => 'required|email'
         ]);
     }
+
+    public function destroyService(User $user, $id) {
+        $user->services()->where('id', $id)->delete();
+        return redirect()->route('dashboard', compact('user'));
+    }
 }
