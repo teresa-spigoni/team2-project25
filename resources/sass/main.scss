@@ -378,7 +378,6 @@ table {
 
 // sponsorship
 .sponsor-page {
-
     #payment-form {
         margin: 15px 0;
 
@@ -413,6 +412,7 @@ table {
                 label:hover {
                     color: $maincolor;
                     background: $maincolorrgba;
+                    font-weight: bold;
                 }
     
                 input:checked + label {

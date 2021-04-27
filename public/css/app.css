@@ -11343,6 +11343,7 @@ table {
 .sponsor-page #payment-form .form-content .spons-container label:hover {
   color: #01c2a5;
   background: rgba(1, 194, 165, 0.1);
+  font-weight: bold;
 }
 
 .sponsor-page #payment-form .form-content .spons-container input:checked + label {

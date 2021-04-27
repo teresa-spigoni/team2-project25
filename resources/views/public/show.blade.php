@@ -181,14 +181,14 @@
                         {{-- NOME --}}
                         <div class="md-form mb-5">
                             <label data-error="wrong" data-success="right" for="rv_name">Nome</label>
-                            <input type="text" class="form-control validate" name="rv_name" required minlength="3"
+                            <input type="text" class="form-control validate" name="rv_name" minlength="3"
                                 maxlength="50">
                         </div>
 
                         {{-- COGNOME --}}
                         <div class="md-form mb-4">
                             <label data-error="wrong" data-success="right" for="rv_lastname">Cognome</label>
-                            <input type="text" class="form-control validate" name="rv_lastname" required minlength="3"
+                            <input type="text" class="form-control validate" name="rv_lastname" minlength="3"
                                 maxlength="50">
                         </div>
 

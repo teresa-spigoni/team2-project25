@@ -47,7 +47,7 @@ class UserController extends Controller
 
     public function show(User $user, $spec)
     {
-        $reviews = Review::all();
+        $reviews = Review::all()->reverse();
         return view('public.show', compact('user', 'reviews', 'spec'));
     }
 
