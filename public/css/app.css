@@ -11203,16 +11203,17 @@ table {
   text-align: center;
 }
 
-.dash-services {
-  width: 200px;
-}
-
-.dash-services .service {
+.all-services {
   display: flex;
   flex-wrap: wrap;
 }
 
-.dash-services:hover {
+.all-services .dash-services {
+  width: 200px;
+  margin: 5px 5px 0 0;
+}
+
+.all-services .dash-services:hover {
   color: #01c2a5;
   border-color: #01c2a5;
 }

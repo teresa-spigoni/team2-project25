@@ -273,18 +273,19 @@ table {
 }
 
 // dashboard
-.dash-services {
-    width: 200px;
+.all-services {
+    display: flex;
+    flex-wrap: wrap;
 
-    .service {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    &:hover {
-        color: $maincolor;
-        border-color: $maincolor;
-    }
+    .dash-services {
+        width: 200px;
+        margin: 5px 5px 0 0;
+    
+        &:hover {
+            color: $maincolor;
+            border-color: $maincolor;
+        }
+    }    
 }
 
 .dash-card {

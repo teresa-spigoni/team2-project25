@@ -92,7 +92,7 @@
                 @if (count(Auth::user()->services) > 0)
                 <hr>
                 <h3 class="custom-h1">Prestazioni:</h3>
-                <div class="service">
+                <div class="all-services">
                     @foreach (Auth::user()->services as $service)
                     <div class="card inline-b dash-services">
                         <h5><strong>{{ $service->service_type }}</strong></h5>
