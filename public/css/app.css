@@ -11207,6 +11207,11 @@ table {
   width: 200px;
 }
 
+.dash-services .service {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .dash-services:hover {
   color: #01c2a5;
   border-color: #01c2a5;

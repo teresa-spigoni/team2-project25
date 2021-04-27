@@ -92,14 +92,16 @@
                 @if (count(Auth::user()->services) > 0)
                 <hr>
                 <h3 class="custom-h1">Prestazioni:</h3>
-                @foreach (Auth::user()->services as $service)
-                <div class="card inline-b dash-services">
-                    <h5><strong>{{ $service->service_type }}</strong></h5>
-                    {{ $service->service_address }}
-                    <br>
-                    €{{ $service->service_price }}
+                <div class="service">
+                    @foreach (Auth::user()->services as $service)
+                    <div class="card inline-b dash-services">
+                        <h5><strong>{{ $service->service_type }}</strong></h5>
+                        {{ $service->service_address }}
+                        <br>
+                        €{{ $service->service_price }}
+                    </div>
+                    @endforeach
                 </div>
-                @endforeach
                 @endif
 
                 {{-- recensioni --}}
