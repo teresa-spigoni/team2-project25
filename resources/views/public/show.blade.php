@@ -23,7 +23,8 @@
                     </h2>
                     <p class="card-text" id="mail">{{ $user->email }}</p>
                     @if (isset($user->phone_number))
-                    <p class="card-text"><strong>{{ $user->phone_number }}</strong></p>
+                    <a href="tel: {{ $user->phone_number }}"
+                        style="color: inherit"><strong>{{ $user->phone_number }}</strong></a>
                     @endif
                     <div class="card-text" id="specs">
                         @foreach ($user->specializations as $spec)

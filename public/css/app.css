@@ -10961,29 +10961,6 @@ a:hover {
   min-height: calc(78vh - 20px);
 }
 
-table {
-  margin-top: 20px;
-}
-
-.sponsor-check {
-  color: #01c2a5;
-}
-
-.logged {
-  color: #01c2a5;
-  font-size: 10px;
-  vertical-align: middle;
-}
-
-.dash-services {
-  width: 200px;
-}
-
-.dash-services:hover {
-  color: #01c2a5;
-  border-color: #01c2a5;
-}
-
 .inline-b {
   display: inline-block;
 }
@@ -11006,39 +10983,28 @@ table {
   width: 165px;
 }
 
-.img-col {
-  width: 200px;
-  text-align: center;
+.relative {
+  position: relative;
+}
+
+.b-absolute-tr {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.b-absolute-tl {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+#user_id {
+  display: none;
 }
 
 .card {
   padding: 20px;
-}
-
-.evidence-card {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.evidence-card a {
-  color: inherit;
-  text-align: center;
-}
-
-.evidence-card a:hover {
-  text-decoration: none;
-  color: #01c2a5;
-}
-
-.evidence-card .card {
-  text-align: center;
-  width: 205px;
-  margin: 5px 10px 10px 0;
-  min-height: 300px;
-}
-
-.evidence-card .doctor-name {
-  margin: 30px 0 10px 0;
 }
 
 .custom-button {
@@ -11056,15 +11022,18 @@ table {
 .custom-button:hover {
   color: #01c2a5;
   background: #fff;
+  font-weight: bold;
 }
 
 .custom-button:hover a {
   color: #01c2a5;
+  font-weight: bold;
 }
 
 .button-none {
   border: none;
   background: none;
+  margin-left: -10px;
   color: #01c2a5;
   font-size: 16px;
 }
@@ -11075,6 +11044,7 @@ table {
 
 .button-none:hover {
   font-weight: bold;
+  transform: scale(1.2);
 }
 
 .delete {
@@ -11198,12 +11168,121 @@ table {
   right: 0;
 }
 
-#user_id {
-  display: none;
+.evidence-card {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.evidence-card a {
+  color: inherit;
+  text-align: center;
+}
+
+.evidence-card a:hover {
+  text-decoration: none;
+  color: #01c2a5;
+}
+
+.evidence-card .card {
+  text-align: center;
+  width: 205px;
+  margin: 5px 10px 10px 0;
+  min-height: 300px;
+}
+
+.evidence-card .doctor-name {
+  margin: 30px 0 10px 0;
+}
+
+table {
+  margin-top: 20px;
+}
+
+.img-col {
+  width: 200px;
+  text-align: center;
+}
+
+.dash-services {
+  width: 200px;
+}
+
+.dash-services:hover {
+  color: #01c2a5;
+  border-color: #01c2a5;
 }
 
 .dash-card {
   margin-top: 40px;
+}
+
+.dash-card .dash-info {
+  width: 300px;
+}
+
+.dash-card .dash-buttons {
+  width: 250px;
+}
+
+.dash-card .dash-buttons button {
+  margin-bottom: 0;
+  font-size: 12px;
+  padding: 2px 5px;
+}
+
+.dash-card .dash-buttons button i {
+  margin-right: 3px;
+}
+
+.sponsor-check {
+  color: #01c2a5;
+}
+
+.logged {
+  color: #01c2a5;
+  font-size: 10px;
+  vertical-align: middle;
+}
+
+.edit-card {
+  margin: 20px auto;
+  width: 600px;
+}
+
+.edit-card .back h1 {
+  font-size: 25px;
+  margin-top: 0;
+}
+
+.edit-card .form {
+  position: relative;
+}
+
+.edit-card .form .input-file {
+  border: 1px solid #cfd5db;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.edit-card .form .scegli-file {
+  padding: 1px 7px;
+}
+
+.edit-card .form input {
+  width: 500px;
+}
+
+.edit-card .form select {
+  width: 500px;
+}
+
+.edit-card .form select option:hover {
+  background-color: #01c2a5;
+  color: #fff;
+}
+
+.edit-card .form .modifica {
+  text-align: right;
 }
 
 .doctor-card {
@@ -11273,22 +11352,6 @@ table {
 
 .doctor-card .review .card:hover {
   border-color: #01c2a5;
-}
-
-.relative {
-  position: relative;
-}
-
-.b-absolute-tr {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-.b-absolute-tl {
-  position: absolute;
-  top: 20px;
-  left: 20px;
 }
 
 .sponsor-page .title {
