@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Registrati') }}</div>
+            <div class="card register-card">
+                <h2 class="custom-h1">Registrati</h2>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" onsubmit="return verificapassword(this)" class="needs-validation" novalidate>
