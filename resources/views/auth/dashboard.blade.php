@@ -96,15 +96,10 @@
                         {{ $service->service_address }}
                         <br>
                         €{{ $service->service_price }}
-                        <form
-                            action="{{ route('destroyService', ['user' => Auth::user(), 'service' => $service->id]) }}"
-                            method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn button-none del-b" type="submit">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </form>
+                        <button class="btn button-none del-b" type="submit" data-toggle="modal"
+                        data-target="#modalDeleteService">
+                            <i class="fas fa-times"></i>
+                        </button>
                         <br>
                     </div>
                     @endforeach
@@ -182,6 +177,33 @@
                         </div>
                     </div>
                 </div>
+
+                {{-- modale per conferma eliminazione prestazione --}}
+                <div class="modal fade" id="modalDeleteService" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Elimina la prestazione</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Sei sicuro di voler eliminare definitivamente la prestazione?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn custom-button" data-dismiss="modal">Torna
+                                indietro</button>
+                            <form action="{{ route('destroyService', ['user'=>Auth::user(), 'service'=>$service->id])}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn custom-button delete">Elimina</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>            
 
                 {{-- Modale per la prestazione --}}
                 <div class="modal fade" id="modalService" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
