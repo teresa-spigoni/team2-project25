@@ -36,7 +36,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse nav-right" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
 
@@ -82,7 +82,7 @@
         </div>
     </nav>
 
-    <main class="container">
+    <main class="container sponsor-page">
         @if (session('success_message'))
         <div class="alert alert-success">
             {{ session('success_message') }}
@@ -99,7 +99,9 @@
         </div>
         @endif
 
-        <a href="{{route('dashboard', compact('user'))}}"><i class="fas fa-arrow-left"></i> Torna alla dashboard</a>
+        <button class="button-none">
+            <a href="{{route('dashboard', compact('user'))}}"><i class="fas fa-arrow-left"></i> Torna alla dashboard</a>
+        </button>
         
         <div class="title">Sponsorizzazioni</div>
 
