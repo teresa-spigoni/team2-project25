@@ -21,8 +21,7 @@ class ReviewController extends Controller
         $newReview = new Review();
         $newReview->fill($data);
         $newReview->save();
-        $reviews = Review::all()->reverse();
-        return view('public.show', compact('user', 'reviews', 'spec'));
+        return redirect()->route('show', compact('user', 'spec'));
 ;
     }
 

@@ -16,8 +16,7 @@ class MessageController extends Controller
         $newMessage->fill($request->all());
         $newMessage->user_id = $user->id;
         $newMessage->save();
-        $reviews = Review::all()->reverse();
-        return view('public.show', compact('user', 'reviews', 'spec'));
+        return redirect()->route('show', compact('user', 'spec'));
     }
 
     // validazione messaggi
