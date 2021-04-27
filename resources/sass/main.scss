@@ -284,33 +284,41 @@ td {
 }
 
 // homepage
-.evidence-card {
-    display: flex;
-    flex-wrap: wrap;
+.evidence{
 
-    a {
-        color: inherit;
-        text-align: center;
-
-        &:hover {
-            text-decoration: none;
-            color: $maincolor;
-        }
+    h2{
+        margin: 90px 0 0 20px;
+        font-size: 30px;
     }
 
-    .card {
-        text-align: center;
-        width: 260px;
-        margin: 5px 10px 10px 0;
-        min-height: 350px;
+    .evidence-card {
+        display: flex;
+        flex-wrap: wrap;
 
-        img{
-            margin: 0 auto;
+        a {
+            color: inherit;
+            text-align: center;
+
+            &:hover {
+                text-decoration: none;
+                color: $maincolor;
+            }
         }
-    }
 
-    .doctor-name {
-        margin: 30px 0 10px 0;
+        .card {
+            text-align: center;
+            width: 260px;
+            margin: 5px 10px 10px 0;
+            min-height: 360px;
+
+            img{
+                margin: 0 auto;
+            }
+        }
+
+        .doctor-name {
+            margin: 30px 0 10px 0;
+        }
     }
 }
 

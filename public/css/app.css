@@ -11210,33 +11210,38 @@ td a:hover {
   right: 0;
 }
 
-.evidence-card {
+.evidence h2 {
+  margin: 90px 0 0 20px;
+  font-size: 30px;
+}
+
+.evidence .evidence-card {
   display: flex;
   flex-wrap: wrap;
 }
 
-.evidence-card a {
+.evidence .evidence-card a {
   color: inherit;
   text-align: center;
 }
 
-.evidence-card a:hover {
+.evidence .evidence-card a:hover {
   text-decoration: none;
   color: #01c2a5;
 }
 
-.evidence-card .card {
+.evidence .evidence-card .card {
   text-align: center;
   width: 260px;
   margin: 5px 10px 10px 0;
   min-height: 350px;
 }
 
-.evidence-card .card img {
+.evidence .evidence-card .card img {
   margin: 0 auto;
 }
 
-.evidence-card .doctor-name {
+.evidence .evidence-card .doctor-name {
   margin: 30px 0 10px 0;
 }
 

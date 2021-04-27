@@ -33,10 +33,10 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container evidence">
 
-    <div class="title">Medici in evidenza</div>
 
+    <h2 class="title">Medici in evidenza</h2>
     <div class="container evidence-card">
         {{-- card medico in evidenza --}}
         @foreach ($activeSponsorship as $theuser)
