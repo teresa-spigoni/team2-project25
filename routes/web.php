@@ -12,7 +12,7 @@ Route::get('/home', 'HomeController@index')->name('dashboard');
 Route::get('/doctors', 'UserController@toIndex')->name('toIndex');
 Route::get('/doctors/{user}/{spec}', 'UserController@show')->name('show');
 Route::get('/create', 'UserController@create')->name('create');
-Route::post('newmessage/{user}/{spec}', 'UserController@saveMessage')->name('saveMessage');
+Route::post('newmessage/{user}/{spec}', 'MessageController@saveMessage')->name('saveMessage');
 Route::post('/review/{user}/{spec}', 'ReviewController@create')->name('review');
 
 Route::prefix('auth')
