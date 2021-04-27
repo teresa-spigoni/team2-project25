@@ -42,10 +42,9 @@
         @foreach ($activeSponsorship as $theuser)
         <div>
             <a href="/doctors/{{$theuser->id}}/{{$theuser->specializations}} ">
-
                 <div class="card">
                     <img src="{{$theuser->profile_image}}" alt="" class="user-image">
-                    <h4 class="doctor-name">{{$theuser->name}} {{$theuser->lastname}}</h4>
+                    <h4 class="doctor-name">{{ $theuser->name }} {{ $theuser->lastname }}</h4>
                     @foreach ($theuser->specializations as $spec)
                     {{ $spec->spec_name }} <br>
                     @endforeach
