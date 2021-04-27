@@ -45,14 +45,15 @@ class UserController extends Controller
         return view('public.index', compact('selected', 'specializations'));
     }
 
-    public function saveMessage(Request $request, User $user)
+    public function saveMessage(Request $request, User $user, $spec)
     {
         $this->messageValidation($request);
         $newMessage = new Message();
         $newMessage->fill($request->all());
         $newMessage->user_id = $user->id;
         $newMessage->save();
-        return redirect()->route('homepage');
+        $reviews = Review::all();
+        return view('public.show', compact('user', 'reviews', 'spec'));
     }
 
     public function show(User $user, $spec)

@@ -83,51 +83,60 @@
     </nav>
 
     <main class="container sponsor-page">
-        @if (session('success_message'))
-        <div class="alert alert-success">
-            {{ session('success_message') }}
-        </div>
-        @endif
-
-        @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-
-        <button class="button-none">
-            <a href="{{route('dashboard', compact('user'))}}"><i class="fas fa-arrow-left"></i> Torna alla dashboard</a>
-        </button>
         
-        <div class="title">Sponsorizzazioni</div>
+        <div class="title">
+            <button class="button-none">
+                <a href="{{route('dashboard', compact('user'))}}"><i class="fas fa-arrow-left"></i></a>
+            </button>
+            Sponsorizzazioni
+        </div>
 
         <form class="card" method="post" id="payment-form" style="padding: 20px"
             action="{{ route('checkout', compact('user')) }}">
             @csrf
             @method('POST')
-            <div class="spons-container">
-                @foreach($sponsorships as $sponsor)
-                    <input type="radio" id="{{$sponsor->sponsor_name}}" name="amount" value="{{$sponsor->sponsor_price}}">
-                    <label class="card" for="{{$sponsor->sponsor_name}}">
-                        <div class="sponsor-name">{{$sponsor->sponsor_name}} </div>
-                        <div>durata: {{$sponsor->sponsor_duration}} ore</div>
-                        <div>{{$sponsor->sponsor_price}} €</div>
-                    </label>
-                @endforeach
+            @if (session('success_message'))
+            <div class="alert alert-success">
+                {{ session('success_message') }}
+                <a href="{{route('dashboard', compact('user'))}}">Torna alla dashboard</a>
             </div>
 
-            <section>
-                <div class="bt-drop-in-wrapper">
-                    <div id="bt-dropin"></div>
-                </div>
-            </section>
+            @endif
+    
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+            
+            @if(!session('success_message'))
+                <div class="form-content">
+                    <div class="text">Scegli una sponsorizzazione per apparire tra i medici in evidenza nella homepage!</div>
+                    <div class="spons-container">
+                        @foreach($sponsorships as $sponsor)
+                            <input type="radio" id="{{$sponsor->sponsor_name}}" name="amount" value="{{$sponsor->sponsor_price}}">
+                            <label class="card" for="{{$sponsor->sponsor_name}}">
+                                <div class="sponsor-name">{{$sponsor->sponsor_name}} </div>
+                                <div>durata: {{$sponsor->sponsor_duration}} ore</div>
+                                <div>{{$sponsor->sponsor_price}} €</div>
+                            </label>
+                        @endforeach
+                    </div>
 
-            <input id="nonce" name="payment_method_nonce" type="hidden" />
-            <button class="custom-button" type="submit"><span>Procedi al pagamento</span></button>
+                    <section>
+                        <div class="bt-drop-in-wrapper">
+                            <div id="bt-dropin"></div>
+                        </div>
+                    </section>
+
+                    <input id="nonce" name="payment_method_nonce" type="hidden" />
+                    <button class="custom-button" type="submit"><span>Procedi al pagamento</span></button>
+                </div>
+            @endif
         </form>
 
     </main>

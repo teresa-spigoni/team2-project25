@@ -31,6 +31,7 @@
                 Da: {{ $message->msg_name }} {{ $message->msg_lastname }}
             </h5>
             <h6 class="card-subtitle mb-2 text-muted">
+                <div>Il {{ substr($message->created_at, 0, 10) }} alle {{ substr($message->created_at, 11, 5) }}</div>
                 <div class="message-mail">{{ $message->msg_email }}</div>
                 <div><a href="tel: {{ $message->msg_phone_number }}">{{ $message->msg_phone_number }}</a></div>
             </h6>

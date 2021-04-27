@@ -85,15 +85,10 @@
                             </button>
                         @endif
 
-                        {{-- pulsante che elimina l'account --}}
-                        <form action="{{ route('destroy', ['user' => Auth::user()]) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn custom-button delete" type="submit"><i class="fas fa-trash-alt"></i>
-                                Elimina account
-                            </button>
-                        </form>
-                    </div>
+                         {{-- pulsante che elimina l'account --}}
+                        <button class="btn custom-button delete" type="submit" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i>
+                            Elimina account
+                        </button>
                 </div>
             </div>
         </div>
@@ -122,6 +117,33 @@
                 </div>
             </div>
         @endif
+
+        {{-- modale per conferma eliminazione account --}}
+        <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Elimina l'account</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Sei sicuro di voler eliminare definitivamente il tuo account?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn custom-button" data-dismiss="modal">Torna indietro</button>
+                        <form action="{{ route('destroy', ['user' => Auth::user()]) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn custom-button delete">Elimina</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
 
         {{-- Modale per la prestazione --}}
         <div class="modal fade" id="modalService" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
