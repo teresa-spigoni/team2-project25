@@ -35,6 +35,7 @@ class PrivateUserController extends Controller
 
     public function update(Request $request, User $user)
     {
+
         $this->updateValidation($request);
         if ($request->hasFile('profile_image')) {
             $img = $request->file('profile_image')->store('public');
