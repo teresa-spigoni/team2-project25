@@ -12,7 +12,6 @@ $deletecolor: #d0211c;
 }
 
 a {
-
     &:hover {
         text-decoration: none;
     }
@@ -23,9 +22,9 @@ td {
     height: 150px;
 
     a {
-    display: block;
-    height: 100%;
-    color: black;
+        display: block;
+        height: 100%;
+        color: black;
 
         &:hover {
             color: black;
@@ -104,7 +103,6 @@ td {
         background: #fff;
         font-weight: bold;
 
-
         a {
             color: $maincolor;
             font-weight: bold;
@@ -123,7 +121,7 @@ td {
     a {
         color: $maincolor;
 
-        &:hover{
+        &:hover {
             color: $maincolor;
         }
     }
@@ -264,8 +262,7 @@ td {
             @media screen and (max-width: 575px) {
                 font-size: 28px;
                 line-height: 29px;
-            }    
-    
+            }
         }
 
         select {
@@ -306,21 +303,19 @@ td {
         right: 0;
 
         @media screen and (max-width: 1200px) {
-            height: 60vh;
+            height: 75%;
             right: -50px;
         }
 
         @media screen and (max-width: 991px) {
             bottom: -50px;
         }
-
     }
 }
 
 // homepage
-.evidence{
-
-    h2{
+.evidence {
+    h2 {
         margin: 90px 0 0 20px;
         font-size: 30px;
 
@@ -337,7 +332,6 @@ td {
         @media screen and (max-width: 992px) {
             justify-content: center;
         }
-
 
         a {
             color: inherit;
@@ -358,13 +352,13 @@ td {
             @media screen and (max-width: 1200px) {
                 width: 210px;
                 margin: 5px 15px 10px 0;
-            }    
+            }
 
             @media screen and (max-width: 991px) {
                 margin: 5px 10px 10px 0;
-            }    
+            }
 
-            img{
+            img {
                 margin: 0 auto;
             }
         }
@@ -382,7 +376,7 @@ td {
 
         @media screen and (max-width: 767px) {
             display: block;
-        }    
+        }
     }
 
     table {
@@ -391,20 +385,19 @@ td {
         .average {
             @media screen and (max-width: 767px) {
                 display: none;
-            }    
+            }
         }
 
         .img-col {
             width: 200px;
             text-align: center;
-    
+
             @media screen and (max-width: 767px) {
                 width: 160px;
-            }    
-        }        
+            }
+        }
     }
 }
-
 
 // dashboard
 .all-services {
@@ -422,7 +415,7 @@ td {
             border-color: $maincolor;
         }
 
-        .del-b{
+        .del-b {
             font-size: 14px;
             padding: 2px 5px;
             position: absolute;
@@ -440,20 +433,19 @@ td {
         margin: 5px 0;
     }
 
-    .dash-info{
+    .dash-info {
         width: 300px;
     }
 
-
-    .dash-buttons{
+    .dash-buttons {
         width: 250px;
 
-        button{
+        button {
             margin-bottom: 0;
             font-size: 12px;
             padding: 2px 5px;
 
-            i{
+            i {
                 margin-right: 3px;
             }
         }
@@ -471,50 +463,47 @@ td {
 }
 
 //edit
-.edit-card{
+.edit-card {
     margin: 20px auto;
     width: 600px;
 
-    .back{
-
-        h1{
+    .back {
+        h1 {
             font-size: 25px;
             margin-top: 0;
         }
     }
 
-    .form{
+    .form {
         position: relative;
 
-        .input-file{
+        .input-file {
             border: 1px solid #cfd5db;
             padding: 3px;
-            border-radius: 5px
-
+            border-radius: 5px;
         }
 
-        .scegli-file{
+        .scegli-file {
             padding: 1px 7px;
         }
 
-        input{
+        input {
             width: 500px;
         }
 
-        select{
+        select {
             width: 500px;
 
-            option:hover{
+            option:hover {
                 background-color: $maincolor;
                 color: #fff;
             }
         }
 
-        .modifica{
+        .modifica {
             text-align: right;
         }
     }
-
 }
 
 // show
@@ -522,13 +511,13 @@ td {
     margin-top: 30px;
     position: relative;
     padding: 40px;
-    
-    .card-body{
+
+    .card-body {
         display: flex;
         @media screen and (max-width: 1200px) {
             flex-wrap: wrap;
             justify-content: center;
-        }        
+        }
     }
 
     .doc-info {
@@ -539,15 +528,15 @@ td {
 
         @media screen and (max-width: 1200px) {
             margin-right: 0;
-        }   
+        }
 
         @media screen and (max-width: 991px) {
             width: 450px;
-        }                 
+        }
 
         @media screen and (max-width: 575px) {
             width: 350px;
-        }                 
+        }
 
         img {
             vertical-align: top;
@@ -565,15 +554,15 @@ td {
             @media screen and (max-width: 1200px) {
                 text-align: center;
                 margin-left: 10px;
-            }   
+            }
 
             @media screen and (max-width: 991px) {
                 width: 200px;
-            } 
-            
+            }
+
             @media screen and (max-width: 575px) {
                 margin-left: 60px;
-            } 
+            }
         }
     }
 
@@ -619,7 +608,7 @@ td {
 
         @media screen and (max-width: 991px) {
             width: 100%;
-        }            
+        }
 
         .card {
             margin-bottom: 5px;

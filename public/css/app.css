@@ -11243,7 +11243,7 @@ td a:hover {
 
 @media screen and (max-width: 1200px) {
   .jum img {
-    height: 60vh;
+    height: 75%;
     right: -50px;
   }
 }
