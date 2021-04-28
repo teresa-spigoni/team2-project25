@@ -640,14 +640,27 @@ td {
             margin: 0 auto;
 
             .text {
-                margin: 10px 0 20px 0;
+                width: 90%;
+                margin: 10px auto 20px auto;
                 font-size: 16px;
             }
 
             .spons-container {
                 display: flex;
-                flex-wrap: wrap;
                 justify-content: space-between;
+
+                    @media screen and (max-width: 991px) {
+                        display: block;
+                    }
+                    
+                    .card {
+                        @media screen and (max-width: 991px) {
+                            display: block;
+                            width: 90%;
+                            margin: 10px auto;
+                        }    
+                    }
+
 
                 input {
                     display: none;
@@ -689,6 +702,7 @@ td {
                 display: block;
                 width: 80%;
                 margin: 0 auto;
+                padding: 5px 0;
             }
         }
     }

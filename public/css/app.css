@@ -11601,14 +11601,28 @@ td a:hover {
 }
 
 .sponsor-page #payment-form .form-content .text {
-  margin: 10px 0 20px 0;
+  width: 90%;
+  margin: 10px auto 20px auto;
   font-size: 16px;
 }
 
 .sponsor-page #payment-form .form-content .spons-container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 991px) {
+  .sponsor-page #payment-form .form-content .spons-container {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .sponsor-page #payment-form .form-content .spons-container .card {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+  }
 }
 
 .sponsor-page #payment-form .form-content .spons-container input {
@@ -11650,6 +11664,7 @@ td a:hover {
   display: block;
   width: 80%;
   margin: 0 auto;
+  padding: 5px 0;
 }
 
 .message {
