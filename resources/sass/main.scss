@@ -306,19 +306,14 @@ td {
         right: 0;
 
         @media screen and (max-width: 1200px) {
-            height: 80vh;
+            height: 60vh;
             right: -50px;
         }
 
         @media screen and (max-width: 991px) {
-            height: 70vh;
             bottom: -50px;
         }
 
-        @media screen and (max-width: 767px) {
-            height: 60vh;
-            bottom: -20px;
-        }
     }
 }
 
