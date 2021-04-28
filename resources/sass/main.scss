@@ -485,7 +485,7 @@ td {
 .edit-card {
     margin: 20px auto;
     width: 600px;
-    padding: 0 50px;
+    padding: 30px 50px;
 
     @media screen and (max-width: 767px) {
         width: 100%;
@@ -521,7 +521,7 @@ td {
 
             @media screen and (max-width: 767px) {
                 width: 100%;
-            }        
+            }
         }
 
         select {
@@ -529,7 +529,7 @@ td {
 
             @media screen and (max-width: 767px) {
                 width: 100%;
-            }        
+            }
 
             option:hover {
                 background-color: $maincolor;
@@ -585,7 +585,6 @@ td {
 
         .box {
             width: 310px;
-            margin-left: 30px;
             margin-top: 20px;
 
             @media screen and (max-width: 1200px) {
