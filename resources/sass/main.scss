@@ -598,15 +598,23 @@ td {
         margin-right: 5px;
     }
 
-    .service-card {
-        width: 370px;
-        margin-bottom: 5px;
+    .prestazioni{
 
-        &:hover {
-            border-color: $maincolor;
-            color: $maincolor;
+        @media screen and (max-width: 1200px) {
+            width: 100%;
+        }
+
+        .service-card {
+            width: 370px;
+            margin-bottom: 5px;
+
+            &:hover {
+                border-color: $maincolor;
+                color: $maincolor;
+            }
         }
     }
+
 
     .review {
         width: 560px;
@@ -655,17 +663,17 @@ td {
                     @media screen and (max-width: 991px) {
                         display: block;
                     }
-                    
+
                     .card {
                         @media screen and (max-width: 991px) {
                             display: block;
                             margin: 10px auto;
                             width: 90%;
-                        }   
-                        
+                        }
+
                         @media screen and (max-width: 575px) {
                             width: 100%;
-                        }        
+                        }
                     }
 
                 input {

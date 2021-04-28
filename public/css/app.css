@@ -11558,12 +11558,18 @@ td a:hover {
   margin-right: 5px;
 }
 
-.doctor-card .service-card {
+@media screen and (max-width: 1200px) {
+  .doctor-card .prestazioni {
+    width: 100%;
+  }
+}
+
+.doctor-card .prestazioni .service-card {
   width: 370px;
   margin-bottom: 5px;
 }
 
-.doctor-card .service-card:hover {
+.doctor-card .prestazioni .service-card:hover {
   border-color: #01c2a5;
   color: #01c2a5;
 }
