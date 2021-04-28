@@ -1845,13 +1845,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 //
 //
 //
@@ -2013,7 +2018,17 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       return axios.get("http://127.0.0.1:8000/api/doctors").then(function (response) {
-        _this3.users = response.data;
+        var sponsored = response.data.filter(function (el) {
+          if (el.sponsorships[0]) {
+            return el;
+          }
+        });
+        var notSponsored = response.data.filter(function (el) {
+          if (!el.sponsorships[0]) {
+            return el;
+          }
+        });
+        _this3.users = [].concat(_toConsumableArray(sponsored), _toConsumableArray(notSponsored));
       });
     },
     filterSpec: function filterSpec() {
@@ -2021,7 +2036,18 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.specId > 0) {
         return axios.get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId).then(function (response) {
-          _this4.users = response.data;
+          var sponsored = response.data.filter(function (el) {
+            if (el.sponsorships[0]) {
+              console.log(el);
+              return el;
+            }
+          });
+          var notSponsored = response.data.filter(function (el) {
+            if (!el.sponsorships[0]) {
+              return el;
+            }
+          });
+          _this4.users = [].concat(_toConsumableArray(sponsored), _toConsumableArray(notSponsored));
 
           if (_this4.users.length === 0) {
             _this4.results = false;
@@ -2066,7 +2092,6 @@ __webpack_require__.r(__webpack_exports__);
           somma += review.rv_vote;
           n += 1;
         });
-        console.log(Math.round(somma / n));
         return media = Math.round(somma / n);
       }
     },
@@ -37710,13 +37735,7 @@ var render = function() {
                 return _c(
                   "option",
                   { key: index, domProps: { value: spec.id } },
-                  [
-                    _vm._v(
-                      "\n                " +
-                        _vm._s(spec.spec_name) +
-                        "\n            "
-                    )
-                  ]
+                  [_vm._v("\n        " + _vm._s(spec.spec_name) + "\n      ")]
                 )
               })
             ],
@@ -37763,13 +37782,13 @@ var render = function() {
           _c(
             "option",
             { staticStyle: { color: "orange" }, attrs: { value: "5" } },
-            [_vm._v("\n                ★ ★ ★ ★ ★\n            ")]
+            [_vm._v("\n        ★ ★ ★ ★ ★\n      ")]
           ),
           _vm._v(" "),
           _c(
             "option",
             { staticStyle: { color: "orange" }, attrs: { value: "4" } },
-            [_vm._v("\n                ★ ★ ★ ★\n            ")]
+            [_vm._v("\n        ★ ★ ★ ★\n      ")]
           ),
           _vm._v(" "),
           _c(
@@ -37868,9 +37887,9 @@ var render = function() {
                     _vm._l(user.specializations, function(spec, index) {
                       return _c("div", { key: index }, [
                         _vm._v(
-                          "\n                            " +
+                          "\n              " +
                             _vm._s(spec.spec_name) +
-                            "\n                        "
+                            "\n            "
                         )
                       ])
                     }),
@@ -37934,7 +37953,7 @@ var render = function() {
     _vm.results === false
       ? _c("div", [
           _vm._v(
-            "\n        Mi dispiace, non ci sono risultati per i tuoi criteri di ricerca.\n    "
+            "\n    Mi dispiace, non ci sono risultati per i tuoi criteri di ricerca.\n  "
           )
         ])
       : _vm._e()
