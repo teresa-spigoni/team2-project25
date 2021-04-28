@@ -643,6 +643,10 @@ td {
                 width: 90%;
                 margin: 10px auto 20px auto;
                 font-size: 16px;
+
+                @media screen and (max-width: 575px) {
+                    width: 100%;
+                }
             }
 
             .spons-container {
@@ -656,11 +660,14 @@ td {
                     .card {
                         @media screen and (max-width: 991px) {
                             display: block;
-                            width: 90%;
                             margin: 10px auto;
-                        }    
+                            width: 90%;
+                        }   
+                        
+                        @media screen and (max-width: 575px) {
+                            width: 100%;
+                        }        
                     }
-
 
                 input {
                     display: none;
@@ -692,6 +699,14 @@ td {
                 margin: 30px auto;
                 width: 80%;
 
+                @media screen and (max-width: 767px) {
+                    width: 90%;
+                }
+
+                @media screen and (max-width: 575px) {
+                    width: 100%;
+                }
+
                 .braintree-heading {
                     width: 100%;
                     text-align: center;
@@ -703,6 +718,14 @@ td {
                 width: 80%;
                 margin: 0 auto;
                 padding: 5px 0;
+
+                @media screen and (max-width: 767px) {
+                    width: 90%;
+                }
+
+                @media screen and (max-width: 575px) {
+                    width: 100%;
+                }
             }
         }
     }

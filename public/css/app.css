@@ -11606,6 +11606,12 @@ td a:hover {
   font-size: 16px;
 }
 
+@media screen and (max-width: 575px) {
+  .sponsor-page #payment-form .form-content .text {
+    width: 100%;
+  }
+}
+
 .sponsor-page #payment-form .form-content .spons-container {
   display: flex;
   justify-content: space-between;
@@ -11620,8 +11626,14 @@ td a:hover {
 @media screen and (max-width: 991px) {
   .sponsor-page #payment-form .form-content .spons-container .card {
     display: block;
-    width: 90%;
     margin: 10px auto;
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .sponsor-page #payment-form .form-content .spons-container .card {
+    width: 100%;
   }
 }
 
@@ -11655,6 +11667,18 @@ td a:hover {
   width: 80%;
 }
 
+@media screen and (max-width: 767px) {
+  .sponsor-page #payment-form .form-content section {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .sponsor-page #payment-form .form-content section {
+    width: 100%;
+  }
+}
+
 .sponsor-page #payment-form .form-content section .braintree-heading {
   width: 100%;
   text-align: center;
@@ -11665,6 +11689,18 @@ td a:hover {
   width: 80%;
   margin: 0 auto;
   padding: 5px 0;
+}
+
+@media screen and (max-width: 767px) {
+  .sponsor-page #payment-form .form-content button {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .sponsor-page #payment-form .form-content button {
+    width: 100%;
+  }
 }
 
 .message {
