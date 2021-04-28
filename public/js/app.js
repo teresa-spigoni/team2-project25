@@ -1961,6 +1961,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     selected: Number,
@@ -1991,6 +1998,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       return this.filterSpec().then(function () {
+        _this2.orderBy = "";
         return _this2.filterVote();
       });
     },
@@ -37702,7 +37710,13 @@ var render = function() {
                 return _c(
                   "option",
                   { key: index, domProps: { value: spec.id } },
-                  [_vm._v("\n        " + _vm._s(spec.spec_name) + "\n      ")]
+                  [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(spec.spec_name) +
+                        "\n            "
+                    )
+                  ]
                 )
               })
             ],
@@ -37749,13 +37763,13 @@ var render = function() {
           _c(
             "option",
             { staticStyle: { color: "orange" }, attrs: { value: "5" } },
-            [_vm._v("\n        ★ ★ ★ ★ ★\n      ")]
+            [_vm._v("\n                ★ ★ ★ ★ ★\n            ")]
           ),
           _vm._v(" "),
           _c(
             "option",
             { staticStyle: { color: "orange" }, attrs: { value: "4" } },
-            [_vm._v("\n        ★ ★ ★ ★\n      ")]
+            [_vm._v("\n                ★ ★ ★ ★\n            ")]
           ),
           _vm._v(" "),
           _c(
@@ -37854,9 +37868,9 @@ var render = function() {
                     _vm._l(user.specializations, function(spec, index) {
                       return _c("div", { key: index }, [
                         _vm._v(
-                          "\n              " +
+                          "\n                            " +
                             _vm._s(spec.spec_name) +
-                            "\n            "
+                            "\n                        "
                         )
                       ])
                     }),
@@ -37920,7 +37934,7 @@ var render = function() {
     _vm.results === false
       ? _c("div", [
           _vm._v(
-            "\n    Mi dispiace, non ci sono risultati per i tuoi criteri di ricerca.\n  "
+            "\n        Mi dispiace, non ci sono risultati per i tuoi criteri di ricerca.\n    "
           )
         ])
       : _vm._e()
