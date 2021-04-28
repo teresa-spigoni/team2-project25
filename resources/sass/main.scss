@@ -395,6 +395,12 @@ td {
             @media screen and (max-width: 767px) {
                 width: 160px;
             }
+
+            img {
+                @media screen and (max-width: 575px) {
+                    width: 120px;
+                }    
+            }
         }
     }
 }
@@ -692,6 +698,11 @@ td {
 .message {
     width: 600px;
     margin-top: 20px;
+
+    @media screen and (max-width: 767px) {
+        width: 95%;
+        margin: 20px auto 0 auto;
+    }
 
     .msg-p {
         height: 20px;

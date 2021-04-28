@@ -11346,6 +11346,12 @@ td a:hover {
   }
 }
 
+@media screen and (max-width: 575px) {
+  .index table .img-col img {
+    width: 120px;
+  }
+}
+
 .all-services {
   display: flex;
   flex-wrap: wrap;
@@ -11649,6 +11655,13 @@ td a:hover {
 .message {
   width: 600px;
   margin-top: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .message {
+    width: 95%;
+    margin: 20px auto 0 auto;
+  }
 }
 
 .message .msg-p {
