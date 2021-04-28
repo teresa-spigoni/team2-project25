@@ -11463,6 +11463,13 @@ td a:hover {
   display: flex;
 }
 
+@media screen and (max-width: 1200px) {
+  .doctor-card .card-body {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
 .doctor-card .doc-info {
   width: 560px;
   margin-bottom: 30px;
@@ -11470,14 +11477,57 @@ td a:hover {
   vertical-align: top;
 }
 
+@media screen and (max-width: 1200px) {
+  .doctor-card .doc-info {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .doctor-card .doc-info {
+    width: 450px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .doctor-card .doc-info {
+    width: 350px;
+  }
+}
+
 .doctor-card .doc-info img {
   vertical-align: top;
+}
+
+@media screen and (max-width: 575px) {
+  .doctor-card .doc-info img {
+    margin-left: 80px;
+  }
 }
 
 .doctor-card .doc-info .box {
   width: 310px;
   margin-left: 30px;
   margin-top: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+  .doctor-card .doc-info .box {
+    text-align: center;
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .doctor-card .doc-info .box {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .doctor-card .doc-info .box {
+    margin-left: 60px;
+  }
 }
 
 .doctor-card #specs {
@@ -11519,6 +11569,12 @@ td a:hover {
 .doctor-card .review {
   width: 560px;
   margin-top: 50px;
+}
+
+@media screen and (max-width: 991px) {
+  .doctor-card .review {
+    width: 100%;
+  }
 }
 
 .doctor-card .review .card {
