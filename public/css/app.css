@@ -11152,6 +11152,10 @@ td a:hover {
   margin-left: 90px;
 }
 
+.register-card .invalid-spec {
+  margin-left: 228px;
+}
+
 .jum {
   background: #01c2a5;
   height: 380px;

@@ -60,7 +60,7 @@
                                 <option value="{{ $spec->id }}">{{ $spec->spec_name }}</option>
                                 @endforeach
                             </select>
-                            <div class="invalid-feedback">Inserisci una o più specializzazioni.</div>
+                            <div class="invalid-feedback invalid-spec">Inserisci una o più specializzazioni.</div>
                         </div>
 
                         {{-- INDIRIZZO --}}
