@@ -472,6 +472,16 @@ td {
 .edit-card {
     margin: 20px auto;
     width: 600px;
+    padding: 0 50px;
+
+    @media screen and (max-width: 767px) {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 575px) {
+        padding: 0 20px;
+    }
+
 
     .back {
         h1 {
@@ -495,10 +505,18 @@ td {
 
         input {
             width: 500px;
+
+            @media screen and (max-width: 767px) {
+                width: 100%;
+            }        
         }
 
         select {
             width: 500px;
+
+            @media screen and (max-width: 767px) {
+                width: 100%;
+            }        
 
             option:hover {
                 background-color: $maincolor;
@@ -639,6 +657,10 @@ td {
 
 // sponsorship
 .sponsor-page {
+    .title {
+        padding-left: 15px;
+    }
+
     #payment-form {
         margin: 15px 0;
 

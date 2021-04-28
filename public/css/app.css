@@ -11417,6 +11417,19 @@ td a:hover {
 .edit-card {
   margin: 20px auto;
   width: 600px;
+  padding: 0 50px;
+}
+
+@media screen and (max-width: 767px) {
+  .edit-card {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .edit-card {
+    padding: 0 20px;
+  }
 }
 
 .edit-card .back h1 {
@@ -11442,8 +11455,20 @@ td a:hover {
   width: 500px;
 }
 
+@media screen and (max-width: 767px) {
+  .edit-card .form input {
+    width: 100%;
+  }
+}
+
 .edit-card .form select {
   width: 500px;
+}
+
+@media screen and (max-width: 767px) {
+  .edit-card .form select {
+    width: 100%;
+  }
 }
 
 .edit-card .form select option:hover {
@@ -11594,6 +11619,10 @@ td a:hover {
 
 .doctor-card .review .card:hover {
   border-color: #01c2a5;
+}
+
+.sponsor-page .title {
+  padding-left: 15px;
 }
 
 .sponsor-page #payment-form {
