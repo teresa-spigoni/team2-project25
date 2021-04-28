@@ -14,11 +14,11 @@ class ApiUserController extends Controller
         $specialization = $request->query('specialization');
 
         if ($specialization > 0) {
-            $filtered = User::with('specializations', 'reviews')->whereHas('specializations', function ($query) use ($specialization) {
+            $filtered = User::with('specializations', 'reviews', 'sponsorships')->whereHas('specializations', function ($query) use ($specialization) {
                 return $query->where('specialization_id', $specialization);
             })->get();
         } else {
-            $filtered = User::with('specializations', 'reviews')->get();
+            $filtered = User::with('specializations', 'reviews', 'sponsorships')->get();
         }
         return response()->json($filtered);
     }
