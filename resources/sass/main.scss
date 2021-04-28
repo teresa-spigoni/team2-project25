@@ -391,6 +391,19 @@ td {
         .img-col {
             width: 200px;
             text-align: center;
+            position: relative;
+
+            .sponsored-doc {
+                width: 40px;
+                position: absolute;
+                padding: 5px;
+                right: 10%;
+                bottom: 13%;
+                border-radius: 50%;
+                border: 1px solid $maincolor;
+                background-color: white;
+
+            }
 
             @media screen and (max-width: 767px) {
                 width: 160px;

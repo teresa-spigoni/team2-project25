@@ -102,6 +102,7 @@
                 width="150px"
                 class="user-image"
               />
+              <img src="https://prowly-uploads.s3.eu-west-1.amazonaws.com/uploads/4818/assets/40124/miodottore-mktpl-symbol-turquoise.png" class="sponsored-doc" v-if="sponsored.includes(user)">
             </a>
           </td>
         </tr>
@@ -124,6 +125,8 @@ export default {
       results: true,
       vote: "",
       orderBy: "",
+      sponsored: [],
+      notSponsored: []
     };
   },
   mounted() {
@@ -151,17 +154,36 @@ export default {
   methods: {
     getAll: function () {
       return axios.get("http://127.0.0.1:8000/api/doctors").then((response) => {
-        let sponsored = response.data.filter((el) => {
-          if (el.sponsorships[0]) {
-            return el;
+        // data corrente
+        let date = new Date();
+        let currDate = Date.parse(date);
+        // data scadenza sponsorizzazione
+        var sponsDate;
+        this.sponsored = [];
+        this.notSponsored = [];
+
+        let filtered = response.data.filter((el) => {
+          if (el.sponsorships.length > 0) {
+            el.sponsorships.forEach((spons) => {
+              sponsDate = Date.parse(spons.pivot.expiration_time);
+              if (currDate < sponsDate) {
+                console.log("sponsorizzato!!");
+                this.sponsored.push(el);
+              }
+            });
+          }
+          if (el.sponsorships.length == 0) {
+            console.log("non sponsorizzato");
+            this.notSponsored.push(el);
           }
         });
-        let notSponsored = response.data.filter((el) => {
-          if (!el.sponsorships[0]) {
-            return el;
-          }
-        });
-        this.users = [...sponsored, ...notSponsored];
+
+        this.users = [...this.sponsored, ...this.notSponsored];
+        if (this.users.length === 0) {
+          this.results = false;
+        } else {
+          this.results = true;
+        }
       });
     },
     filterSpec: function () {
@@ -171,18 +193,31 @@ export default {
             "http://127.0.0.1:8000/api/doctors?specialization=" + this.specId
           )
           .then((response) => {
-            let sponsored = response.data.filter((el) => {
-              if (el.sponsorships[0]) {
-                console.log(el);
-                return el;
+            // data corrente
+            let date = new Date();
+            let currDate = Date.parse(date);
+            // data scadenza sponsorizzazione
+            var sponsDate;
+            this.sponsored = [];
+            this.notSponsored = [];
+
+            let filtered = response.data.filter((el) => {
+              if (el.sponsorships.length > 0) {
+                el.sponsorships.forEach((spons) => {
+                  sponsDate = Date.parse(spons.pivot.expiration_time);
+                  if (currDate < sponsDate) {
+                    console.log("sponsorizzato!!");
+                    this.sponsored.push(el);
+                  }
+                });
+              }
+              if (el.sponsorships.length == 0) {
+                console.log("non sponsorizzato");
+                this.notSponsored.push(el);
               }
             });
-            let notSponsored = response.data.filter((el) => {
-              if (!el.sponsorships[0]) {
-                return el;
-              }
-            });
-            this.users = [...sponsored, ...notSponsored];
+
+            this.users = [...this.sponsored, ...this.notSponsored];
             if (this.users.length === 0) {
               this.results = false;
             } else {

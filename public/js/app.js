@@ -1973,6 +1973,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     selected: Number,
@@ -1984,7 +1985,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       users: [],
       results: true,
       vote: "",
-      orderBy: ""
+      orderBy: "",
+      sponsored: [],
+      notSponsored: []
     };
   },
   mounted: function mounted() {
@@ -2018,17 +2021,39 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var _this3 = this;
 
       return axios.get("http://127.0.0.1:8000/api/doctors").then(function (response) {
-        var sponsored = response.data.filter(function (el) {
-          if (el.sponsorships[0]) {
-            return el;
+        // data corrente
+        var date = new Date();
+        var currDate = Date.parse(date); // data scadenza sponsorizzazione
+
+        var sponsDate;
+        _this3.sponsored = [];
+        _this3.notSponsored = [];
+        var filtered = response.data.filter(function (el) {
+          if (el.sponsorships.length > 0) {
+            el.sponsorships.forEach(function (spons) {
+              sponsDate = Date.parse(spons.pivot.expiration_time);
+
+              if (currDate < sponsDate) {
+                console.log("sponsorizzato!!");
+
+                _this3.sponsored.push(el);
+              }
+            });
+          }
+
+          if (el.sponsorships.length == 0) {
+            console.log("non sponsorizzato");
+
+            _this3.notSponsored.push(el);
           }
         });
-        var notSponsored = response.data.filter(function (el) {
-          if (!el.sponsorships[0]) {
-            return el;
-          }
-        });
-        _this3.users = [].concat(_toConsumableArray(sponsored), _toConsumableArray(notSponsored));
+        _this3.users = [].concat(_toConsumableArray(_this3.sponsored), _toConsumableArray(_this3.notSponsored));
+
+        if (_this3.users.length === 0) {
+          _this3.results = false;
+        } else {
+          _this3.results = true;
+        }
       });
     },
     filterSpec: function filterSpec() {
@@ -2036,18 +2061,33 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       if (this.specId > 0) {
         return axios.get("http://127.0.0.1:8000/api/doctors?specialization=" + this.specId).then(function (response) {
-          var sponsored = response.data.filter(function (el) {
-            if (el.sponsorships[0]) {
-              console.log(el);
-              return el;
+          // data corrente
+          var date = new Date();
+          var currDate = Date.parse(date); // data scadenza sponsorizzazione
+
+          var sponsDate;
+          _this4.sponsored = [];
+          _this4.notSponsored = [];
+          var filtered = response.data.filter(function (el) {
+            if (el.sponsorships.length > 0) {
+              el.sponsorships.forEach(function (spons) {
+                sponsDate = Date.parse(spons.pivot.expiration_time);
+
+                if (currDate < sponsDate) {
+                  console.log("sponsorizzato!!");
+
+                  _this4.sponsored.push(el);
+                }
+              });
+            }
+
+            if (el.sponsorships.length == 0) {
+              console.log("non sponsorizzato");
+
+              _this4.notSponsored.push(el);
             }
           });
-          var notSponsored = response.data.filter(function (el) {
-            if (!el.sponsorships[0]) {
-              return el;
-            }
-          });
-          _this4.users = [].concat(_toConsumableArray(sponsored), _toConsumableArray(notSponsored));
+          _this4.users = [].concat(_toConsumableArray(_this4.sponsored), _toConsumableArray(_this4.notSponsored));
 
           if (_this4.users.length === 0) {
             _this4.results = false;
@@ -37939,7 +37979,17 @@ var render = function() {
                           src: "../" + user.profile_image,
                           width: "150px"
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.sponsored.includes(user)
+                        ? _c("img", {
+                            staticClass: "sponsored-doc",
+                            attrs: {
+                              src:
+                                "https://prowly-uploads.s3.eu-west-1.amazonaws.com/uploads/4818/assets/40124/miodottore-mktpl-symbol-turquoise.png"
+                            }
+                          })
+                        : _vm._e()
                     ]
                   )
                 ])
