@@ -89,7 +89,7 @@
                         @for ($i = 0; $i < $review->rv_vote; $i++)
                             <i class="fas fa-star"></i> @endfor </div>
                     <h3>{{ $review->rv_title }}</h3>
-                    <div>Il {{ substr($review->created_at, 0, 10) }} alle {{ substr($review->created_at, 11, 5) }}
+                    <div>Il {{ substr($review->created_at, 0, 10) }}
                     </div>
                     <p style="width:250px">{{ $review->rv_content }}</p>
                     <h5>{{ $review->rv_name }} {{ $review->rv_lastname }}</h5>
