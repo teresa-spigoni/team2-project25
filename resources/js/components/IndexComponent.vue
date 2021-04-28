@@ -168,7 +168,6 @@ export default {
             }
           });
       } else {
-        console.log("vedi tutti");
         return this.getAll();
       }
     },
@@ -199,6 +198,7 @@ export default {
           somma += review.rv_vote;
           n += 1;
         });
+          console.log(Math.round(somma / n))
         return (media = Math.round(somma / n));
       }
     },
@@ -209,6 +209,8 @@ export default {
           n += 1;
         });
         return n;
+      } else {
+        return 0;
       }
     },
     sortUsers: function () {

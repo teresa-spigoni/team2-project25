@@ -2022,7 +2022,6 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
       } else {
-        console.log("vedi tutti");
         return this.getAll();
       }
     },
@@ -2059,6 +2058,7 @@ __webpack_require__.r(__webpack_exports__);
           somma += review.rv_vote;
           n += 1;
         });
+        console.log(Math.round(somma / n));
         return media = Math.round(somma / n);
       }
     },
@@ -2070,6 +2070,8 @@ __webpack_require__.r(__webpack_exports__);
           n += 1;
         });
         return n;
+      } else {
+        return 0;
       }
     },
     sortUsers: function sortUsers() {
