@@ -10953,6 +10953,11 @@ a:hover {
   text-decoration: none;
 }
 
+.msg-ricevuto {
+  color: #01c2a5;
+  background: #ccc;
+}
+
 td {
   height: 150px;
 }
