@@ -155,29 +155,11 @@
 
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
-                        <button type="submit" class="btn custom-button" data-toggle="modal"
-                            data-target="#modalRicevuto">Invia messaggio</button>
+                        <button type="submit" class="btn custom-button">Invia messaggio</button>
                     </div>
                 </div>
             </div>
         </form>
-    </div>
-
-    {{-- modale per la ricezione del messaggio --}}
-    <div class="modal fade msg-ricevuto" id="modalRicevuto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body mx-3">
-                    <h4>Il tuo messaggio è stato inviato correttamente</h4>
-                </div>
-            </div>
-        </div>
     </div>
 
     {{-- modale per scrivere una recensione --}}
